@@ -1,0 +1,38 @@
+{
+  "name": "localpos-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing website for LocalPOS - billing software, POS and business management.",
+  "scripts": {
+    "start": "vite --open",
+    "start:prod": "npm run build && node scripts/preview.mjs",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build:client": "vite build --outDir dist",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "build": "npm run typecheck && npm run build:client && npm run build:server && node scripts/prerender.mjs",
+    "verify": "node scripts/verify-seo.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.52.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.18.4",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.7"
+  }
+}

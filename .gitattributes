@@ -1,0 +1,7 @@
+# Normalise line endings so Windows and macOS/Linux checkouts match.
+* text=auto eol=lf
+
+# Binary assets: never touch or diff as text.
+*.png binary
+*.jpg binary
+*.woff2 binary

@@ -1,0 +1,13 @@
+{
+  "name": "LocalPOS",
+  "short_name": "LocalPOS",
+  "description": "Billing software for Indian shops: GST bills, stock, payments and reports in one place.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbfaf6",
+  "theme_color": "#0a7f5f",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/logo-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
