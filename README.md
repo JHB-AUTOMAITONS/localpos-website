@@ -21,6 +21,26 @@ npm run preview    # serve an existing dist/ like a static host does; picks the 
 
 `npm run build` writes to `dist/`. Upload that folder to any static host.
 
+## Deploying (GitHub Pages)
+
+The site is served by GitHub Pages from the `gh-pages` branch of `JHB-AUTOMAITONS/localpos-website`, on the custom
+domain `www.localpos.in`.
+
+```bash
+npm run deploy     # build + SEO verify + publish dist/ to the gh-pages branch (takes about a minute to go live)
+```
+
+DNS records at the domain registrar:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (four records) |
+| CNAME | `www` | `jhb-automaitons.github.io` |
+
+`www.localpos.in` is the main address; the bare `localpos.in` redirects to it. Once DNS resolves, turn on **Enforce HTTPS**
+in the repository's Pages settings. Set `VITE_SITE_URL` / `VITE_LOGIN_URL` in the shell before `npm run deploy` if they differ
+from the defaults.
+
 ## Configuration
 
 Copy `.env.example` to `.env` and set:
