@@ -1,0 +1,19 @@
+# Netlify build settings. These override whatever is set in the Netlify UI.
+#
+# This site is statically prerendered: `npm run build` is the only command that writes the per-page HTML
+# (dist/<route>/index.html), 404.html, sitemap.xml and robots.txt. A bare `vite build` (which is what Netlify
+# auto-detects for a Vite project) emits only the client bundle, so every route except "/" answers with Netlify's 404.
+# `npm run verify` fails the deploy if any prerendered page is missing or broken, so a bad build never replaces the live site.
+[build]
+  command = "npm run build && npm run verify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Public origin for canonical links, sitemap.xml, Open Graph and structured data.
+  # localpos.in is the primary domain (www.localpos.in redirects to it), so canonicals must point here.
+  VITE_SITE_URL = "https://localpos.in"
+
+# There is deliberately no catch-all "/*  /index.html  200" rewrite. Every route is a real file in dist/, and Netlify
+# serves dist/404.html with a true 404 status for any other URL. A catch-all would answer unknown URLs with the
+# homepage and a 200 (a "soft 404" for Google), and would hand React Router HTML that does not match the URL.
