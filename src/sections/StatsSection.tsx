@@ -16,7 +16,7 @@ export function StatsSection({ stats, title, id = 'stats-heading' }: { stats: St
         <Reveal>
           <dl className="grid divide-y divide-dashed divide-line-strong overflow-hidden rounded-[24px] border border-line bg-white shadow-card sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {stats.map((s) => (
-              <div key={s.label} className="px-6 py-8 text-center">
+              <div key={s.label} className="flex flex-col px-6 py-8 text-center">
                 <dt className="order-2 mt-2 text-[0.95rem] font-medium text-ink-2">{s.label}</dt>
                 <dd className="tnum font-display text-[3rem] font-bold leading-none tracking-[-0.03em] text-brand-700">{s.value}</dd>
               </div>

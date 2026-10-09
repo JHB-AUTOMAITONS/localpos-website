@@ -1,4 +1,4 @@
-﻿import { Icon } from '@/components/Icon'
+import { Icon } from '@/components/Icon'
 import { cn } from '@/lib/cn'
 import { rupees } from '@/lib/format'
 import { AppFrame, Avatar, Chip, FakeSearch } from './parts'

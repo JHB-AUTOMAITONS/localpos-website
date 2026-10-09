@@ -8,7 +8,7 @@ import zlib from 'node:zlib'
 const compressible = new Set(['.html', '.js', '.css', '.svg', '.xml', '.txt', '.json', '.webmanifest'])
 const cache = new Map()
 
-const dist = path.join(process.cwd(), 'dist')
+const dist = path.join(process.cwd(), process.env.DIST_DIR ?? 'dist')
 const port = Number(process.env.PORT) || 4173
 const types = {
   '.html': 'text/html; charset=utf-8',
@@ -16,6 +16,7 @@ const types = {
   '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
   '.woff2': 'font/woff2',
   '.xml': 'application/xml; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
@@ -80,7 +81,8 @@ const server = http
 // If the port is busy (another project's server, for example), try the next ones instead of crashing.
 let attempt = port
 server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE' && attempt < port + 20) {
+  // STRICT_PORT=1 (used by the test runner) means "this exact port or fail".
+  if (err.code === 'EADDRINUSE' && !process.env.STRICT_PORT && attempt < port + 20) {
     attempt += 1
     server.listen(attempt)
   } else {

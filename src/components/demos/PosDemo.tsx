@@ -97,7 +97,7 @@ export function PosDemo() {
         <p className="mt-4 text-[0.875rem] text-ink-3">Watch the stock count fall once you charge the bill. That is what happens at your real counter.</p>
       </div>
 
-      <div className="relative">
+      <div className="@container relative">
         <div className="receipt rounded-t-[18px] p-5 font-mono sm:p-6">
           <div className="flex items-start justify-between">
             <div>
@@ -113,31 +113,31 @@ export function PosDemo() {
           ) : (
             <ul className="space-y-2.5">
               {lines.map((l) => (
-                <li key={l.id} className="flex items-center gap-2 text-[0.85rem]">
-                  <span className="min-w-0 flex-1 truncate">{l.name}</span>
+                <li key={l.id} className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[0.85rem] @[24rem]:flex-nowrap">
+                  <span className="min-w-0 basis-full truncate @[24rem]:flex-1 @[24rem]:basis-0">{l.name}</span>
                   {!paid ? (
                     <span className="flex items-center gap-1">
-                      <button type="button" aria-label={`Remove one ${l.name}`} onClick={() => change(l.id, -1)} className="grid size-7 place-items-center rounded-md bg-paper-2 text-ink hover:bg-paper-3">
+                      <button type="button" aria-label={`Remove one ${l.name}`} onClick={() => change(l.id, -1)} className="grid size-8 place-items-center rounded-md bg-paper-2 text-ink hover:bg-paper-3">
                         <Icon name="minus" size={14} strokeWidth={2.6} />
                       </button>
                       <b className="tnum w-5 text-center">{l.qty}</b>
-                      <button type="button" aria-label={`Add one more ${l.name}`} onClick={() => change(l.id, 1)} className="grid size-7 place-items-center rounded-md bg-paper-2 text-ink hover:bg-paper-3">
+                      <button type="button" aria-label={`Add one more ${l.name}`} onClick={() => change(l.id, 1)} className="grid size-8 place-items-center rounded-md bg-paper-2 text-ink hover:bg-paper-3">
                         <Icon name="plus" size={14} strokeWidth={2.6} />
                       </button>
                     </span>
                   ) : (
                     <b className="tnum">×{l.qty}</b>
                   )}
-                  <span className="tnum w-16 text-right">{rupees(l.price * l.qty)}</span>
+                  <span className="tnum ml-auto min-w-16 text-right">{rupees(l.price * l.qty)}</span>
                 </li>
               ))}
             </ul>
           )}
 
           <div className="perforation my-3" aria-hidden="true" />
-          <div className="flex items-baseline justify-between" aria-live="polite">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3" aria-live="polite">
             <span className="text-[0.9rem] font-bold text-ink">Total</span>
-            <span className="tnum text-[1.6rem] font-bold text-ink">{rupees(total)}</span>
+            <span className="tnum text-[1.4rem] font-bold text-ink sm:text-[1.6rem]">{rupees(total)}</span>
           </div>
 
           {!paid ? (

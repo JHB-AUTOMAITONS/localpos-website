@@ -47,7 +47,7 @@ export function PageHero({
   const copy = (
     <div className={cn(centered && 'mx-auto max-w-3xl text-center')}>
       <Eyebrow tone={tint === 'gold' ? 'gold' : tint}>{eyebrow}</Eyebrow>
-      <h1 id="page-heading" className={cn('display-2 mt-5', !centered && '!text-[clamp(2.1rem,1.4rem+2.1vw,3.2rem)]')}>
+      <h1 id="page-heading" className={cn('display-2 mt-5', !centered && '!text-[clamp(1.85rem,1.2rem+2.4vw,3.2rem)]')}>
         {title}
       </h1>
       <p className={cn('lead mt-5 max-w-xl', centered && 'mx-auto')}>{intro}</p>
@@ -62,8 +62,8 @@ export function PageHero({
       {points && (
         <ul className={cn('mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.95rem] text-ink-2', centered && 'justify-center')}>
           {points.map((p) => (
-            <li key={p} className="flex items-center gap-2">
-              <Icon name="circle-check" size={18} className={t.text} />
+            <li key={p} className={cn('flex gap-2', centered ? 'items-center' : 'items-start')}>
+              <Icon name="circle-check" size={18} className={cn(t.text, 'mt-[3px] shrink-0', centered && 'mt-0')} />
               {p}
             </li>
           ))}
@@ -73,7 +73,7 @@ export function PageHero({
   )
 
   return (
-    <section aria-labelledby="page-heading" className={cn('relative overflow-hidden pb-14 pt-6 sm:pb-20 lg:pb-24', className)}>
+    <section aria-labelledby="page-heading" className={cn('relative overflow-hidden pb-10 pt-6 sm:pb-20 lg:pb-24', className)}>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className={cn('absolute -top-40 size-[620px] rounded-full bg-gradient-to-br blur-3xl', t.glow, centered ? 'left-1/2 -translate-x-1/2' : layout === 'split' ? '-right-40' : '-left-40')} />
         <div className="bg-grid absolute inset-0 opacity-60" />

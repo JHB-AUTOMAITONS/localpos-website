@@ -23,7 +23,7 @@ export function TrustStrip() {
             {POINTS.map((p) => (
               <li
                 key={p.title}
-                className="flex items-start gap-3 border-line px-5 py-4 max-sm:border-b max-sm:last:border-b-0 sm:max-lg:border-b sm:max-lg:odd:border-r sm:max-lg:last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0"
+                className="flex items-start gap-3 border-line px-5 py-4 max-sm:border-b max-sm:last:border-b-0 sm:max-lg:border-b sm:max-lg:odd:border-r sm:max-lg:last:col-span-2 sm:max-lg:last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0"
               >
                 <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[10px] bg-brand-50 text-brand-700">
                   <Icon name={p.icon} size={18} />

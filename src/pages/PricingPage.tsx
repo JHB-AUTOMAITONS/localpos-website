@@ -24,6 +24,22 @@ const crumbs = [
   { name: 'Pricing', path: '/pricing/' },
 ]
 
+/** A tick, a dash or a short word, with a text alternative for screen readers. */
+function PlanMark({ value }: { value: boolean | string }) {
+  if (typeof value === 'string') return <span className="text-[0.92rem] font-semibold text-ink-2">{value}</span>
+  return value ? (
+    <>
+      <Icon name="check" size={18} strokeWidth={3} className="mx-auto text-brand-600" />
+      <span className="sr-only">Included</span>
+    </>
+  ) : (
+    <>
+      <span aria-hidden="true" className="mx-auto block h-0.5 w-3 rounded bg-line-strong" />
+      <span className="sr-only">Not included</span>
+    </>
+  )
+}
+
 export default function PricingPage() {
   const hasPrices = PLANS.some((p) => p.price.monthly !== null || p.price.yearly !== null)
   const [period, setPeriod] = useState<Period>('monthly')
@@ -85,7 +101,7 @@ export default function PricingPage() {
         <h2 id="plans-heading" className="sr-only">
           Plans
         </h2>
-        <ul className="mx-auto grid max-w-6xl items-stretch gap-6 lg:grid-cols-3 lg:gap-6">
+        <ul className="mx-auto grid max-w-xl items-stretch gap-6 lg:max-w-6xl lg:grid-cols-3 lg:gap-6">
           {PLANS.map((p, i) => (
             <li key={p.id}>
               <Reveal delay={i * 80} className="h-full">
@@ -104,7 +120,27 @@ export default function PricingPage() {
           <p className="lead mt-4">What each plan includes at a glance. Contents are placeholders until final packaging is confirmed.</p>
         </div>
         <Reveal className="mx-auto mt-10 max-w-4xl">
-          <div role="region" aria-label="Plan comparison table, scrollable" tabIndex={0} className="relative overflow-x-auto rounded-[22px] border border-line bg-white shadow-card">
+          {/* Phones: one card per feature, so no sideways scrolling is needed to compare plans. */}
+          <ul className="divide-y divide-line overflow-hidden rounded-[22px] border border-line bg-white shadow-card sm:hidden" aria-label="Features included in each plan">
+            {COMPARISON.map((row) => (
+              <li key={row.feature} className="p-4">
+                <div className="font-medium text-ink">{row.feature}</div>
+                <ul className="mt-2.5 grid grid-cols-3 gap-2">
+                  {PLANS.map((p, i) => (
+                    <li key={p.id} className={cn('rounded-lg px-1.5 py-2 text-center', p.recommended ? 'bg-brand-50' : 'bg-paper')}>
+                      <span className={cn('block text-[0.8rem] font-semibold', p.recommended ? 'text-brand-700' : 'text-ink-2')}>{p.name}</span>
+                      <span className="mt-1 block">
+                        <PlanMark value={row.values[i]} />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+
+          {/* Tablet and up: the full comparison table. */}
+          <div role="region" aria-label="Plan comparison table, scrollable" tabIndex={0} className="relative hidden overflow-x-auto rounded-[22px] border border-line bg-white shadow-card sm:block">
             <table className="w-full min-w-[560px] text-left">
               <caption className="sr-only">Features included in each LocalPOS plan</caption>
               <thead>
@@ -123,19 +159,7 @@ export default function PricingPage() {
                     <th scope="row" className="px-5 py-3.5 text-[0.97rem] font-medium text-ink">{row.feature}</th>
                     {row.values.map((v, i) => (
                       <td key={i} className={cn('px-4 py-3.5 text-center', PLANS[i].recommended && 'bg-brand-50/60')}>
-                        {typeof v === 'string' ? (
-                          <span className="text-[0.92rem] font-semibold text-ink-2">{v}</span>
-                        ) : v ? (
-                          <>
-                            <Icon name="check" size={18} strokeWidth={3} className="mx-auto text-brand-600" />
-                            <span className="sr-only">Included</span>
-                          </>
-                        ) : (
-                          <>
-                            <span aria-hidden="true" className="mx-auto block h-0.5 w-3 rounded bg-line-strong" />
-                            <span className="sr-only">Not included</span>
-                          </>
-                        )}
+                        <PlanMark value={v} />
                       </td>
                     ))}
                   </tr>

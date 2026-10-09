@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { Container } from '@/components/ui/Container'
 import { Seo } from '@/lib/head'
-import { FEATURES } from '@/data/features'
+import { FEATURE_META } from '@/data/featureMeta'
 
 export default function NotFoundPage() {
   return (
@@ -22,7 +22,7 @@ export default function NotFoundPage() {
             </CTAButton>
           </div>
           <ul className="mt-12 flex flex-wrap justify-center gap-2">
-            {FEATURES.slice(0, 5).map((f) => (
+            {FEATURE_META.slice(0, 5).map((f) => (
               <li key={f.slug}>
                 <Link to={f.path} className="inline-block rounded-full border border-line bg-white px-4 py-2 text-[0.95rem] font-medium text-ink-2 hover:border-brand-300 hover:text-brand-800">
                   {f.navLabel}

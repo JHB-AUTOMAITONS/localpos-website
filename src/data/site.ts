@@ -17,7 +17,7 @@ export const SITE = {
   /** Optional lead endpoint. Empty means the forms run in preview mode. */
   leadEndpoint: (env.VITE_LEAD_ENDPOINT as string | undefined) ?? '',
   locale: 'en_IN',
-  ogImage: '/og-default.png',
+  ogImage: '/og-default.jpg',
   logo: '/logo-512.png',
   /** PLACEHOLDER contact details: shown as "to be added" until real values are set. */
   contact: {

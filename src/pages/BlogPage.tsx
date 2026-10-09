@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { Container } from '@/components/ui/Container'
 import { Eyebrow } from '@/components/ui/Eyebrow'
-import { BLOG_CATEGORIES, BLOG_POSTS } from '@/data/blog'
+import { BLOG_CATEGORIES, BLOG_META } from '@/data/blogMeta'
 import type { BlogCategory } from '@/data/types'
 import { cn } from '@/lib/cn'
 import { longDate } from '@/lib/format'
@@ -26,12 +26,12 @@ export default function BlogPage() {
   const [shown, setShown] = useState(PAGE_SIZE)
 
   const filtering = query.trim() !== '' || category !== 'All'
-  const featured = BLOG_POSTS[0]
+  const featured = BLOG_META[0]
   const q = query.trim().toLowerCase()
 
   const matches = useMemo(
     () =>
-      BLOG_POSTS.filter((p) => {
+      BLOG_META.filter((p) => {
         if (category !== 'All' && p.category !== category) return false
         if (!q) return true
         return [p.title, p.excerpt, p.category, p.keyword].some((s) => s.toLowerCase().includes(q))
@@ -40,7 +40,7 @@ export default function BlogPage() {
   )
 
   // The featured card shows only when nothing is filtered; the grid then lists the rest.
-  const list = filtering ? matches : BLOG_POSTS.filter((p) => p.slug !== featured.slug)
+  const list = filtering ? matches : BLOG_META.filter((p) => p.slug !== featured.slug)
   const t = TINTS[featured.tint]
 
   return (
@@ -135,7 +135,7 @@ export default function BlogPage() {
           <div className="flex items-baseline justify-between gap-4 pb-5">
             <h2 className="font-display text-[1.5rem] font-semibold text-ink">{filtering ? 'Search results' : 'Latest articles'}</h2>
             <p className="text-[0.92rem] text-ink-3" aria-live="polite">
-              {filtering ? `${matches.length} ${matches.length === 1 ? 'article' : 'articles'}` : `${BLOG_POSTS.length} articles`}
+              {list.length} {list.length === 1 ? 'article' : 'articles'}
             </p>
           </div>
 

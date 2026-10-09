@@ -47,7 +47,7 @@ export function StepList({ steps, variant = 'rail', tint = 'brand', className }:
               <span aria-hidden="true" className={cn('absolute -right-2 -top-6 font-display text-[7rem] font-extrabold leading-none opacity-[0.12]', t.text)}>
                 {i + 1}
               </span>
-              <h3 className="relative font-display text-[1.2rem] font-semibold text-ink">
+              <h3 className="relative pr-12 font-display text-[1.2rem] font-semibold text-ink">
                 <span className="sr-only">Step {i + 1}: </span>
                 {s.title}
               </h3>

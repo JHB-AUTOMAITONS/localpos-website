@@ -61,8 +61,8 @@ export function GstDemo() {
           <label htmlFor={rateId} className="text-[0.85rem] font-semibold text-ink">
             GST rate (%)
           </label>
-          <div className="mt-2 flex items-center gap-2">
-            <input id={rateId} inputMode="decimal" className={cn(inputClass, 'mt-0 max-w-[7rem]')} value={rate} onChange={(e) => setRate(e.target.value.replace(/[^0-9.]/g, ''))} />
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <input id={rateId} inputMode="decimal" className={cn(inputClass, 'mt-0 min-w-0 max-w-[7rem]')} value={rate} onChange={(e) => setRate(e.target.value.replace(/[^0-9.]/g, ''))} />
             {['5', '18'].map((q) => (
               <button
                 key={q}
@@ -99,36 +99,36 @@ export function GstDemo() {
       </div>
 
       <div className="border-t border-line bg-gold-50 p-6 sm:p-8 lg:border-l lg:border-t-0">
-        <div className="receipt mx-auto max-w-sm rounded-t-xl p-5 font-mono sm:p-6" aria-live="polite">
+        <div className="receipt mx-auto max-w-sm rounded-t-xl p-4 font-mono sm:p-6" aria-live="polite">
           <div className="text-center text-[0.7rem] font-bold uppercase tracking-[0.25em] text-ink-3">Tax summary</div>
           <div className="perforation my-3" aria-hidden="true" />
           <dl className="space-y-2 text-[0.92rem]">
-            <div className="flex justify-between">
+            <div className="flex justify-between gap-3">
               <dt className="text-ink-2">Taxable value</dt>
               <dd className="tnum font-semibold text-ink">{rupees(taxable, true)}</dd>
             </div>
             {supply === 'intra' ? (
               <>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-3">
                   <dt className="text-ink-2">CGST @ {+(r / 2).toFixed(2)}%</dt>
                   <dd className="tnum text-ink">{rupees(half, true)}</dd>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-3">
                   <dt className="text-ink-2">SGST @ {+(r / 2).toFixed(2)}%</dt>
                   <dd className="tnum text-ink">{rupees(half, true)}</dd>
                 </div>
               </>
             ) : (
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-3">
                 <dt className="text-ink-2">IGST @ {+r.toFixed(2)}%</dt>
                 <dd className="tnum text-ink">{rupees(tax, true)}</dd>
               </div>
             )}
           </dl>
           <div className="perforation my-3" aria-hidden="true" />
-          <div className="flex items-baseline justify-between">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3">
             <span className="text-[0.95rem] font-bold text-ink">Invoice total</span>
-            <span className="tnum text-[1.5rem] font-bold text-ink">{rupees(total, true)}</span>
+            <span className="tnum break-all text-[1.25rem] font-bold text-ink sm:text-[1.5rem]">{rupees(total, true)}</span>
           </div>
         </div>
         <p className="mt-5 text-center text-[0.9rem] text-ink-2">

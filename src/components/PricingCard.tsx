@@ -25,7 +25,7 @@ export function PricingCard({ plan, period }: { plan: Plan; period: Period }) {
       <h3 id={`plan-${plan.id}`} className="font-display text-[1.5rem] font-bold tracking-[-0.02em] text-ink">
         {plan.name}
       </h3>
-      <p className="mt-1.5 min-h-[3.2rem] text-[0.97rem] text-ink-2">{plan.audience}</p>
+      <p className="mt-1.5 text-[0.97rem] text-ink-2 lg:min-h-[3.2rem]">{plan.audience}</p>
 
       <div className="mt-5 border-y border-dashed border-line-strong py-5">
         {price === null ? (

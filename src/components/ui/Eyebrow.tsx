@@ -17,7 +17,7 @@ export function Eyebrow({ children, tone = 'gold', className }: { children: Reac
   return (
     <span
       className={cn(
-        'relative inline-flex items-center rounded-l-[5px] rounded-r-full py-1 pl-6 pr-3.5 text-[0.75rem] font-bold uppercase leading-5 tracking-[0.08em]',
+        'relative inline-flex items-center rounded-l-[5px] rounded-r-[1.25rem] py-1 pl-6 pr-3.5 text-[0.75rem] font-bold uppercase leading-5 tracking-[0.08em]',
         TONES[tone],
         className,
       )}

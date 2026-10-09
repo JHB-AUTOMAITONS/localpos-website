@@ -22,7 +22,7 @@ export function MultiStorePreview({ className }: { className?: string }) {
         <Chip tone="neutral">Today</Chip>
       </div>
 
-      <div className="mt-3 grid grid-cols-3 gap-2">
+      <div className="mt-3 grid grid-cols-2 gap-2 @[440px]:grid-cols-3 [&>:first-child]:col-span-2 @[440px]:[&>:first-child]:col-span-1">
         <Kpi label="Sales" value={rupees(total)} delta="9% vs yesterday" />
         <Kpi label="Bills" value="412" delta="31 more" />
         <Kpi label="Low-stock items" value="8" tone="coral" delta="2 stores" />

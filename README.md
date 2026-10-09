@@ -17,11 +17,65 @@ npm run dev        # Vite dev server (client-rendered, hot reload), no auto-open
 npm run build      # typecheck + client build + SSR build + prerender all pages + sitemap.xml + robots.txt
 npm run verify     # audit every built page against the SEO document (run after build)
 npm run preview    # serve an existing dist/ like a static host does; picks the next free port if busy (PORT=5188 to start from another)
+npm run test:e2e   # Playwright end-to-end suite against the production build in dist/ (see Testing)
 ```
 
 `npm run build` writes to `dist/`. Upload that folder to any static host.
 
-## Deploying (GitHub Pages)
+## Testing
+
+The end-to-end suite lives in `tests/e2e/` and runs against the **production build** (`dist/`, served by `scripts/preview.mjs`),
+in your installed Chrome (set `PW_CHANNEL=msedge` for Edge, or run `npx playwright install chromium` and set `PW_CHANNEL=` to use Playwright's own).
+
+```bash
+npm run build && npm run test:e2e     # or: npm run test:e2e:build
+npx playwright test tests/e2e/forms.spec.ts --workers=4   # one spec (plain playwright writes test-results/results.json)
+node scripts/verify-seo.mjs --json=test-results/seo.json   # SEO verifier with machine-readable output
+node scripts/lighthouse-audit.mjs                          # optional: Lighthouse runs (needs a server; see the script header)
+node scripts/audit-report.mjs                              # rebuild AUDIT_REPORT.md from the measured results
+```
+
+| Project | What runs |
+| --- | --- |
+| `mobile-390`, `tablet-768`, `desktop-1440` | routes, navigation, journeys, links, accessibility (axe-core) and layout quality, on all 33 routes |
+| `single` | 15-width overflow matrix (320 to 1920 px), forms, SEO, analytics and performance budgets |
+
+`npm run test:e2e` runs two passes (`scripts/run-e2e.mjs`): everything except performance in parallel, then the performance spec alone with one worker, because timing budgets are meaningless while other browsers compete for the CPU. Keep the machine idle during pass 2.
+Every spec imports `test` from `tests/e2e/fixtures.ts`, whose automatic fixture answers all requests to Google Analytics and Microsoft Clarity locally, so tests never send hits to the real accounts and do not need the internet (see Analytics below).
+Tests wait for `html[data-app-ready]`, an attribute the app sets once React has hydrated the prerendered page, before they click anything.
+
+The forms spec runs against the Vite dev server (started by Playwright with `VITE_LEAD_ENDPOINT=https://leads.test/submit`); that
+endpoint is intercepted in the browser, so no real backend is contacted. Other environment variables: `DIST_DIR` and `SSR_DIR`
+(build into, and test, a folder other than `dist/`), `E2E_PORT` and `E2E_DEV_PORT` (server ports), `PW_CHANNEL` (browser).
+`AUDIT_REPORT.md` is generated from `test-results/` by `scripts/audit-report.mjs`; edit the narrative in `scripts/audit-report.template.md`.
+
+## Deploying (Netlify, `localpos.in`)
+
+`netlify.toml` tells Netlify to run `npm run build && npm run verify` and publish `dist/`, with `VITE_SITE_URL=https://localpos.in`
+(the primary domain; `www.localpos.in` redirects to it). Push to the connected branch and Netlify builds it.
+
+- **The build command must be `npm run build`.** A bare `vite build` (what Netlify suggests for Vite projects) only writes the client
+  bundle: there are no per-page HTML files, `404.html`, `sitemap.xml` or `robots.txt`, so every URL except `/` answers with Netlify's
+  "Page not found". `netlify.toml` overrides the Netlify UI setting so this cannot happen again; `npm run verify` fails the deploy if a
+  prerendered page is missing.
+- **There is no `_redirects` / `/* /index.html 200` rule on purpose.** Every route is a real prerendered file, and unknown URLs get
+  `dist/404.html` with a true 404 status. A catch-all rewrite would answer unknown URLs with the homepage and a 200 (a soft 404).
+- Drag-and-drop deploys: upload the `dist/` folder produced by `npm run build`, not the output of `vite build`.
+- `tests/e2e/deploy.spec.ts` guards this: it checks every route is prerendered (no `<!--app-html-->` placeholder), loads by direct URL,
+  survives a refresh and loads its assets from root-absolute paths. Run the suite against a Netlify-style build with
+  `VITE_SITE_URL=https://localpos.in npm run build` and `E2E_SITE_ORIGIN=https://localpos.in npm run test:e2e`.
+- After a deploy, check the live site (the tests above run locally, not on Netlify):
+
+  ```bash
+  curl -s https://localpos.in/ | grep -c "app-html"                 # 0: the homepage is prerendered, not the empty template
+  curl -s https://localpos.in/pricing/ | grep -o '<link rel="canonical"[^>]*>'   # href="https://localpos.in/pricing/"
+  for p in / /pricing/ /solutions/retail-billing-software/ /features/gst-billing-software/ /sitemap.xml /robots.txt; do
+    curl -s -o /dev/null -w "%{http_code} $p\n" "https://localpos.in$p"; done   # all 200
+  curl -s -o /dev/null -w "%{http_code}\n" https://localpos.in/this-page-does-not-exist/   # 404 (the custom page, not the homepage)
+  curl -sI https://localpos.in/pricing | grep -iE "^(HTTP|location)"   # one 301 to /pricing/
+  ```
+
+## Deploying (GitHub Pages, alternative)
 
 The site is served by GitHub Pages from the `gh-pages` branch of `JHB-AUTOMAITONS/localpos-website`, on the custom
 domain `www.localpos.in`.
@@ -89,6 +143,26 @@ Fonts are trimmed Latin subsets plus a ~1 KB rupee-only file, generated by `scri
   not present in the static HTML.
 - Hosting needs: serve `/some/page/` from `some/page/index.html`, use `404.html` for unknown URLs, and enable gzip/brotli
   (most hosts do this by default).
+
+## Analytics (Google Analytics 4 and Microsoft Clarity)
+
+Both tools are installed once, site-wide, as the exact snippets Google and Microsoft supply (GA4 `G-G9MG10MD6W`, Clarity `yuextem7j4`).
+
+- **Where:** the snippets live only in `scripts/analytics.mjs`. `npm run build` injects them into the `<head>` of every prerendered page, 404.html included, in place
+  of the `<!--app-analytics-->` marker in `index.html`. They are not part of the React app, so client-side navigation cannot start either tool twice,
+  and `npm run dev` / `npm run start` (which never run the prerender) send nothing from developer machines. To change an ID, edit `scripts/analytics.mjs` and the
+  golden copy in `tests/e2e/analytics.spec.ts`.
+- **Page views:** GA4 counts the first load from the supplied `gtag('config', ...)` call, and counts client-side route changes itself through the data stream's
+  *Enhanced measurement > Page views > "Page changes based on browser history events"*, which is on for this property. **Do not add manual `page_view` calls and do not turn that
+  setting off**: the first would double-count every navigation, the second would stop counting navigations. The analytics spec fails if either happens (the live part runs only when the internet is reachable).
+- **Content Security Policy:** the policy is a `<meta>` tag written by `scripts/prerender.mjs`. The two inline snippets are allowed by SHA-256 hash (computed from the injected text),
+  not by `unsafe-inline`, and only the Google and Microsoft hosts that were observed in use are added to `script-src`, `connect-src` and `img-src`. If you switch on other
+  Google features (Ads, Signals, remarketing) their hosts will appear as CSP errors in the browser console; add them in `ANALYTICS_CSP`.
+- **Tests:** `tests/e2e/analytics.spec.ts` checks the built pages, then loads the REAL scripts in Chrome under the real policy (skipped when offline). Every request that would carry measurement data
+  is answered locally, so no test traffic reaches your accounts.
+- **Privacy:** both tools set cookies, and Clarity records sessions. The privacy policy template (`src/data/legal.ts`, "Cookies and similar technologies") still has a
+  bracketed placeholder where the analytics tools and consent approach must be described; fill it in, and decide whether you need a cookie notice.
+- **Your own visits** (and any `npm run start:prod` preview on localhost) are counted. Filter them in GA4 (Admin > Data settings > Data filters, or by hostname in reports) and in Clarity (Settings > Setup > IP blocking).
 
 ## Placeholders and things to confirm before launch
 

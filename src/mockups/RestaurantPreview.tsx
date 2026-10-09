@@ -145,7 +145,7 @@ export function RestaurantTablesPreview({ className }: { className?: string }) {
 export function KitchenTicketPreview({ className }: { className?: string }) {
   const itemCount = ORDER.reduce((s, i) => s + i.qty, 0)
   return (
-    <Receipt className={cn('w-full max-w-[250px] px-4 pb-5 pt-4', className)}>
+    <Receipt className={cn('mx-auto w-full max-w-[250px] px-4 pb-5 pt-4', className)}>
       <div className="text-center">
         <div className="font-display text-[13px] font-bold uppercase tracking-[0.18em]">Kitchen order</div>
         <div className="mt-1.5">

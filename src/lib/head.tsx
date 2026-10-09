@@ -46,6 +46,8 @@ export function Seo(props: SeoInput) {
   const serialized = JSON.stringify(head)
   useEffect(() => {
     applyToDocument(head)
+    // Effects only run once React has taken over the page, so this attribute tells tests (and anyone debugging) that buttons and forms are live.
+    document.documentElement.setAttribute('data-app-ready', '')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serialized])
 

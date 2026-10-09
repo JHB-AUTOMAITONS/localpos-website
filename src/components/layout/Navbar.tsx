@@ -3,9 +3,9 @@ import { Link, NavLink, useLocation } from 'react-router'
 import { Icon, type IconName } from '@/components/Icon'
 import { Logo } from '@/components/Logo'
 import { CTAButton } from '@/components/ui/CTAButton'
-import { FEATURES } from '@/data/features'
-import { SOLUTIONS } from '@/data/solutions'
-import { BLOG_POSTS } from '@/data/blog'
+import { FEATURE_META } from '@/data/featureMeta'
+import { SOLUTION_META } from '@/data/solutionMeta'
+import { BLOG_META } from '@/data/blogMeta'
 import { SITE } from '@/data/site'
 import { TINTS } from '@/lib/tint'
 import type { Tint } from '@/data/types'
@@ -22,9 +22,9 @@ interface MenuItem {
   tint: Tint
 }
 
-const featureItems: MenuItem[] = FEATURES.map((f) => ({ label: f.navLabel, blurb: f.navBlurb, href: f.path, icon: f.icon, tint: f.tint }))
-const solutionItems: MenuItem[] = SOLUTIONS.map((s) => ({ label: s.navLabel, blurb: s.navBlurb, href: s.path, icon: s.icon, tint: s.tint }))
-const latestPosts = BLOG_POSTS.slice(0, 3)
+const featureItems: MenuItem[] = FEATURE_META.map((f) => ({ label: f.navLabel, blurb: f.navBlurb, href: f.path, icon: f.icon, tint: f.tint }))
+const solutionItems: MenuItem[] = SOLUTION_META.map((s) => ({ label: s.navLabel, blurb: s.navBlurb, href: s.path, icon: s.icon, tint: s.tint }))
+const latestPosts = BLOG_META.slice(0, 3)
 
 const linkBase =
   'inline-flex h-10 items-center gap-1 rounded-lg px-3 text-[0.9688rem] font-semibold text-ink-2 transition-colors hover:bg-brand-50 hover:text-brand-800'
@@ -71,6 +71,8 @@ export function Navbar() {
   const location = useLocation()
   const closeTimer = useRef<number | undefined>(undefined)
   const navRef = useRef<HTMLElement>(null)
+  // True while the open menu was opened by hovering (or by the hover a tap produces on touch screens) rather than by a click or key press.
+  const openedByHover = useRef(false)
 
   useBodyScrollLock(mobileOpen)
 
@@ -109,7 +111,10 @@ export function Navbar() {
 
   const hoverOpen = useCallback((key: MenuKey) => {
     window.clearTimeout(closeTimer.current)
-    setOpen(key)
+    setOpen((current) => {
+      if (current !== key) openedByHover.current = true
+      return key
+    })
   }, [])
   const hoverClose = useCallback(() => {
     window.clearTimeout(closeTimer.current)
@@ -127,7 +132,15 @@ export function Navbar() {
       className={cn(linkBase, active && 'text-brand-800', open === key && 'bg-brand-50 text-brand-800')}
       aria-expanded={open === key}
       aria-controls={`menu-${key}`}
-      onClick={() => setOpen(open === key ? null : key)}
+      onClick={() => {
+        // Hovering (or tapping) has already opened this menu. The click that follows must not toggle it shut again.
+        if (open === key && openedByHover.current) {
+          openedByHover.current = false
+          return
+        }
+        openedByHover.current = false
+        setOpen(open === key ? null : key)
+      }}
     >
       {label}
       <Icon name="chevron-down" size={16} strokeWidth={2.4} className={cn('transition-transform duration-200', open === key && 'rotate-180')} />
@@ -202,7 +215,7 @@ export function Navbar() {
                       <span className="block text-[0.84rem] text-ink-3">Practical guides for running a shop</span>
                     </span>
                   </Link>
-                  <p className="px-2.5 pb-1 pt-3 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-ink-3">Latest articles</p>
+                  <p className="px-2.5 pb-1 pt-3 text-[0.75rem] font-bold uppercase tracking-[0.08em] text-ink-3">Latest articles</p>
                   <ul>
                     {latestPosts.map((p) => (
                       <li key={p.slug}>
@@ -235,7 +248,7 @@ export function Navbar() {
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 lg:hidden">
-          <CTAButton to="/book-a-demo/" size="sm" className="hidden min-[420px]:inline-flex">
+          <CTAButton to="/book-a-demo/" size="sm" className="hidden min-[375px]:inline-flex">
             Book a Demo
           </CTAButton>
           <button
@@ -285,14 +298,16 @@ function MobileGroup({ title, items, defaultOpen }: { title: string; items: Menu
 }
 
 function MobileMenu() {
+  const { pathname } = useLocation()
   return (
     <div
       id="mobile-menu"
       className="fixed inset-x-0 bottom-0 top-[4.25rem] z-30 overflow-y-auto overscroll-contain border-t border-line bg-paper lg:hidden motion-safe:animate-fade-up"
     >
       <nav aria-label="Mobile" className="mx-auto flex min-h-full max-w-[640px] flex-col px-4 pb-8 pt-2 sm:px-6">
-        <MobileGroup title="Features" items={featureItems} defaultOpen />
-        <MobileGroup title="Solutions" items={solutionItems} />
+        {/* Groups start closed so Pricing, Blog, About and the call to action are visible without scrolling; the group for the current section starts open. */}
+        <MobileGroup title="Features" items={featureItems} defaultOpen={pathname.startsWith('/features/')} />
+        <MobileGroup title="Solutions" items={solutionItems} defaultOpen={pathname.startsWith('/solutions/')} />
         <Link to="/pricing/" className="border-b border-line py-4 font-display text-[1.25rem] font-semibold text-ink">
           Pricing
         </Link>

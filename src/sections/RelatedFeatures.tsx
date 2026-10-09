@@ -2,11 +2,11 @@ import { FeatureCard } from '@/components/FeatureCard'
 import { Reveal } from '@/components/ui/Reveal'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { getFeature } from '@/data/features'
+import { getFeatureMeta } from '@/data/featureMeta'
 
 /** Links to related feature pages, for visitors and for internal linking. */
 export function RelatedFeatures({ slugs, title = 'Works well with' }: { slugs: string[]; title?: string }) {
-  const features = slugs.map(getFeature)
+  const features = slugs.map(getFeatureMeta)
   return (
     <Section tone="soft" labelledBy="related-heading" compact>
       <SectionHeading id="related-heading" title={title} align="left" as="h2" className="!max-w-none [&_h2]:text-[clamp(1.6rem,1.2rem+1.3vw,2.25rem)]" />

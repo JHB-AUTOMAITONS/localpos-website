@@ -1,4 +1,4 @@
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link } from 'react-router'
 import { Icon } from '@/components/Icon'
 import { CTAButton } from '@/components/ui/CTAButton'
@@ -19,6 +19,10 @@ export interface FieldDef {
   validate?: (value: string) => string
   /** Span both columns on wide forms. */
   wide?: boolean
+  /** Hard limit on what can be typed (and therefore sent). */
+  maxLength?: number
+  /** Message shown when a required field is left empty. */
+  requiredMessage?: string
 }
 
 interface LeadFormProps {
@@ -38,14 +42,24 @@ export function LeadForm({ kind, fields, submitLabel, successTitle, successText,
   const [preview, setPreview] = useState(false)
   const [failure, setFailure] = useState('')
   const formRef = useRef<HTMLFormElement>(null)
+  const successRef = useRef<HTMLDivElement>(null)
+  // A synchronous guard: state updates are asynchronous, so a fast double click or double Enter could otherwise slip through.
+  const inFlight = useRef(false)
 
-  const check = (f: FieldDef, v: string) => (f.required && !v.trim() ? (f.type === 'select' ? `Choose ${f.label.toLowerCase()}.` : `Enter ${f.label.toLowerCase()}.`) : v.trim() && f.validate ? f.validate(v) : '')
+  // Move focus to the confirmation when the form is replaced by it, so keyboard and screen-reader users are not left on nothing.
+  useEffect(() => {
+    if (status === 'done') successRef.current?.focus()
+  }, [status])
+
+  const check = (f: FieldDef, v: string) =>
+    f.required && !v.trim() ? (f.requiredMessage ?? (f.type === 'select' ? 'Choose an option.' : 'Fill in this field.')) : v.trim() && f.validate ? f.validate(v) : ''
 
   const set = (name: string, v: string) => setValues((s) => ({ ...s, [name]: v }))
   const blur = (f: FieldDef) => setErrors((e) => ({ ...e, [f.name]: check(f, values[f.name] ?? '') }))
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
+    if (inFlight.current) return
     const next: Record<string, string> = {}
     for (const f of fields) next[f.name] = check(f, values[f.name] ?? '')
     setErrors(next)
@@ -59,20 +73,28 @@ export function LeadForm({ kind, fields, submitLabel, successTitle, successText,
       setStatus('done')
       return
     }
+    inFlight.current = true
     setStatus('sending')
-    const result = await submitLead(kind, values)
-    if (result.ok) {
-      setPreview(result.preview)
-      setStatus('done')
-    } else {
-      setFailure(result.error)
+    try {
+      const result = await submitLead(kind, values)
+      if (result.ok) {
+        setPreview(result.preview)
+        setStatus('done')
+      } else {
+        setFailure(result.error)
+        setStatus('failed')
+        inFlight.current = false // allow a retry
+      }
+    } catch {
+      setFailure('Something went wrong while sending. Please try again.')
       setStatus('failed')
+      inFlight.current = false
     }
   }
 
   if (status === 'done') {
     return (
-      <div role="status" className={cn('rounded-[24px] border border-brand-200 bg-brand-50 p-8 text-center sm:p-10', className)}>
+      <div ref={successRef} tabIndex={-1} role="status" className={cn('rounded-[24px] border border-brand-200 bg-brand-50 p-8 text-center outline-none sm:p-10', className)}>
         <span className="mx-auto grid size-14 place-items-center rounded-full bg-brand-600 text-white">
           <Icon name="check" size={28} strokeWidth={3} />
         </span>
@@ -93,8 +115,8 @@ export function LeadForm({ kind, fields, submitLabel, successTitle, successText,
   }
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} noValidate className={className} aria-describedby={status === 'failed' ? 'form-failure' : undefined}>
-      <div className="grid gap-x-5 gap-y-5 sm:grid-cols-2">
+    <form ref={formRef} onSubmit={onSubmit} noValidate className={cn('@container', className)} aria-describedby={status === 'failed' ? 'form-failure' : undefined}>
+      <div className="grid gap-x-5 gap-y-5 @md:grid-cols-2">
         {fields.map((f) => {
           const common = {
             name: f.name,
@@ -102,7 +124,7 @@ export function LeadForm({ kind, fields, submitLabel, successTitle, successText,
             required: f.required,
             hint: f.hint,
             error: errors[f.name],
-            wrapperClassName: f.wide || f.type === 'textarea' ? 'sm:col-span-2' : undefined,
+            wrapperClassName: f.wide || f.type === 'textarea' ? '@md:col-span-2' : undefined,
             value: values[f.name] ?? '',
             onBlur: () => blur(f),
           }
@@ -119,9 +141,20 @@ export function LeadForm({ kind, fields, submitLabel, successTitle, successText,
             )
           }
           if (f.type === 'textarea') {
-            return <TextAreaField key={f.name} {...common} placeholder={f.placeholder} onChange={(e) => set(f.name, e.target.value)} />
+            return <TextAreaField key={f.name} {...common} placeholder={f.placeholder} maxLength={f.maxLength} onChange={(e) => set(f.name, e.target.value)} />
           }
-          return <TextField key={f.name} {...common} type={f.type} placeholder={f.placeholder} autoComplete={f.autoComplete} inputMode={f.type === 'tel' ? 'tel' : undefined} onChange={(e) => set(f.name, e.target.value)} />
+          return (
+            <TextField
+              key={f.name}
+              {...common}
+              type={f.type}
+              placeholder={f.placeholder}
+              autoComplete={f.autoComplete}
+              maxLength={f.maxLength}
+              inputMode={f.type === 'tel' ? 'tel' : undefined}
+              onChange={(e) => set(f.name, e.target.value)}
+            />
+          )
         })}
       </div>
 
@@ -140,8 +173,10 @@ export function LeadForm({ kind, fields, submitLabel, successTitle, successText,
         </p>
       )}
 
-      <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <CTAButton type="submit" size="lg" arrow disabled={status === 'sending'} className="w-full sm:w-auto">
+      <div className="mt-7 flex flex-col gap-3 @lg:flex-row @lg:items-center">
+        {/* Keep focus where it is on press. Otherwise the field being left re-validates on blur, its error line disappears, the
+            button moves up between mouse-down and mouse-up, and the click lands on the card behind it (the first click is lost). */}
+        <CTAButton type="submit" size="lg" arrow disabled={status === 'sending'} className="w-full @lg:w-auto" onMouseDown={(e) => e.preventDefault()}>
           {status === 'sending' ? 'Sending…' : submitLabel}
         </CTAButton>
         <p className="text-[0.85rem] text-ink-3">

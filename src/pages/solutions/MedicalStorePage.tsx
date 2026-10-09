@@ -40,16 +40,16 @@ function BatchPicker() {
             role="radio"
             aria-checked={picked === i}
             onClick={() => setPicked(i)}
-            className={cn('flex w-full items-center gap-3 rounded-xl border p-3.5 text-left transition', picked === i ? 'border-violet-400 bg-violet-50 ring-2 ring-violet-100' : 'border-line bg-white hover:bg-paper')}
+            className={cn('flex w-full flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border p-3.5 text-left transition sm:flex-nowrap', picked === i ? 'border-violet-400 bg-violet-50 ring-2 ring-violet-100' : 'border-line bg-white hover:bg-paper')}
           >
             <span className={cn('grid size-5 shrink-0 place-items-center rounded-full border-2', picked === i ? 'border-violet-500' : 'border-line-strong')}>
               {picked === i && <span className="size-2.5 rounded-full bg-violet-500" />}
             </span>
-            <span className="min-w-0 flex-1">
+            <span className="min-w-0 flex-1 max-sm:min-w-[10.5rem]">
               <span className="block font-semibold text-ink">Batch {b.no}</span>
               <span className="tnum block text-[0.85rem] text-ink-3">Expiry {b.expiry} · {b.left} strips</span>
             </span>
-            <Chip tone={b.tone}>{b.note}</Chip>
+            <Chip tone={b.tone} className="max-sm:ml-8">{b.note}</Chip>
           </button>
         ))}
       </div>

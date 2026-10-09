@@ -3,21 +3,21 @@ import { Logo } from '@/components/Logo'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { Container } from '@/components/ui/Container'
 import { TearLine } from '@/components/ui/TearLine'
-import { FEATURES } from '@/data/features'
-import { SOLUTIONS } from '@/data/solutions'
-import { BLOG_POSTS } from '@/data/blog'
+import { FEATURE_META } from '@/data/featureMeta'
+import { SOLUTION_META } from '@/data/solutionMeta'
+import { BLOG_META } from '@/data/blogMeta'
 import { SITE } from '@/data/site'
 
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
       <h2 className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.1em] text-ink">{title}</h2>
-      <ul className="mt-4 space-y-2.5">{children}</ul>
+      <ul className="mt-3 space-y-0.5">{children}</ul>
     </div>
   )
 }
 
-const linkClass = 'inline-block rounded text-[0.95rem] leading-snug text-ink-2 transition-colors hover:text-brand-700'
+const linkClass = 'inline-flex min-h-8 items-center rounded text-[0.95rem] leading-snug text-ink-2 transition-colors hover:text-brand-700'
 
 function FooterLink({ to, children, external }: { to: string; children: React.ReactNode; external?: boolean }) {
   return (
@@ -70,7 +70,7 @@ export function Footer() {
           </FooterColumn>
 
           <FooterColumn title="Features">
-            {FEATURES.map((f) => (
+            {FEATURE_META.map((f) => (
               <FooterLink key={f.slug} to={f.path}>
                 {f.navLabel}
               </FooterLink>
@@ -78,7 +78,7 @@ export function Footer() {
           </FooterColumn>
 
           <FooterColumn title="Solutions">
-            {SOLUTIONS.map((s) => (
+            {SOLUTION_META.map((s) => (
               <FooterLink key={s.slug} to={s.path}>
                 {s.navLabel}
               </FooterLink>
@@ -87,9 +87,9 @@ export function Footer() {
 
           <FooterColumn title="Resources">
             <FooterLink to="/blog/">Blog</FooterLink>
-            {BLOG_POSTS.slice(0, 3).map((p) => (
+            {BLOG_META.slice(0, 3).map((p) => (
               <FooterLink key={p.slug} to={`/blog/${p.slug}/`}>
-                {p.title}
+                <span className="line-clamp-2">{p.title}</span>
               </FooterLink>
             ))}
           </FooterColumn>

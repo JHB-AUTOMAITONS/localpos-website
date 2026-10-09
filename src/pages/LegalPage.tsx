@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router'
+import { MobileToc } from '@/components/MobileToc'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { Container } from '@/components/ui/Container'
 import { LEGAL_PAGES } from '@/data/legal'
@@ -33,10 +34,10 @@ export default function LegalPage() {
             <aside className="hidden lg:block">
               <nav aria-label="On this page" className="sticky top-28">
                 <p className="text-[0.78rem] font-bold uppercase tracking-[0.1em] text-ink-3">On this page</p>
-                <ol className="mt-3 space-y-2 border-l-2 border-line pl-4 text-[0.9rem] leading-snug">
+                <ol className="mt-3 space-y-0.5 border-l-2 border-line pl-4 text-[0.9rem] leading-snug">
                   {page.sections.map((s) => (
                     <li key={s.heading}>
-                      <a href={`#${slugify(s.heading)}`} className="text-ink-2 hover:text-brand-700">
+                      <a href={`#${slugify(s.heading)}`} className="block py-1.5 text-ink-2 hover:text-brand-700">
                         {s.heading}
                       </a>
                     </li>
@@ -55,6 +56,9 @@ export default function LegalPage() {
                 </p>
                 <p className="lead mt-5">{page.intro}</p>
               </header>
+              <div className="mt-6">
+                <MobileToc title="On this page" items={page.sections.map((s) => ({ id: slugify(s.heading), label: s.heading }))} />
+              </div>
               <div className="prose-lp mt-4">
                 {page.sections.map((s) => (
                   <section key={s.heading} aria-labelledby={slugify(s.heading)}>

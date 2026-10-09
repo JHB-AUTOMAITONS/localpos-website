@@ -29,8 +29,9 @@ export function Section({ children, tone = 'paper', className, containerClassNam
     <section
       id={id}
       aria-labelledby={labelledBy}
-      // content-visibility lets the browser skip layout and paint for sections far below the fold until they are near the viewport.
-      className={cn('relative [contain-intrinsic-size:auto_700px] [content-visibility:auto]', compact ? 'py-12 sm:py-14' : 'py-14 sm:py-[4.5rem] lg:py-24', TONES[tone], className)}
+      // Deliberately NOT `content-visibility: auto`: its placeholder height is only an estimate, so a section's real height appears while
+      // you scroll to it, and in-page links ("Explore Features") and keyboard focus land hundreds of pixels short of their target.
+      className={cn('relative', compact ? 'py-12 sm:py-14' : 'py-14 sm:py-[4.5rem] lg:py-24', TONES[tone], className)}
     >
       <Container className={containerClassName}>{children}</Container>
     </section>

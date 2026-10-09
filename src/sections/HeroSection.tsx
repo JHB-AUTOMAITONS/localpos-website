@@ -50,19 +50,20 @@ export function HeroSection() {
           </div>
 
           {/* Visual */}
-          <div className="relative pb-24 lg:col-span-6 lg:pb-10 lg:pl-8">
-            <div className="relative animate-fade-up [animation-delay:200ms] lg:-mr-10 xl:-mr-16">
+          <div className="relative pb-4 sm:pb-24 lg:col-span-6 lg:pb-10 lg:pl-8">
+            <div className="relative animate-fade-up [animation-delay:200ms] min-[1440px]:-mr-16">
               <ProductScreenshot alt="LocalPOS billing software dashboard showing today’s sales, invoices, GST collected, payment modes and low-stock items">
                 <DashboardPreview />
               </ProductScreenshot>
 
               {/* Self-printing receipt */}
-              <div aria-hidden="true" className="absolute -bottom-28 left-2 z-10 w-[180px] -rotate-[3deg] sm:-bottom-20 sm:-left-6 sm:w-[240px] lg:-bottom-16 lg:-left-16">
+              {/* Phones: sits below the dashboard so it never hides the figures. From sm up it overlaps the corner. */}
+              <div aria-hidden="true" className="relative z-10 mx-auto mt-6 w-[210px] -rotate-[3deg] sm:absolute sm:-bottom-20 sm:-left-6 sm:mx-0 sm:mt-0 sm:w-[240px] lg:-bottom-16 lg:-left-10">
                 <HeroReceipt />
               </div>
 
               {/* Payment toast */}
-              <FloatCard className="motion-safe-only absolute -top-5 right-1 z-10 hidden w-[232px] animate-fade-up [animation-delay:2.9s] sm:block lg:-right-3">
+              <FloatCard className="motion-safe-only absolute -top-5 right-1 z-10 hidden w-[232px] animate-fade-up [animation-delay:2.9s] sm:block lg:right-2 min-[1440px]:-right-3">
                 <div className="flex items-center gap-2.5">
                   <span className="pulse-ring grid size-9 shrink-0 place-items-center rounded-full bg-brand-600 text-white animate-pulse-ring">
                     <Icon name="check" size={18} strokeWidth={3} />

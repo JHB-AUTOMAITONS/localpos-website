@@ -13,8 +13,6 @@ export default defineConfig({
   build: {
     target: 'es2022',
     cssCodeSplit: true,
-    // Emit a manifest so the prerender script can preload the critical fonts.
-    manifest: true,
   },
   ssr: {
     // Bundle these so the SSR build runs standalone in plain Node.

@@ -114,7 +114,7 @@ const TABS: Tab[] = [
     href: '/features/sales-reporting-software/',
     linkLabel: 'See sales reporting software',
     alt: 'Sales reporting software dashboard with a sales trend and best sellers',
-    visual: <AnalyticsPreview range="week" />,
+    visual: <AnalyticsPreview range="week" showRange={false} />,
   },
   {
     key: 'stores',
@@ -246,7 +246,7 @@ export function ProductOverview() {
                   </Reveal>
                 )}
 
-                <Link to={tab.href} className={cn('mt-7 inline-flex items-center gap-1.5 text-[1rem] font-semibold underline-offset-4 hover:underline', t.text)}>
+                <Link to={tab.href} className={cn('mt-5 inline-flex items-center gap-1.5 py-2 text-[1rem] font-semibold underline-offset-4 hover:underline', t.text)}>
                   {tab.linkLabel}
                   <Icon name="arrow-right" size={17} strokeWidth={2.4} />
                 </Link>

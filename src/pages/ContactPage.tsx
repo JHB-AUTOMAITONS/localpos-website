@@ -10,11 +10,11 @@ import { validators } from '@/lib/forms'
 import { CTASection } from '@/sections/CTASection'
 
 const FIELDS: FieldDef[] = [
-  { name: 'name', label: 'Your name', type: 'text', required: true, autoComplete: 'name' },
-  { name: 'email', label: 'Email', type: 'email', required: true, autoComplete: 'email', placeholder: 'you@yourbusiness.com', validate: validators.email },
-  { name: 'phone', label: 'Phone number', type: 'tel', autoComplete: 'tel', placeholder: '98765 43210', validate: validators.phone },
-  { name: 'topic', label: 'What is this about?', type: 'select', required: true, options: ['A question about LocalPOS', 'Support for my account', 'Pricing', 'Partnership', 'Something else'] },
-  { name: 'message', label: 'Message', type: 'textarea', required: true, placeholder: 'How can we help?' },
+  { name: 'name', label: 'Your name', type: 'text', required: true, autoComplete: 'name', maxLength: 120, requiredMessage: 'Enter your name.' },
+  { name: 'email', label: 'Email', type: 'email', required: true, autoComplete: 'email', placeholder: 'you@yourbusiness.com', validate: validators.email, maxLength: 254, requiredMessage: 'Enter your email address.' },
+  { name: 'phone', label: 'Phone number', type: 'tel', autoComplete: 'tel', placeholder: '98765 43210', validate: validators.phone, maxLength: 20 },
+  { name: 'topic', label: 'What is this about?', type: 'select', required: true, options: ['A question about LocalPOS', 'Support for my account', 'Pricing', 'Partnership', 'Something else'], requiredMessage: 'Choose what your message is about.' },
+  { name: 'message', label: 'Message', type: 'textarea', required: true, placeholder: 'How can we help?', maxLength: 2000, requiredMessage: 'Enter your message.' },
 ]
 
 const DETAILS: Array<{ key: keyof typeof SITE.contact; icon: IconName; label: string; placeholder: string; href?: (v: string) => string }> = [
@@ -54,7 +54,7 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-12 grid items-start gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-12">
-            <div className="space-y-6">
+            <div className="order-2 space-y-6 lg:order-1">
               <div className="rounded-[24px] border border-line bg-white p-6 shadow-card sm:p-7">
                 <h2 className="font-display text-[1.25rem] font-semibold text-ink">Contact details</h2>
                 <ul className="mt-5 space-y-5">
@@ -78,7 +78,7 @@ export default function ContactPage() {
                           ) : (
                             <div className="flex flex-wrap items-center gap-2 text-ink-3">
                               <span>{d.placeholder}</span>
-                              <span className="rounded-full border border-dashed border-gold-300 bg-gold-50 px-2 py-0.5 text-[0.68rem] font-bold uppercase tracking-wide text-gold-800">Placeholder</span>
+                              <span className="rounded-full border border-dashed border-gold-300 bg-gold-50 px-2 py-0.5 text-[0.72rem] font-bold uppercase tracking-wide text-gold-800">Placeholder</span>
                             </div>
                           )}
                         </div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-line bg-white p-6 shadow-lift sm:p-9">
+            <div className="order-1 rounded-[28px] border border-line bg-white p-6 shadow-lift sm:p-9 lg:order-2">
               <h2 className="h3-lg">Send us a message</h2>
               <p className="mb-6 mt-1.5 text-ink-2">We will reply using the email address you provide.</p>
               <LeadForm

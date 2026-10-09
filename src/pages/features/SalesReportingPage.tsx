@@ -73,7 +73,7 @@ export default function SalesReportingPage() {
               ))}
             </div>
             <ProductScreenshot alt="Sales reporting software dashboard with the sales trend, key numbers, best sellers and category split">
-              <AnalyticsPreview range={range} />
+              <AnalyticsPreview range={range} showRange={false} />
             </ProductScreenshot>
             <p className="mt-4 text-center text-[0.85rem] text-ink-3">Switch the date range above. Sample data.</p>
           </div>

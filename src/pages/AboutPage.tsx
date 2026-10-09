@@ -6,8 +6,8 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Reveal } from '@/components/ui/Reveal'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { FEATURES } from '@/data/features'
-import { SOLUTIONS } from '@/data/solutions'
+import { FEATURE_META } from '@/data/featureMeta'
+import { SOLUTION_META } from '@/data/solutionMeta'
 import { Seo } from '@/lib/head'
 import { organizationSchema } from '@/lib/seo'
 import { cn } from '@/lib/cn'
@@ -90,7 +90,7 @@ export default function AboutPage() {
           {PRINCIPLES.map((p, i) => (
             <li key={p.title}>
               <Reveal delay={(i % 2) * 80} className="h-full">
-                <div className="flex h-full gap-4 rounded-[22px] border border-line bg-paper p-6">
+                <div className="flex h-full flex-col gap-4 rounded-[22px] border border-line bg-paper p-5 sm:flex-row sm:p-6">
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-brand-700">
                     <Icon name={p.icon} size={22} />
                   </span>
@@ -108,8 +108,8 @@ export default function AboutPage() {
       <StatsSection
         title="LocalPOS at a glance"
         stats={[
-          { value: String(FEATURES.length), label: 'connected parts of the platform' },
-          { value: String(SOLUTIONS.length), label: 'business types we build for' },
+          { value: String(FEATURE_META.length), label: 'connected parts of the platform' },
+          { value: String(SOLUTION_META.length), label: 'business types we build for' },
           { value: '1', label: 'place to run it all' },
         ]}
       />
@@ -117,7 +117,7 @@ export default function AboutPage() {
       <Section tone="soft" labelledBy="focus-heading">
         <SectionHeading id="focus-heading" eyebrow="Who we build for" eyebrowTone="gold" title="One platform, shaped for different kinds of business" lead="Every business bills differently. We work closely with each of these so the software fits the counter, not the other way around." />
         <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {SOLUTIONS.map((s) => {
+          {SOLUTION_META.map((s) => {
             const t = TINTS[s.tint]
             return (
               <li key={s.slug}>

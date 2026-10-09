@@ -126,12 +126,12 @@ export default function JewelleryPage() {
 
       <Section tone="white" labelledBy="jewellery-piece-heading">
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <Reveal className="mx-auto w-full max-w-[300px] rounded-[28px] bg-gradient-to-br from-gold-100 via-gold-50 to-transparent p-8">
+          <Reveal className="order-2 mx-auto w-full max-w-[300px] rounded-[28px] bg-gradient-to-br from-gold-100 via-gold-50 to-transparent p-8 lg:order-1">
             <ProductScreenshot alt="Item tag for a gold necklace showing tag number, net weight, purity and barcode">
               <JewelleryTagPreview />
             </ProductScreenshot>
           </Reveal>
-          <div>
+          <div className="order-1 lg:order-2">
             <SectionHeading id="jewellery-piece-heading" eyebrow="Every piece on record" eyebrowTone="gold" title="Best jewellery billing software starts with knowing every piece" align="left" lead="Give each piece a tag and keep its full story in one place. Scan the tag at the counter and every detail flows onto the bill." />
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {PIECE_FIELDS.map((f) => (

@@ -91,30 +91,35 @@ export default function InventoryPage() {
                 </div>
                 <Chip tone="coral">Reorder now</Chip>
               </div>
-              <table className="w-full text-left text-[0.92rem]">
-                <caption className="sr-only">Stock movement for Sugar 1 kg from 1 to 6 October</caption>
-                <thead>
-                  <tr className="text-[0.75rem] uppercase tracking-wide text-ink-3">
-                    <th scope="col" className="px-5 py-2.5 font-bold">Date</th>
-                    <th scope="col" className="px-2 py-2.5 font-bold">Event</th>
-                    <th scope="col" className="px-2 py-2.5 text-right font-bold">Change</th>
-                    <th scope="col" className="px-5 py-2.5 text-right font-bold">Balance</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {LEDGER.map((row, i) => {
-                    const last = i === LEDGER.length - 1
-                    return (
-                      <tr key={row.date} className={cn('border-t border-line', last && 'bg-coral-50')}>
-                        <td className="tnum whitespace-nowrap px-5 py-3 text-ink-3">{row.date}</td>
-                        <td className="px-2 py-3 font-medium text-ink">{row.event}</td>
-                        <td className={cn('tnum px-2 py-3 text-right font-semibold', row.change && row.change < 0 ? 'text-coral-700' : 'text-ink-3')}>{row.change ?? '—'}</td>
-                        <td className={cn('tnum px-5 py-3 text-right font-bold', last ? 'text-coral-700' : 'text-ink')}>{row.balance}</td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
+              <div role="region" aria-label="Item ledger, scrollable" tabIndex={0} className="overflow-x-auto">
+                <table className="w-full min-w-[17rem] text-left text-[0.88rem] sm:text-[0.92rem]">
+                  <caption className="sr-only">Stock movement for Sugar 1 kg from 1 to 6 October</caption>
+                  <thead>
+                    <tr className="text-[0.75rem] uppercase tracking-wide text-ink-3">
+                      <th scope="col" className="hidden px-3 py-2.5 font-bold sm:table-cell sm:px-5">Date</th>
+                      <th scope="col" className="px-3 py-2.5 font-bold sm:px-2">Event</th>
+                      <th scope="col" className="px-1.5 py-2.5 text-right font-bold sm:px-2">Change</th>
+                      <th scope="col" className="px-3 py-2.5 text-right font-bold sm:px-5">Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {LEDGER.map((row, i) => {
+                      const last = i === LEDGER.length - 1
+                      return (
+                        <tr key={row.date} className={cn('border-t border-line', last && 'bg-coral-50')}>
+                          <td className="tnum hidden whitespace-nowrap px-3 py-3 text-ink-3 sm:table-cell sm:px-5">{row.date}</td>
+                          <td className="px-3 py-3 font-medium text-ink sm:px-2">
+                            {row.event}
+                            <span className="tnum block text-[0.8rem] font-normal text-ink-3 sm:hidden">{row.date}</span>
+                          </td>
+                          <td className={cn('tnum px-1.5 py-3 text-right font-semibold sm:px-2', row.change && row.change < 0 ? 'text-coral-700' : 'text-ink-3')}>{row.change ?? '—'}</td>
+                          <td className={cn('tnum px-3 py-3 text-right font-bold sm:px-5', last ? 'text-coral-700' : 'text-ink')}>{row.balance}</td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
               <div className="border-t border-line bg-coral-50 px-5 py-3 text-[0.88rem] font-medium text-coral-700">Below the reorder level of 20. It now shows in your low-stock list.</div>
             </div>
           </Reveal>

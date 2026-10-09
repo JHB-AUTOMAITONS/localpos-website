@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { Icon, type IconName } from '@/components/Icon'
-import type { BlogCategory, BlogPost } from '@/data/types'
+import type { BlogCategory, BlogPostMeta } from '@/data/types'
 import { cn } from '@/lib/cn'
 import { longDate } from '@/lib/format'
 import { TINTS } from '@/lib/tint'
@@ -14,7 +14,7 @@ const CATEGORY_ICON: Record<BlogCategory, IconName> = {
 }
 
 /** Generated cover art: a tinted panel with the category icon and a receipt-edge, so posts need no stock photos. */
-export function BlogCover({ post, large, className }: { post: BlogPost; large?: boolean; className?: string }) {
+export function BlogCover({ post, large, className }: { post: BlogPostMeta; large?: boolean; className?: string }) {
   const t = TINTS[post.tint]
   return (
     <div aria-hidden="true" className={cn('relative overflow-hidden', t.soft, className)}>
@@ -29,11 +29,11 @@ export function BlogCover({ post, large, className }: { post: BlogPost; large?: 
   )
 }
 
-export function BlogCard({ post }: { post: BlogPost }) {
+export function BlogCard({ post }: { post: BlogPostMeta }) {
   const t = TINTS[post.tint]
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift">
-      <BlogCover post={post} className="aspect-[16/9]" />
+      <BlogCover post={post} className="aspect-[3/1] sm:aspect-[16/9]" />
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-center gap-2 text-[0.8rem] text-ink-3">
           <span className={cn('rounded-full px-2.5 py-0.5 font-semibold', t.mid, t.text)}>{post.category}</span>

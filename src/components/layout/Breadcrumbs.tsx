@@ -13,11 +13,11 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
           return (
             <li key={item.path} className="flex items-center gap-1.5">
               {last ? (
-                <span aria-current="page" className="font-semibold text-ink-2">
+                <span aria-current="page" className="line-clamp-1 max-w-[14rem] font-semibold text-ink-2 sm:max-w-none sm:line-clamp-none">
                   {item.name}
                 </span>
               ) : (
-                <Link to={item.path} className={cn('rounded underline-offset-4 hover:text-brand-700 hover:underline')}>
+                <Link to={item.path} className={cn('inline-flex min-h-8 items-center rounded underline-offset-4 hover:text-brand-700 hover:underline')}>
                   {item.name}
                 </Link>
               )}

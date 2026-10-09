@@ -2,7 +2,7 @@ import { Seo } from '@/lib/head'
 import { softwareSchema } from '@/lib/seo'
 import type { FaqItem } from '@/lib/seo'
 import { SITE } from '@/data/site'
-import { FEATURES } from '@/data/features'
+import { FEATURE_META } from '@/data/featureMeta'
 import { HeroSection } from '@/sections/HeroSection'
 import { TrustStrip } from '@/sections/TrustStrip'
 import { ComparisonSection, type ComparisonRow } from '@/sections/ComparisonSection'
@@ -70,7 +70,7 @@ export default function HomePage() {
             name: SITE.name,
             description: DESCRIPTION,
             path: '/',
-            featureList: FEATURES.map((f) => f.navLabel),
+            featureList: FEATURE_META.map((f) => f.navLabel),
           }),
         ]}
       />

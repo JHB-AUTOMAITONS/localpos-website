@@ -113,8 +113,8 @@ export default function PurchaseManagementPage() {
           </div>
 
           <Reveal>
-            <div className="rounded-[22px] border border-line bg-white p-6 shadow-card">
-              <div className="flex items-start justify-between gap-3">
+            <div className="rounded-[22px] border border-line bg-white p-5 shadow-card sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
                 <div>
                   <div className="text-[0.75rem] font-bold uppercase tracking-wide text-ink-3">Price history · sample data</div>
                   <div className="font-display text-[1.15rem] font-semibold text-ink">Toor Dal 1 kg, cost price</div>

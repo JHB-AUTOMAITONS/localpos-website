@@ -1,7 +1,7 @@
 import { cn } from '@/lib/cn'
 import { rupees } from '@/lib/format'
 import { AreaChart, Donut, Meter } from './charts'
-import { AppFrame, Kpi, Panel } from './parts'
+import { AppFrame, Chip, Kpi, Panel } from './parts'
 import { DAY_SALES, MONTH_SALES, WEEK_SALES } from './sample'
 
 export type ReportRange = 'day' | 'week' | 'month'
@@ -30,19 +30,23 @@ const CATEGORIES = [
 ]
 
 /** Sales analytics: trend, key numbers, best sellers and category split. `range` switches the dataset. */
-export function AnalyticsPreview({ className, range = 'week' }: { className?: string; range?: ReportRange }) {
+export function AnalyticsPreview({ className, range = 'week', showRange = true }: { className?: string; range?: ReportRange; /** false shows a static period chip instead of a switcher that looks clickable but is not. */ showRange?: boolean }) {
   const d = DATA[range]
   return (
     <AppFrame active="reports" title="LocalPOS · Reports" className={className}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="font-display text-[15px] font-bold text-ink">Sales report</div>
-        <div className="flex rounded-lg bg-white p-0.5 ring-1 ring-line">
-          {(Object.keys(RANGE_LABEL) as ReportRange[]).map((r) => (
-            <span key={r} className={cn('rounded-md px-2.5 py-1 text-[10.5px] font-semibold', r === range ? 'bg-brand-600 text-white' : 'text-ink-2')}>
-              {RANGE_LABEL[r]}
-            </span>
-          ))}
-        </div>
+        {showRange ? (
+          <div className="flex rounded-lg bg-white p-0.5 ring-1 ring-line">
+            {(Object.keys(RANGE_LABEL) as ReportRange[]).map((r) => (
+              <span key={r} className={cn('rounded-md px-2.5 py-1 text-[10.5px] font-semibold', r === range ? 'bg-brand-600 text-white' : 'text-ink-2')}>
+                {RANGE_LABEL[r]}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <Chip tone="neutral">{RANGE_LABEL[range]}</Chip>
+        )}
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2 @[520px]:grid-cols-4">

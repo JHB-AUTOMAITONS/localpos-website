@@ -5,8 +5,8 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const root = process.cwd()
-const dist = path.join(root, 'dist')
-const { SITE, SITE_ROUTES, KEYWORD_MAP } = await import(pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href)
+const dist = path.join(root, process.env.DIST_DIR ?? 'dist')
+const { SITE, SITE_ROUTES, KEYWORD_MAP } = await import(pathToFileURL(path.join(root, process.env.SSR_DIR ?? 'dist-ssr', 'entry-server.js')).href)
 
 const decode = (s) =>
   s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&nbsp;/g, ' ')
@@ -99,11 +99,12 @@ for (const route of SITE_ROUTES) {
   const faq = ld.find((o) => o['@type'] === 'FAQPage')
   if (faq) {
     for (const q of faq.mainEntity) if (!mainText.includes(q.name.slice(0, 40))) err(`FAQ schema question not visible on page: "${q.name}"`)
-  } else if (/<details/.test(main)) warn('page shows an FAQ but has no FAQPage schema')
+  } else if (/<details(?![^>]*data-toc)/.test(main)) warn('page shows an FAQ but has no FAQPage schema')
 
   // Keyword placement (only for pages that have a keyword mapping)
   const kw = keywordFor.get(route.path)
   let status = 'n/a'
+  const keywordDetail = { primary: null, checks: null, occurrences: 0, imageLabels: 0, secondaryUsed: 0, secondaryTotal: 0 }
   if (kw) {
     const p = kw.primary
     const checks = {
@@ -122,6 +123,7 @@ for (const route of SITE_ROUTES) {
     // Secondary keywords: used naturally somewhere on the page (informational only)
     const used = kw.secondary.filter((s) => has(mainText, s)).length
     if (kw.secondary.length) status += ` sec ${used}/${kw.secondary.length}`
+    Object.assign(keywordDetail, { primary: p, checks, occurrences: n, imageLabels: alts.length, secondaryUsed: used, secondaryTotal: kw.secondary.length })
   }
 
   // Internal links
@@ -133,7 +135,15 @@ for (const route of SITE_ROUTES) {
     if (!paths.has(p)) broken.push(`${route.path} -> ${href}`)
   }
 
-  rows.push({ path: route.path, title: title.length, desc: description.length, h1: h1s[0] ?? '', status, issues })
+  rows.push({
+    path: route.path,
+    title: title.length,
+    desc: description.length,
+    h1: h1s[0] ?? '',
+    status,
+    issues,
+    detail: { title, description, canonical, h1: h1s[0] ?? '', h2Count: h2s.length, schema: types, ...keywordDetail },
+  })
 }
 
 // Structural rules from the document
@@ -163,4 +173,11 @@ for (const r of rows) {
   for (const i of r.issues) console.log(`    ${i}`)
 }
 console.log(`\n${rows.length} pages checked. ${errors} error(s), ${warnings} warning(s).`)
+// Machine-readable results for the audit report:  node scripts/verify-seo.mjs --json=test-results/seo.json
+const jsonArg = process.argv.find((a) => a.startsWith('--json='))
+if (jsonArg) {
+  const file = jsonArg.slice('--json='.length)
+  await fs.mkdir(path.dirname(file), { recursive: true })
+  await fs.writeFile(file, JSON.stringify({ errors, warnings, pages: rows.map((r) => ({ path: r.path, issues: r.issues, ...r.detail })) }, null, 1))
+}
 process.exit(errors ? 1 : 0)

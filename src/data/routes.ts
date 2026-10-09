@@ -1,6 +1,6 @@
 import { FEATURES } from './features'
 import { SOLUTIONS } from './solutions'
-import { BLOG_POSTS } from './blog'
+import { BLOG_META } from './blogMeta'
 import { LEGAL_PAGES } from './legal'
 
 export interface SiteRoute {
@@ -30,7 +30,7 @@ export const KEYWORD_MAP: KeywordEntry[] = [
   },
   ...FEATURES.map((f): KeywordEntry => ({ path: f.path, primary: f.primary, secondary: f.secondary })),
   ...SOLUTIONS.map((s): KeywordEntry => ({ path: s.path, primary: s.primary, secondary: s.secondary })),
-  ...BLOG_POSTS.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary })),
+  ...BLOG_META.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary })),
 ]
 
 /**
@@ -44,8 +44,8 @@ export const SITE_ROUTES: SiteRoute[] = [
   ...SOLUTIONS.map((s): SiteRoute => ({ path: s.path, priority: 0.9, changefreq: 'monthly' })),
   { path: '/pricing/', priority: 0.8, changefreq: 'monthly' },
   { path: '/book-a-demo/', priority: 0.8, changefreq: 'yearly' },
-  { path: '/blog/', priority: 0.7, changefreq: 'weekly', lastmod: BLOG_POSTS[0]?.date },
-  ...BLOG_POSTS.map((p): SiteRoute => ({ path: `/blog/${p.slug}/`, priority: 0.6, changefreq: 'monthly', lastmod: p.date })),
+  { path: '/blog/', priority: 0.7, changefreq: 'weekly', lastmod: BLOG_META[0]?.date },
+  ...BLOG_META.map((p): SiteRoute => ({ path: `/blog/${p.slug}/`, priority: 0.6, changefreq: 'monthly', lastmod: p.date })),
   { path: '/about-us/', priority: 0.5, changefreq: 'yearly' },
   { path: '/contact-us/', priority: 0.5, changefreq: 'yearly' },
   ...LEGAL_PAGES.map((l): SiteRoute => ({ path: l.path, priority: 0.2, changefreq: 'yearly', lastmod: l.updated })),

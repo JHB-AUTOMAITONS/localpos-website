@@ -81,11 +81,11 @@ export default function RestaurantPage() {
 
       <Section tone="white" labelledBy="restaurant-flow-heading">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-          <div className="order-2 lg:order-1">
+          <div>
             <SectionHeading id="restaurant-flow-heading" eyebrow="Kitchen workflow" eyebrowTone="coral" title={solution.workflowHeading} align="left" lead="An order taken at the table is on the kitchen’s printer in the same moment. No running, no shouting, no lost slips." />
             <StepList steps={solution.workflow} variant="stack" tint="coral" className="mt-10" />
           </div>
-          <Reveal className="order-1 mx-auto w-full max-w-[300px] lg:order-2">
+          <Reveal className="mx-auto w-full max-w-[300px]">
             <ProductScreenshot alt="Kitchen order ticket printed from the restaurant billing software">
               <KitchenTicketPreview />
             </ProductScreenshot>

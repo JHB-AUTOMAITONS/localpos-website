@@ -18,10 +18,7 @@ export interface Step {
  * SEO fields come straight from the "LocalPOS - Final SEO URL & Keyword Mapping" document.
  * `primary` must appear in the URL, title, description, H1, intro (first 100 words) and one H2.
  */
-export interface SeoPage {
-  slug: string
-  /** Canonical path with trailing slash. */
-  path: string
+export interface SeoFields {
   primary: string
   secondary: string[]
   seoTitle: string
@@ -44,7 +41,8 @@ export type ContentBlock =
 
 export type BlogCategory = 'GST & Compliance' | 'Inventory' | 'Billing' | 'Retail Tips' | 'Industry Guides'
 
-export interface BlogPost {
+/** Everything needed to list a post (cards, menus, SEO). Loaded broadly, so it stays free of article text. */
+export interface BlogPostMeta {
   slug: string
   /** The post's own target keyword (must not duplicate a page primary keyword). */
   keyword: string
@@ -59,11 +57,17 @@ export interface BlogPost {
   readingMinutes: number
   excerpt: string
   tint: Tint
-  blocks: ContentBlock[]
-  faqs?: FaqItem[]
   /** Feature slugs to promote at the end of the post. */
   relatedFeatures: string[]
 }
+
+/** The article itself. Loaded only on article pages. */
+export interface BlogContent {
+  blocks: ContentBlock[]
+  faqs?: FaqItem[]
+}
+
+export interface BlogPost extends BlogPostMeta, BlogContent {}
 
 export interface LegalSection {
   heading: string
@@ -83,11 +87,23 @@ export interface LegalPage {
   sections: LegalSection[]
 }
 
-export interface Feature extends SeoPage {
+/** Light data shared by every page: menus, footer and cards. */
+export interface PageMeta {
+  slug: string
+  /** Canonical path with trailing slash. */
+  path: string
   navLabel: string
   navBlurb: string
   icon: IconName
   tint: Tint
+  /** Short selling points shown on cards. */
+  cardPoints: string[]
+}
+
+export type FeatureMeta = PageMeta
+export type SolutionMeta = PageMeta
+
+export interface FeatureContent extends SeoFields {
   benefits: Benefit[]
   stepsHeading: string
   steps: Step[]
@@ -96,11 +112,7 @@ export interface Feature extends SeoPage {
   related: string[]
 }
 
-export interface Solution extends SeoPage {
-  navLabel: string
-  navBlurb: string
-  icon: IconName
-  tint: Tint
+export interface SolutionContent extends SeoFields {
   /** The problems this business type runs into every day. */
   painPoints: Array<{ title: string; body: string }>
   /** What LocalPOS does about them, linked to feature pages. */
@@ -110,3 +122,6 @@ export interface Solution extends SeoPage {
   faqs: FaqItem[]
   relatedFeatures: string[]
 }
+
+export interface Feature extends FeatureMeta, FeatureContent {}
+export interface Solution extends SolutionMeta, SolutionContent {}

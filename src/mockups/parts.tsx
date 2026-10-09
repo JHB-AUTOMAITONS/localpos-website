@@ -76,7 +76,8 @@ const CHIP: Record<ChipTone, string> = {
 }
 
 export function Chip({ children, tone = 'neutral', className }: { children: ReactNode; tone?: ChipTone; className?: string }) {
-  return <span className={cn('inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[10.5px] font-semibold leading-4', CHIP[tone], className)}>{children}</span>
+  // 12px when used as real page content; the smaller 10.5px only inside decorative product mockups (role="img").
+  return <span className={cn('inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[0.75rem] font-semibold leading-4 [[role=img]_&]:text-[10.5px]', CHIP[tone], className)}>{children}</span>
 }
 
 const AVATAR_TONES = ['bg-brand-100 text-brand-800', 'bg-gold-100 text-gold-800', 'bg-coral-100 text-coral-700', 'bg-sky-100 text-sky-700', 'bg-violet-100 text-violet-700']
@@ -90,7 +91,7 @@ export function Avatar({ name, index = 0, size = 28 }: { name: string; index?: n
     .toUpperCase()
   return (
     <span
-      className={cn('grid shrink-0 place-items-center rounded-full text-[10.5px] font-bold', AVATAR_TONES[index % AVATAR_TONES.length])}
+      className={cn('grid shrink-0 place-items-center rounded-full text-[0.8rem] font-bold [[role=img]_&]:text-[10.5px]', AVATAR_TONES[index % AVATAR_TONES.length])}
       style={{ width: size, height: size }}
     >
       {initials}
@@ -119,7 +120,7 @@ export function Kpi({ label, value, delta, tone = 'brand', children }: { label: 
     <div className="rounded-xl border border-line bg-white p-3">
       <div className="text-[10.5px] font-medium text-ink-3">{label}</div>
       <div className="mt-1 flex items-end justify-between gap-2">
-        <div className="tnum text-[17px] font-bold leading-none text-ink">{value}</div>
+        <div className="tnum text-[14px] font-bold leading-none text-ink @[400px]:text-[17px]">{value}</div>
         {children}
       </div>
       {delta && (

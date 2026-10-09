@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { Icon } from '@/components/Icon'
-import type { Solution } from '@/data/types'
+import type { SolutionMeta } from '@/data/types'
 import { cn } from '@/lib/cn'
 import { TINTS } from '@/lib/tint'
 
@@ -13,7 +13,7 @@ const SNIPPETS: Record<string, string[]> = {
   'medical-store-billing-software': ['Batch B2407A', 'Exp Nov 2026', 'Strip / tablet'],
 }
 
-export function SolutionCard({ solution, className }: { solution: Solution; className?: string }) {
+export function SolutionCard({ solution, className }: { solution: SolutionMeta; className?: string }) {
   const t = TINTS[solution.tint]
   return (
     <Link
@@ -38,10 +38,10 @@ export function SolutionCard({ solution, className }: { solution: Solution; clas
         ))}
       </ul>
       <ul className="relative mt-4 space-y-1.5 text-[0.9rem] text-ink-2">
-        {solution.highlights.slice(0, 3).map((h) => (
-          <li key={h.title} className="flex items-start gap-2">
+        {solution.cardPoints.map((point) => (
+          <li key={point} className="flex items-start gap-2">
             <Icon name="check" size={15} strokeWidth={2.6} className={cn('mt-[5px] shrink-0', t.text)} />
-            {h.title}
+            {point}
           </li>
         ))}
       </ul>

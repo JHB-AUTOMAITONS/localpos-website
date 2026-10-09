@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router'
 import { BlogCard, BlogCover } from '@/components/BlogCard'
 import { Inline } from '@/components/Inline'
+import { MobileToc } from '@/components/MobileToc'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { BLOG_POSTS, getPost } from '@/data/blog'
+import { getPost } from '@/data/blog'
+import { BLOG_META } from '@/data/blogMeta'
 import { SITE, absoluteUrl } from '@/data/site'
 import type { BlogPost, ContentBlock } from '@/data/types'
 import { cn } from '@/lib/cn'
@@ -96,7 +98,7 @@ export default function BlogPostPage() {
   ]
   const toc = post.blocks.filter((b): b is Extract<ContentBlock, { type: 'h2' }> => b.type === 'h2')
   const t = TINTS[post.tint]
-  const more = [...BLOG_POSTS.filter((p) => p.slug !== post.slug)]
+  const more = [...BLOG_META.filter((p) => p.slug !== post.slug)]
     .sort((a, b) => Number(b.category === post.category) - Number(a.category === post.category))
     .slice(0, 3)
 
@@ -125,9 +127,11 @@ export default function BlogPostPage() {
             <div className="mx-auto max-w-[820px]">
               <div className="flex flex-wrap items-center gap-2 text-[0.88rem] text-ink-3">
                 <span className={cn('rounded-full px-3 py-1 font-semibold', t.mid, t.text)}>{post.category}</span>
-                <time dateTime={post.date}>{longDate(post.date)}</time>
-                <span aria-hidden="true">·</span>
-                <span>{post.readingMinutes} min read</span>
+                <span className="whitespace-nowrap">
+                  <time dateTime={post.date}>{longDate(post.date)}</time>
+                  <span aria-hidden="true"> · </span>
+                  {post.readingMinutes} min read
+                </span>
               </div>
               <h1 id="page-heading" className="display-2 mt-4 !text-[clamp(2rem,1.4rem+2.2vw,3.1rem)]">
                 {post.title}
@@ -138,16 +142,16 @@ export default function BlogPostPage() {
         </header>
 
         <Container>
-          <BlogCover post={post} large className="mx-auto mb-12 aspect-[21/9] max-w-[1000px] rounded-[28px] border border-line" />
+          <BlogCover post={post} large className="mx-auto mb-10 h-36 max-w-[1000px] rounded-[28px] border border-line sm:h-44 lg:mb-12" />
           <div className="mx-auto grid max-w-[1000px] gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14">
             <aside className="hidden lg:block">
               {toc.length > 1 && (
                 <nav aria-label="In this article" className="sticky top-28">
                   <p className="text-[0.78rem] font-bold uppercase tracking-[0.1em] text-ink-3">In this article</p>
-                  <ol className="mt-3 space-y-2.5 border-l-2 border-line pl-4 text-[0.92rem] leading-snug">
+                  <ol className="mt-3 space-y-0.5 border-l-2 border-line pl-4 text-[0.92rem] leading-snug">
                     {toc.map((h) => (
                       <li key={h.text}>
-                        <a href={`#${slugify(h.text)}`} className="text-ink-2 hover:text-brand-700">
+                        <a href={`#${slugify(h.text)}`} className="block py-1.5 text-ink-2 hover:text-brand-700">
                           {h.text}
                         </a>
                       </li>
@@ -156,13 +160,16 @@ export default function BlogPostPage() {
                 </nav>
               )}
             </aside>
-            <div className="prose-lp min-w-0">
+            <div className="min-w-0">
+              <MobileToc title="In this article" items={toc.map((h) => ({ id: slugify(h.text), label: h.text }))} />
+              <div className="prose-lp">
               {post.blocks.map((b, i) => (
                 <Block key={i} block={b} />
               ))}
               <p className="!mt-10 border-t border-line pt-6 text-[0.95rem] text-ink-3">
                 Written by the {SITE.name} team. Tax, legal and compliance points are general guidance. Please confirm them with a qualified professional for your own business.
               </p>
+              </div>
             </div>
           </div>
         </Container>
@@ -176,7 +183,7 @@ export default function BlogPostPage() {
           <h2 id="more-heading" className="h2-xl !text-[clamp(1.6rem,1.2rem+1.3vw,2.25rem)]">
             Keep reading
           </h2>
-          <Link to="/blog/" className="text-[0.95rem] font-semibold text-brand-700 hover:underline">
+          <Link to="/blog/" className="-my-2 py-2 text-[0.95rem] font-semibold text-brand-700 hover:underline">
             All articles
           </Link>
         </div>

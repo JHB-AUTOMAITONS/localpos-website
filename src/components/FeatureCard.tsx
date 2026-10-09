@@ -1,11 +1,11 @@
 import { Link } from 'react-router'
 import { Icon } from '@/components/Icon'
-import type { Feature } from '@/data/types'
+import type { FeatureMeta } from '@/data/types'
 import { cn } from '@/lib/cn'
 import { TINTS } from '@/lib/tint'
 
 /** Link card for a feature page, tinted with the feature's colour. */
-export function FeatureCard({ feature, className, compact }: { feature: Feature; className?: string; compact?: boolean }) {
+export function FeatureCard({ feature, className, compact }: { feature: FeatureMeta; className?: string; compact?: boolean }) {
   const t = TINTS[feature.tint]
   return (
     <Link
@@ -24,10 +24,10 @@ export function FeatureCard({ feature, className, compact }: { feature: Feature;
       <p className="mt-1 text-[0.95rem] leading-snug text-ink-2">{feature.navBlurb}</p>
       {!compact && (
         <ul className="mt-4 hidden space-y-1.5 text-[0.875rem] text-ink-2 sm:block">
-          {feature.benefits.slice(0, 2).map((b) => (
-            <li key={b.title} className="flex items-start gap-2">
+          {feature.cardPoints.map((point) => (
+            <li key={point} className="flex items-start gap-2">
               <Icon name="check" size={15} strokeWidth={2.6} className={cn('mt-1 shrink-0', t.text)} />
-              {b.title}
+              {point}
             </li>
           ))}
         </ul>

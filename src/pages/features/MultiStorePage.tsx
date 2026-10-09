@@ -9,6 +9,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { getFeature } from '@/data/features'
+import { cn } from '@/lib/cn'
 import { rupees } from '@/lib/format'
 import { MultiStorePreview } from '@/mockups/MultiStorePreview'
 import { STORES } from '@/mockups/sample'
@@ -25,15 +26,21 @@ const ACCESS = [
   { what: 'Create bills at the counter', owner: true, manager: true, cashier: true },
 ]
 
+const ROLES = [
+  { key: 'owner', label: 'Owner' },
+  { key: 'manager', label: 'Manager' },
+  { key: 'cashier', label: 'Cashier' },
+] as const
+
 function Mark({ yes }: { yes: boolean }) {
   return yes ? (
     <>
-      <Icon name="check" size={18} strokeWidth={3} className="mx-auto text-brand-600" />
+      <Icon name="check" size={18} strokeWidth={3} className="mx-auto mt-1 text-brand-600" />
       <span className="sr-only">Yes</span>
     </>
   ) : (
     <>
-      <span aria-hidden="true" className="mx-auto block h-0.5 w-3 rounded bg-line-strong" />
+      <span aria-hidden="true" className="mx-auto mb-[7px] mt-[13px] block h-0.5 w-3 rounded bg-line-strong" />
       <span className="sr-only">No</span>
     </>
   )
@@ -65,7 +72,7 @@ export default function MultiStorePage() {
       <Section tone="soft" labelledBy="multistore-network-heading">
         <SectionHeading id="multistore-network-heading" eyebrow="One system" eyebrowTone="sky" title="Every branch connected, every number in one place" lead="Stores bill on their own. Sales, stock and payments flow into a single view, and stock can move between branches. Sample data." />
         <Reveal className="mt-12">
-          <div role="img" aria-label="Diagram: four stores, Main Road, Market Street, Station Branch and Mall Counter, connected to one central view" className="relative mx-auto h-[420px] max-w-3xl sm:h-[380px]">
+          <div role="img" aria-label="Diagram: four stores, Main Road, Market Street, Station Branch and Mall Counter, connected to one central view" className="relative mx-auto h-[530px] max-w-3xl min-[400px]:h-[470px] sm:h-[380px]">
             <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 size-full">
               {[
                 [18, 20],
@@ -86,11 +93,11 @@ export default function MultiStorePage() {
             {STORES.map((s, i) => (
               <div key={s.name} aria-hidden="true" className={`absolute ${NODE_POS[i]} w-[42%] max-w-[210px] rounded-2xl border border-line bg-white p-3.5 shadow-card sm:w-[34%]`}>
                 <div className="flex items-center gap-2">
-                  <span className="grid size-8 place-items-center rounded-lg bg-sky-100 text-sky-700">
+                  <span className="hidden size-8 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-700 min-[400px]:grid">
                     <Icon name="store" size={16} />
                   </span>
                   <div className="min-w-0">
-                    <div className="truncate text-[0.92rem] font-semibold text-ink">{s.name}</div>
+                    <div className="text-[0.92rem] font-semibold leading-tight text-ink sm:truncate">{s.name}</div>
                     <div className="text-[0.75rem] text-ink-3">{s.city}</div>
                   </div>
                 </div>
@@ -106,7 +113,23 @@ export default function MultiStorePage() {
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <SectionHeading id="multistore-access-heading" eyebrow="Roles" eyebrowTone="sky" title="Let each person see what they need, and nothing more" align="left" lead="Give store managers their own branch and cashiers just the counter, while you keep the full picture. Roles shown here are examples." />
           <Reveal className="min-w-0">
-            <div role="region" aria-label="Role access table, scrollable" tabIndex={0} className="relative overflow-x-auto rounded-[22px] border border-line bg-white shadow-card">
+            {/* Phones: one card per capability, with all three roles visible without side-scrolling. */}
+            <ul className="space-y-3 sm:hidden">
+              {ACCESS.map((a) => (
+                <li key={a.what} className="rounded-2xl border border-line bg-white p-4 shadow-card">
+                  <p className="font-medium text-ink">{a.what}</p>
+                  <ul className="mt-3 grid grid-cols-3 gap-2">
+                    {ROLES.map((r) => (
+                      <li key={r.key} className={cn('rounded-xl px-2 py-2 text-center text-[0.8rem] font-semibold', a[r.key] ? 'bg-brand-50 text-brand-800' : 'bg-paper-2 text-ink-3')}>
+                        <span className="block leading-tight">{r.label}</span>
+                        <Mark yes={a[r.key]} />
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+            <div role="region" aria-label="Role access table, scrollable" tabIndex={0} className="relative hidden overflow-x-auto rounded-[22px] border border-line bg-white shadow-card sm:block">
               <table className="w-full min-w-[480px] text-left text-[0.95rem]">
                 <caption className="sr-only">Example access by role</caption>
                 <thead>

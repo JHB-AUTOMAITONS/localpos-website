@@ -3,7 +3,7 @@ import { CTAButton } from '@/components/ui/CTAButton'
 import { Reveal } from '@/components/ui/Reveal'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { FEATURES } from '@/data/features'
+import { FEATURE_META } from '@/data/featureMeta'
 
 /** All ten feature pages as tinted cards, with a demo prompt filling the last cells of the grid. */
 export function FeatureGrid() {
@@ -16,7 +16,7 @@ export function FeatureGrid() {
         lead="Ten connected parts of the same system. Start with billing, and add the rest as your business grows."
       />
       <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {FEATURES.map((f, i) => (
+        {FEATURE_META.map((f, i) => (
           <li key={f.slug}>
             <Reveal delay={(i % 4) * 70} className="h-full">
               <FeatureCard feature={f} />

@@ -21,6 +21,22 @@ interface BenefitsSectionProps {
 }
 
 /** Benefits shown four ways so feature pages do not all read as the same grid of cards. */
+/**
+ * Column span (in a 6-column grid) for item `i` of `n` in the bento layout, so every row is full.
+ * The first two items are wide. The rest fill rows of three (span 2) or two (span 3), whichever divides evenly.
+ */
+function bentoSpan(i: number, n: number): string {
+  if (i < 2) return 'md:col-span-3'
+  const rest = n - 2
+  const r = rest % 3
+  if (r === 0) return 'md:col-span-2'
+  const k = i - 2
+  if (r === 2) return k < rest - 2 ? 'md:col-span-2' : 'md:col-span-3'
+  // r === 1
+  if (rest === 1) return 'md:col-span-6'
+  return k < rest - 4 ? 'md:col-span-2' : 'md:col-span-3'
+}
+
 export function BenefitsSection({ title, lead, eyebrow = 'What you get', benefits, tint = 'brand', variant = 'cards', tone = 'paper', id }: BenefitsSectionProps) {
   const t = TINTS[tint]
 
@@ -33,8 +49,8 @@ export function BenefitsSection({ title, lead, eyebrow = 'What you get', benefit
           </div>
           <ul className="divide-y divide-line">
             {benefits.map((b, i) => (
-              <li key={b.title}>
-                <Reveal delay={i * 50} className="flex gap-4 py-6 first:pt-0 sm:gap-5">
+              <li key={b.title} className="py-6 first:pt-0">
+                <Reveal delay={i * 50} className="flex gap-4 sm:gap-5">
                   <span className={cn('grid size-11 shrink-0 place-items-center rounded-xl', t.tile)}>
                     <Icon name={b.icon} size={22} />
                   </span>
@@ -78,7 +94,7 @@ export function BenefitsSection({ title, lead, eyebrow = 'What you get', benefit
           {benefits.map((b, i) => {
             const big = i < 2
             return (
-              <li key={b.title} className={cn(big ? 'md:col-span-3' : 'md:col-span-2')}>
+              <li key={b.title} className={bentoSpan(i, benefits.length)}>
                 <Reveal delay={i * 60} className="h-full">
                   <div className={cn('relative h-full overflow-hidden rounded-[22px] border p-6 sm:p-7', big ? `${t.soft} ${t.border}` : 'border-line bg-white shadow-card')}>
                     {big && <div aria-hidden="true" className={cn('absolute -right-10 -top-10 size-44 rounded-full bg-gradient-to-br opacity-80 blur-2xl', t.glow)} />}

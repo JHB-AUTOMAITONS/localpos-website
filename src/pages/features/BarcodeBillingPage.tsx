@@ -52,12 +52,12 @@ export default function BarcodeBillingPage() {
 
       <Section tone="white" labelledBy="barcode-labels-heading">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal className="order-2 lg:order-1">
             <ProductScreenshot alt="Sheet of barcode price labels ready to print, each with item name, price and barcode">
               <LabelSheetPreview />
             </ProductScreenshot>
           </Reveal>
-          <div>
+          <div className="order-1 lg:order-2">
             <SectionHeading id="barcode-labels-heading" eyebrow="Labels" eyebrowTone="violet" title="Print barcode labels for everything that does not come with one" align="left" lead="Packaged goods already carry a barcode, so keep it. For loose items, your own packs and repacked goods, print labels from LocalPOS." />
             <ul className="mt-6 space-y-3">
               {['Choose the items and how many labels you need', 'Include the item name, price and barcode', 'Print, stick and start scanning'].map((t) => (
