@@ -6,6 +6,115 @@ import { BLOG_META } from './blogMeta'
  * Titles, SEO fields, dates and cards live in blogMeta.ts. Add a post by adding an entry in both files.
  */
 const CONTENT: Record<string, BlogContent> = {
+  'best-billing-software-for-small-business': {
+    blocks: [
+      {
+        type: 'p',
+        text: 'Picking the best billing software for small business use is not just a software decision. It changes how fast you bill a customer, how clean your GST records stay, and whether you actually know what is selling and what is gathering dust on a shelf. With dozens of apps claiming to be the right fit, the real work is comparing them against your own shop, not against a feature list on a website.'
+      },
+      { type: 'h2', text: 'What Makes the Best Billing Software for Small Business?' },
+      {
+        type: 'p',
+        text: 'There is no single best billing software for small business in India that suits every shop. A boutique with twenty items a day has different needs from a supermarket billing a thousand times a day, and a restaurant juggling tables is different again. What the better options share is that billing, stock and customer records work together instead of being three separate jobs, GST invoicing is accurate by default, and the screen is simple enough that a new staff member can use it after a short walkthrough. If a tool gets those three things right, it is usually worth a closer look.'
+      },
+      { type: 'h2', text: 'Essential Features to Compare Before Choosing Billing Software' },
+      {
+        type: 'p',
+        text: 'Most billing software for small businesses claims to do everything. Rather than comparing marketing pages, compare how each option handles these specific jobs:'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**Invoice generation and billing workflow.** How many taps does a normal bill take? Can it hold part payments, discounts and returns without feeling like a workaround?',
+          '**GST invoicing.** Does it apply the right CGST, SGST or IGST split on its own, print HSN codes, and produce an invoice your accountant would recognise as correct, for every sale and not just the simple ones?',
+          '**Stock and inventory tracking.** Does stock fall automatically when a bill is made, or do you still have to update a separate sheet? A gap here is where most "digital" shops quietly go back to pen and paper.',
+          '**Sales reports and business insights.** Can you see, without building a spreadsheet, what sold today, which items are slow-moving, and which customers still owe you money?',
+          '**Customer records and payment tracking.** Does it keep a running ledger per customer, including partial and credit payments, so you are not chasing dues from memory?',
+          '**Ease of use and staff training.** Could your current counter staff bill confidently after half a day, or will it need a week of hand-holding during your busiest hours?'
+        ]
+      },
+      { type: 'h2', text: 'How to Compare Billing Software for a Small Business' },
+      {
+        type: 'p',
+        text: 'Once you have shortlisted a few options on features, a side-by-side billing software comparison for small businesses should look at how each one fits your actual business, not just what it can do in a demo.'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**Business requirements.** List how you actually sell: single counter or multiple branches, loose items or packaged goods, walk-in customers or regular credit accounts. Match the software to this, not the other way round.',
+          '**Pricing and ongoing costs.** Look at the full yearly cost, not just the first number you see, including extra users, extra stores, and whatever is not in the base plan.',
+          '**Ease of setup.** Ask how your existing items, prices and customer list get loaded in, and whether that is something you do yourself or something the vendor helps with.',
+          '**Support and training.** Find out who you call when billing stops working at 7 pm on a Saturday, and whether training is a one-time video or an actual walkthrough with your staff.',
+          '**Data backup, access control and security.** Check that your data is backed up regularly and that you can limit what each staff login can see or change, especially pricing and reports.'
+        ]
+      },
+      { type: 'h2', text: 'Billing Software Pricing: What Should Small Businesses Check?' },
+      {
+        type: 'p',
+        text: 'Billing software pricing in India is usually sold as a subscription, often with separate tiers for a single counter, a growing shop with more features, and a multi-store setup. Before you compare two quotes, check what each one actually includes: whether GST invoicing, inventory and customer records come in the base tier or cost extra, whether a second or third staff login is free or billed separately, and whether moving to a plan with more stores or more reports means a fresh setup or a simple upgrade.'
+      },
+      {
+        type: 'p',
+        text: 'LocalPOS, for example, is structured as plans that build on each other: a starting plan with billing, GST invoices, inventory and core reports, a fuller plan that adds barcode billing, purchase management and staff access control, and a multi-store plan for businesses running more than one branch. See the [LocalPOS pricing page](/pricing/) for exactly what each plan includes, and ask the same "what is included" question of every vendor you shortlist.'
+      },
+      { type: 'h2', text: 'Common Mistakes to Avoid When Selecting Billing Software' },
+      {
+        type: 'ul',
+        items: [
+          '**Choosing on price alone.** The cheapest plan that cannot handle GST correctly or loses stock accuracy will cost you more in corrections and lost time than a slightly dearer option.',
+          '**Skipping a real trial.** A clean demo with sample data tells you very little. Test it with your own items and your own prices before deciding.',
+          '**Ignoring staff and switching to a new software.** If your counter staff cannot bill comfortably within a day or two, the switch will drag on and some will quietly go back to the old way.',
+          '**Not asking about limits.** Many plans cap invoices, users or stores. Ask what happens when you cross the limit, and what it costs.',
+          '**Starting during your busiest week.** Festival season or month-end is the worst time to learn new software. Begin in a quieter week so mistakes happen before customers are queued up.'
+        ]
+      },
+      { type: 'h2', text: 'A Billing Software Selection Checklist for Small Businesses' },
+      {
+        type: 'p',
+        text: 'Use this billing software selection checklist to compare your shortlist before you commit to a plan:'
+      },
+      {
+        type: 'ol',
+        items: [
+          'Write down how your business actually bills: items sold, payment types accepted, and whether you offer customer credit.',
+          'Confirm GST invoicing is correct for your state and your kind of sale, with HSN codes and the right tax split.',
+          'Check that stock updates automatically with every bill, not on a separate sheet.',
+          'Look at sales reports and ask if they answer the questions you actually have about your business.',
+          'Confirm customer and payment records track dues without a separate notebook.',
+          'Bill a handful of your own real items during a trial and time how it feels at the counter.',
+          'Add up the full yearly cost across users, stores and any add-ons, not just the headline price.',
+          'Ask about support, training and data backup before you pay, not after something goes wrong.'
+        ]
+      },
+      {
+        type: 'callout',
+        title: 'See how LocalPOS fits this checklist',
+        text: 'If you are comparing the best billing software for small business options in India, LocalPOS brings [GST-ready billing](/features/gst-billing-software/), [stock that updates with every sale](/features/inventory-management-software/), [customer and payment records](/features/customer-management-software-for-small-business/) and [sales reports](/features/sales-reporting-software/) into one screen your staff can learn quickly. [Book a free demo](/book-a-demo/) and try it with your own items, or [talk to the team](/contact-us/) with your specific questions before you decide.'
+      }
+    ],
+    faqs: [
+      {
+        q: 'How do I choose the best billing software for a small business?',
+        a: 'Start by writing down how your shop actually sells, then compare a short list on GST accuracy, stock tracking, reporting, ease of use for your staff and the full yearly cost. Run a trial with your own items before deciding, since a demo with sample data will not show you the real picture.'
+      },
+      {
+        q: 'What features should small-business billing software include?',
+        a: 'At minimum, look for fast invoice creation, correct GST invoicing with the right CGST, SGST or IGST split, stock that updates automatically with every bill, sales reports you can actually read, and customer records that track payments and dues.'
+      },
+      {
+        q: 'How much does billing software cost in India?',
+        a: 'Pricing varies by vendor and by plan, usually rising with the number of users, stores and features such as barcode billing or multi-store management. Compare the full yearly cost, including any extra users or stores, rather than just the lowest headline price. See the [LocalPOS pricing page](/pricing/) for how its own plans are structured.'
+      },
+      {
+        q: 'Can billing software help manage invoices and stock together?',
+        a: 'Good billing software should. When billing and inventory are built on the same system, stock reduces automatically as each sale is made, so you are not updating a separate register and risking mismatched numbers.'
+      },
+      {
+        q: 'What should I check before requesting a billing software demo?',
+        a: 'Have your real item list, a few common billing scenarios such as part payments or returns, and your GST questions ready. That way the demo shows how the software handles your business, not just its standard sales script.'
+      }
+    ]
+  },
   'how-to-choose-a-billing-system-for-a-small-shop': {
     blocks: [
       {

@@ -6,6 +6,26 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'best-billing-software-for-small-business',
+    keyword: 'best billing software for small business',
+    secondary: [
+      'best billing software for small business in India',
+      'billing software features for small businesses',
+      'billing software comparison for small businesses',
+      'billing software pricing',
+      'billing software selection checklist'
+    ],
+    title: 'Best Billing Software for Small Business: How to Choose the Right Solution in India',
+    seoTitle: 'Best Billing Software for Small Business in India | LocalPOS',
+    seoDescription: 'Comparing the best billing software for small business in India? See the must-have features, how to judge pricing, and mistakes to avoid before you choose.',
+    category: 'Billing',
+    date: '2026-10-16',
+    readingMinutes: 7,
+    excerpt: 'A practical guide to choosing the best billing software for small business in India: the features to compare, how pricing works, and mistakes to avoid before you commit.',
+    tint: 'brand',
+    relatedFeatures: [ 'pos-billing-software', 'gst-billing-software', 'inventory-management-software', 'sales-reporting-software' ]
+  },
+  {
     slug: 'how-to-choose-a-billing-system-for-a-small-shop',
     keyword: 'how to choose a billing system for a small shop',
     secondary: [
