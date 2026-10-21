@@ -6,6 +6,27 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'pos-system-sri-lanka',
+    keyword: 'POS system Sri Lanka',
+    secondary: [
+      'POS software pricing',
+      'cloud-based POS',
+      'locally installed POS',
+      'questions to ask a POS vendor',
+      'multi-branch management'
+    ],
+    title: 'POS System Sri Lanka: How to Choose the Right POS Software for Your Business',
+    seoTitle: 'POS System Sri Lanka: How to Choose the Right POS Software',
+    seoDescription: 'Looking for a POS system Sri Lanka businesses can rely on? Compare features, cloud vs local, pricing factors and vendor questions, plus a buying checklist.',
+    category: 'Billing',
+    date: '2026-10-21',
+    readingMinutes: 9,
+    excerpt: 'A practical guide for Sri Lankan retailers, supermarkets and restaurants: the features to compare, what drives POS pricing, cloud versus local software, and questions to ask any vendor.',
+    tint: 'brand',
+    language: 'en',
+    relatedFeatures: [ 'pos-billing-software', 'inventory-management-software', 'barcode-billing-software', 'sales-reporting-software', 'multi-store-management-software' ]
+  },
+  {
     slug: 'best-billing-software-for-small-business',
     keyword: 'best billing software for small business',
     secondary: [

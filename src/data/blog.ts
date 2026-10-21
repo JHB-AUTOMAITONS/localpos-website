@@ -6,6 +6,219 @@ import { BLOG_META } from './blogMeta'
  * Titles, SEO fields, dates and cards live in blogMeta.ts. Add a post by adding an entry in both files.
  */
 const CONTENT: Record<string, BlogContent> = {
+  'pos-system-sri-lanka': {
+    blocks: [
+      {
+        type: 'p',
+        text: 'A POS system Sri Lanka businesses can rely on does more than print bills. It records every sale, keeps stock accurate and shows you at the end of the day what actually made money. This guide is for retail shop owners, supermarkets, restaurants and other small and medium businesses comparing POS and billing software. It explains how a POS works, which features matter, what drives the price, whether to pick cloud or local software, and which questions to ask a vendor before you pay.'
+      },
+      {
+        type: 'p',
+        text: '**The short answer:** choose the system that your own staff can use at the counter after a short walkthrough, that keeps billing and stock in one place, that is clear about its full cost in rupees, and whose vendor can explain in writing how it handles VAT invoices, backups and support in Sri Lanka. A long feature list matters less than how well the software fits the way you sell.'
+      },
+      { type: 'h2', text: 'What Is a POS System and How Does It Work?' },
+      {
+        type: 'p',
+        text: 'POS stands for point of sale: the place and moment a customer pays. A POS system is the software (and usually some hardware) that handles that moment. In practice the flow is simple:'
+      },
+      {
+        type: 'ol',
+        items: [
+          'The cashier adds items to a bill by scanning a barcode or searching by name.',
+          'The system applies prices, discounts and any tax, then takes payment in cash, card or another method you accept.',
+          'It prints or shares the receipt and reduces the stock of every item sold.',
+          'The sale is saved, so reports on sales, stock and customers are ready without any re-typing.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'The hardware is usually a computer or tablet, a receipt printer, and a barcode scanner and cash drawer if you bill many items a day. Because the same sale feeds billing, stock and reports, a POS replaces the handwritten bill book, the separate stock register and the end-of-day tally in one step.'
+      },
+      { type: 'h2', text: 'Why Sri Lankan Businesses Use POS Software for Billing and Sales' },
+      {
+        type: 'ul',
+        items: [
+          '**Faster, more accurate billing.** Fewer pricing and arithmetic mistakes, and shorter queues at busy hours.',
+          '**Stock you can trust.** Stock drops automatically with each sale, so you spot fast sellers and slow movers before shelves run empty or cash sits in unsold goods.',
+          '**Clear daily numbers.** Sales by day, by item, by cashier and by payment type, without building a spreadsheet.',
+          '**Control over staff access.** Cashiers can bill, while only managers can change prices or see profit reports.',
+          '**Better customer records.** Regular customers, credit balances and past purchases are in one place instead of a notebook.'
+        ]
+      },
+      { type: 'h2', text: 'Key Features a POS System Sri Lanka Businesses Need' },
+      {
+        type: 'p',
+        text: 'Most POS products list dozens of features. Compare the ones below, using your own items and your own staff, rather than comparing brochures.'
+      },
+      { type: 'h3', text: 'Billing speed and ease of use' },
+      {
+        type: 'p',
+        text: 'Time a normal bill: how many taps from first item to printed receipt? Check that returns, discounts, part payments and held bills work without awkward workarounds. If your busiest cashier cannot use it comfortably after half a day, the system will slow you down at exactly the wrong moment. [POS billing software](/features/pos-billing-software/) should make the counter faster, not add steps.'
+      },
+      { type: 'h3', text: 'Inventory management and barcode scanning' },
+      {
+        type: 'p',
+        text: 'Stock should update on every sale, and you should be able to receive new stock, adjust it, and count it against the system. For supermarkets and any shop with many items, [barcode billing](/features/barcode-billing-software/) saves time and reduces wrong-item errors. Ask how you will handle loose or unlabelled items, and whether the system can print its own barcode labels. See also how [inventory management software](/features/inventory-management-software/) keeps stock live at the counter.'
+      },
+      { type: 'h3', text: 'Sales reporting' },
+      {
+        type: 'p',
+        text: 'Good reports answer plain questions: what sold today, what is slow, who owes you money, which cashier handled most sales. Check that reports can be filtered by date and branch and exported if your accountant wants them. [Sales reporting software](/features/sales-reporting-software/) is only useful if you can read it without training.'
+      },
+      { type: 'h3', text: 'Multi-branch management' },
+      {
+        type: 'p',
+        text: 'If you run, or plan to open, more than one outlet, ask whether stock, prices and reports can be managed across branches from one login, and whether staff access can be limited per branch. Switching software later is far more painful than choosing a multi-branch-ready system now. [Multi-store management](/features/multi-store-management-software/) is worth testing during your trial, not after.'
+      },
+      { type: 'h3', text: 'Payments' },
+      {
+        type: 'p',
+        text: 'List how your customers actually pay: cash, card, bank transfer, QR, or a mix. Check that the system records split payments and keeps credit balances per customer. For QR payments, note that LANKAQR is the common QR standard adopted by Sri Lankan financial institutions, according to the [Central Bank of Sri Lanka](https://www.cbsl.gov.lk/en/node/8695); a customer pays from a LANKAQR-compliant app and the money goes to the merchant’s bank account. Whether a particular POS connects to card machines or QR providers is a vendor-specific question, so ask for it in writing and test it before you rely on it.'
+      },
+      { type: 'h2', text: 'Sri Lanka Checks: VAT, Invoices and Currency' },
+      {
+        type: 'p',
+        text: 'Do not assume a POS built for another country fits Sri Lankan rules. Tax and invoice formats differ, and a system designed around another country’s tax model can look right in a demo and still produce bills your accountant has to fix. These points come from the Inland Revenue Department:'
+      },
+      {
+        type: 'ul',
+        items: [
+          'The standard VAT rate has been 18% since 1 January 2024.',
+          'VAT registration is required when taxable turnover exceeds Rs. 15 million in a quarter or Rs. 60 million in a 12-month period, and registered persons issue tax invoices to other registered persons. Voluntary registration is also possible.',
+          'Check the current position on the [Inland Revenue Department VAT page](https://www.ird.gov.lk/en/type%20of%20taxes/sitepages/value%20added%20tax%20%28vat%29.aspx), since rates, thresholds and exemptions can change.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'What this means when you choose software: ask the vendor to show a sample invoice with your business details, LKR amounts and VAT shown the way your accountant expects, and to confirm in writing how VAT and any other taxes you charge are set up. If you are not VAT-registered, check that you can bill without a VAT line. Your accountant, not the software vendor, is the person to confirm what your business must issue.'
+      },
+      { type: 'h2', text: 'POS Software Pricing in LKR: What Affects the Cost' },
+      {
+        type: 'p',
+        text: 'Prices vary widely by vendor, so be wary of any article that quotes a standard figure. What matters is the total cost for your setup over a year or more. Check these factors:'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**Pricing model.** Monthly or yearly subscription, one-time licence, or a mix. Subscriptions spread the cost but continue; licences cost more upfront and may charge for upgrades.',
+          '**Number of users, counters and branches.** Many plans charge per extra user or per outlet.',
+          '**Feature tiers.** Barcode billing, purchase management, multi-branch and reports may sit in higher plans.',
+          '**Hardware.** Receipt printers, scanners, cash drawers, a computer or tablet and label printers are usually separate purchases.',
+          '**Setup and training.** Importing your item list and training staff may be free, chargeable or optional.',
+          '**Support and updates.** Check whether support hours, phone support and upgrades are included.',
+          '**Payment and card fees.** These are charged by banks or payment providers, not by the software.',
+          '**Currency.** If the vendor prices in another currency, ask what you will pay in LKR and how exchange-rate changes are handled.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'As an illustration only, with made-up numbers: if one plan is LKR 5,000 a month but charges LKR 2,000 a month for each extra branch and LKR 1,000 for each extra user, a two-branch shop with four users could pay far more than the headline price. Always ask for a quote for your exact setup, and compare quotes on the same basis. LocalPOS’s own plans are on its [pricing page](/pricing/).'
+      },
+      { type: 'h2', text: 'Cloud-Based vs Locally Installed POS' },
+      {
+        type: 'p',
+        text: 'This is one of the biggest decisions, and neither type is better in every case.'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**Cloud-based POS** stores data online. You can check sales from anywhere, manage branches together, and updates and backups are usually handled by the vendor. The trade-off is that you depend on an internet connection, so ask what happens at the counter when it drops.',
+          '**Locally installed POS** keeps data on your own computer or server. It can keep billing during an internet outage, but backups, updates, security and remote access become your responsibility, and multi-branch reporting is harder.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Some products combine both, billing offline and syncing when the connection returns. Do not assume that; ask the vendor to demonstrate it. A single shop with an unreliable connection may lean local or hybrid, while an owner with several branches who wants live numbers may prefer cloud.'
+      },
+      { type: 'h2', text: 'Internet Connectivity, Backup, Security and Support' },
+      {
+        type: 'ul',
+        items: [
+          '**Connectivity.** Test the system on your real connection, and ask what happens during an outage, a power cut or a slow link. A backup connection such as a mobile data hotspot is a sensible precaution for any cloud system.',
+          '**Data backup.** Ask how often data is backed up, where, and how you would restore it. For local systems, set a regular backup to a separate drive or location and test a restore.',
+          '**Security and access.** Staff should have their own logins with limited permissions, and sensitive actions such as price changes or deleting bills should be restricted. Ask how data is protected and who at the vendor can see it.',
+          '**Support.** Find out the support hours, languages and channels, and how fast a billing-stopped problem is handled. A system your staff cannot get help with on a Saturday evening is a risk for a shop or restaurant.'
+        ]
+      },
+      { type: 'h2', text: 'Questions to Ask a POS Vendor Before You Buy' },
+      {
+        type: 'ol',
+        items: [
+          'Can you show a sample invoice and receipt in LKR, with VAT set up for my business?',
+          'Is your software built for Sri Lankan businesses, or adapted from another market? Which features are confirmed for Sri Lanka?',
+          'Does it work during an internet outage, and what happens to those sales afterwards?',
+          'Where is my data stored, how often is it backed up, and can I export it if I leave?',
+          'What is the complete cost for my users, counters and branches, including hardware, setup, training and support?',
+          'What happens to my price if I add a branch or user later?',
+          'Which receipt printers, barcode scanners and payment devices does it work with?',
+          'Can I trial it with my own items before I commit?',
+          'Who provides support, in what hours and in which language, and how are urgent problems handled?',
+          'Can you give me references from similar businesses I can contact?'
+        ]
+      },
+      { type: 'h2', text: 'Where LocalPOS Fits (and What to Confirm)' },
+      {
+        type: 'p',
+        text: 'LocalPOS is billing and POS software that keeps your data online. Its site describes fast counter billing, barcode scanner support, stock that updates with each sale, sales reports, customer records and multi-store management, usable from any device with an internet connection. Pricing is not yet published on the site.'
+      },
+      {
+        type: 'p',
+        text: 'It is also fair to say that LocalPOS currently describes itself as built for Indian businesses first, with GST, HSN codes and rupee formatting. This article does not claim that LocalPOS supports Sri Lankan VAT rules, LKR billing, local payment integrations or local support. If you are considering it, ask the team to confirm exactly what works for a Sri Lankan business before you decide. That is the same standard you should apply to every vendor on your list.'
+      },
+      {
+        type: 'callout',
+        title: 'Test it with your own items',
+        text: 'If LocalPOS is on your shortlist, [book a free demo](/book-a-demo/) or [contact the team](/contact-us/) with your questions about LKR billing, VAT invoices and support in Sri Lanka. For specific business types, see LocalPOS for [supermarkets](/solutions/supermarket-billing-software/), [restaurants](/solutions/restaurant-billing-software/) and [retail shops](/solutions/retail-billing-software/).'
+      },
+      { type: 'h2', text: 'A Practical Checklist for Choosing the Right POS System' },
+      {
+        type: 'ol',
+        items: [
+          'Write down how you sell: items, loose or packaged goods, payment types, credit customers, and number of counters and branches.',
+          'Shortlist two or three systems and request a trial or demo with your own item list.',
+          'Time a normal bill and a return at the counter with your real cashier.',
+          'Confirm stock updates automatically with every sale and that barcode scanning works with your scanner.',
+          'Check the reports answer the questions you ask about your business each week.',
+          'Get a sample invoice in LKR and confirm VAT handling with your accountant.',
+          'Decide on cloud, local or hybrid, and test an internet outage.',
+          'Ask how backups, restores and staff permissions work.',
+          'Get a written quote for your full setup, including hardware, training, support and growth.',
+          'Confirm support hours and speed, and ask for references from similar businesses.'
+        ]
+      },
+      { type: 'h2', text: 'Final Thoughts on Choosing a POS System in Sri Lanka' },
+      {
+        type: 'p',
+        text: 'The right POS system Sri Lanka businesses can depend on is the one that fits your counter, your stock and your staff, with costs and VAT handling written down clearly. Compare billing speed, inventory and barcode support, reporting, multi-branch needs, cloud versus local, backup, security and support, and put the same questions to every vendor. Run a trial with your own items before you commit, and have your accountant check the invoice format.'
+      }
+    ],
+    faqs: [
+      {
+        q: 'What is a POS system?',
+        a: 'A POS (point of sale) system is the software and hardware used to create bills, take payments and update stock when a customer buys. It also records each sale so you can see reports on sales, stock and customers.'
+      },
+      {
+        q: 'How do I choose a POS system for a shop or restaurant in Sri Lanka?',
+        a: 'List how you sell, shortlist a few options, and trial each with your own items. Compare billing speed, stock and barcode support, reports, cloud or local setup, backup, support and the total cost in LKR, and have your accountant check the invoice and VAT setup.'
+      },
+      {
+        q: 'How much does a POS system cost in Sri Lanka?',
+        a: 'It depends on the vendor, the number of users and branches, the plan, and the hardware you need. Ask each vendor for a written quote for your exact setup, including hardware, setup, training and support, and compare them on the same basis.'
+      },
+      {
+        q: 'Is cloud or local POS better for a Sri Lankan business?',
+        a: 'Cloud POS suits owners who want remote access and multi-branch reporting, but it depends on an internet connection. Local POS can keep billing without internet but leaves backups and updates to you. Ask any vendor what happens during an outage.'
+      },
+      {
+        q: 'Do I need VAT features in my POS software?',
+        a: 'If your business is VAT-registered, yes: you need correct tax invoices. The Inland Revenue Department sets the VAT rules and registration thresholds, so check its VAT page and confirm your requirements with your accountant before you pick software.'
+      },
+      {
+        q: 'Does LocalPOS support Sri Lankan VAT and LKR billing?',
+        a: 'LocalPOS describes itself as built for Indian businesses first, so please ask the team to confirm Sri Lankan VAT, LKR and local support before you decide. This guide does not claim those features.'
+      }
+    ]
+  },
   'best-billing-software-for-small-business': {
     blocks: [
       {

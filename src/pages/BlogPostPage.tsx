@@ -76,7 +76,7 @@ function articleSchema(post: BlogPost): Record<string, unknown> {
     description: post.seoDescription,
     datePublished: post.date,
     dateModified: post.date,
-    inLanguage: 'en-IN',
+    inLanguage: post.language ?? 'en-IN',
     keywords: [post.keyword, ...post.secondary].join(', '),
     image: [absoluteUrl(SITE.ogImage)],
     author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },

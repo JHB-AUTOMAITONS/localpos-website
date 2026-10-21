@@ -57,6 +57,8 @@ export interface BlogPostMeta {
   readingMinutes: number
   excerpt: string
   tint: Tint
+  /** BCP 47 language tag for the Article schema; defaults to en-IN. */
+  language?: string
   /** Feature slugs to promote at the end of the post. */
   relatedFeatures: string[]
 }
