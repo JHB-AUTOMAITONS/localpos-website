@@ -15,7 +15,7 @@ export const BLOG_META: BlogPostMeta[] = [
       'POS billing software'
     ],
     title: 'Inventory Management Software Malaysia: How to Choose the Right One for Your Retail Business',
-    seoTitle: 'Inventory Management Software Malaysia: How to Choose',
+    seoTitle: 'Inventory Management Software Malaysia: Buyer’s Guide | LocalPOS',
     seoDescription: 'Comparing inventory management software Malaysia retailers can use? See the features that matter, manual vs software, and questions to ask first.',
     category: 'Inventory',
     date: '2026-10-22',
