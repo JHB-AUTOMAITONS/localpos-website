@@ -6,6 +6,141 @@ import { BLOG_META } from './blogMeta'
  * Titles, SEO fields, dates and cards live in blogMeta.ts. Add a post by adding an entry in both files.
  */
 const CONTENT: Record<string, BlogContent> = {
+  'inventory-management-software-malaysia': {
+    blocks: [
+      {
+        type: 'p',
+        text: 'If you are comparing inventory management software Malaysia shops use today, the hard part is not finding options but telling them apart. Most promise live stock counts and reports. This guide is for retail shop owners, supermarkets, convenience stores and small businesses. It explains what to look for, how software compares with manual tracking, and which questions to ask a vendor before you pay.'
+      },
+      {
+        type: 'p',
+        text: '**The short answer:** pick software your own staff will actually use, that updates stock automatically with every sale and delivery, that tells you what to reorder, and whose full cost, support and data handling the vendor can explain in writing.'
+      },
+      { type: 'h2', text: 'Why Inventory Management Matters for Malaysian Retail Businesses' },
+      {
+        type: 'p',
+        text: 'Stock is usually your biggest cash commitment. Too little and customers leave without what they came for. Too much and money sits on shelves, ages, or expires. Retail runs on thin margins and fast-moving items, so small errors repeat daily: a miscounted carton, an unrecorded return, a price entered twice. Good records let you reorder on facts instead of memory, spot shrinkage early, and see which items earn their shelf space.'
+      },
+      { type: 'h2', text: 'Common Inventory Management Problems Faced by Retailers' },
+      {
+        type: 'ul',
+        items: [
+          '**Counts that drift from reality.** Sales, returns and damaged goods are not all recorded, so the system and the shelf disagree.',
+          '**Stock-outs on best sellers** because nobody noticed the quantity falling.',
+          '**Overstock and slow movers** bought “just in case” and never cleared.',
+          '**No view across branches or storerooms,** so one outlet runs out while another has surplus.',
+          '**Supplier and purchase records** spread across notebooks, chats and invoices.',
+          '**Time lost on stock-takes** that take days and still produce arguments.'
+        ]
+      },
+      { type: 'h2', text: 'Essential Features to Look for in Inventory Management Software' },
+      { type: 'h3', text: 'Stock tracking' },
+      {
+        type: 'p',
+        text: 'Quantities should change when you bill a sale or receive goods, with no second entry. Check how the software handles items sold by weight or pack size, returns, and variants such as size or flavour.'
+      },
+      { type: 'h3', text: 'Low-stock alerts' },
+      {
+        type: 'p',
+        text: 'You should be able to set a minimum per item and see a clear reorder list. Ask whether alerts can differ by item, since a fast seller and a seasonal item need different levels.'
+      },
+      { type: 'h3', text: 'Purchase and supplier management' },
+      {
+        type: 'p',
+        text: 'Look for purchase orders, goods received entries and supplier records, so stock rises when goods arrive and you can see what you bought, from whom, and at what cost.'
+      },
+      { type: 'h3', text: 'Stock movement and adjustments' },
+      {
+        type: 'p',
+        text: 'Every change should leave a trail: who adjusted what, when and why. This is what makes stock-takes and loss investigations manageable. Check how counts are entered and how differences are corrected.'
+      },
+      { type: 'h3', text: 'Sales and inventory reporting' },
+      {
+        type: 'p',
+        text: 'Useful reports answer questions like what sold this week, what has not sold in 60 days, and what is below its minimum. If you cannot read a report in a minute, you will stop opening it.'
+      },
+      { type: 'h3', text: 'Multi-location inventory, where relevant' },
+      {
+        type: 'p',
+        text: 'If you have more than one outlet or a separate storeroom, check that stock is tracked per location and can be transferred between them. If you have one shop, do not pay for this yet, but ask whether you can upgrade later.'
+      },
+      { type: 'h2', text: 'Manual Stock Tracking vs Inventory Management Software' },
+      {
+        type: 'ul',
+        items: [
+          '**Stock updates.** Manual: typed in later, if at all. Software: automatic with each sale and delivery.',
+          '**Reorder awareness.** Manual: memory and shelf checks. Software: alerts against the minimums you set.',
+          '**Stock-take.** Manual: slow and often disputed. Software: count against the system, with a record of differences.',
+          '**Multiple branches.** Manual: hard to combine. Software: one view with stock per location.',
+          '**Cost.** Manual: cheap, but staff time adds up. Software: a subscription or licence, plus setup.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'A spreadsheet can work for a very small shop with few items. It struggles once you sell many items a day, have several staff share the work, or add a second location. If you are moving off paper, see our [step-by-step plan for moving from a stock register to software](/blog/moving-from-a-stock-register-to-software/).'
+      },
+      { type: 'h2', text: 'How to Choose Inventory Management Software Malaysia Businesses Can Rely On' },
+      {
+        type: 'ol',
+        items: [
+          '**Describe how you operate.** Count your items, locations and staff, and how goods arrive and leave.',
+          '**Shortlist two or three options** rather than choosing from a “top 10” list alone. Such lists are often written by vendors that appear in them.',
+          '**Test with your own items** and a few real situations: a return, a partial delivery, a damaged carton.',
+          '**Check the fit with your till.** If billing and stock live in separate tools, you will re-key data or reconcile later.',
+          '**Compare total cost,** not the headline price: users, locations, hardware, setup, training and support.',
+          '**Check local fit.** Ask about Malaysian ringgit (RM) display and invoices, the payment methods and tax set-up you need, and support hours in your time zone. Get these confirmed in writing and check them with your accountant. Do not assume them.'
+        ]
+      },
+      { type: 'h2', text: 'Questions to Ask Before Choosing an Inventory System' },
+      {
+        type: 'ul',
+        items: [
+          'Does stock update automatically with every sale, return and delivery?',
+          'Can I see stock by location and move it between them?',
+          'How do low-stock alerts and reorder suggestions work?',
+          'How do stock-takes and adjustments work, and is every change logged?',
+          'Which barcode scanners and printers does it support?',
+          'What does it cost for my users and locations, including setup and support?',
+          'Does it work if the internet drops, and where is my data stored and backed up?',
+          'Can I export my data if I leave?',
+          'What are your support hours, and can I trial it with my own items?'
+        ]
+      },
+      { type: 'h2', text: 'How Inventory Software Can Work Alongside POS Billing' },
+      {
+        type: 'p',
+        text: 'When billing and inventory share one system, the sale is the stock update. The cashier scans an item, the bill is created and the quantity drops, with no separate entry. That is why many retailers choose [POS billing software](/features/pos-billing-software/) with inventory built in. A barcode scanner makes this faster and cuts wrong-item errors; see [barcode billing](/features/barcode-billing-software/). Once stock is accurate, you can also work on [reducing dead stock](/blog/how-to-reduce-dead-stock-in-a-retail-shop/) and, with several outlets, [managing stock across branches](/blog/how-to-manage-stock-across-multiple-shop-branches/).'
+      },
+      { type: 'h2', text: 'Conclusion: Choosing Inventory Management Software for Your Shop' },
+      {
+        type: 'p',
+        text: 'The right inventory management software in Malaysia is the one that matches how you sell: automatic stock updates, reorder alerts, supplier records, a clear adjustment history and reports you will actually read. Test it with your own items, compare the full cost, and confirm local requirements before you commit.'
+      },
+      {
+        type: 'callout',
+        title: 'Where LocalPOS fits',
+        text: 'LocalPOS describes its [inventory management software](/features/inventory-management-software/) as live stock levels with low-stock alerts, alongside [purchase management](/features/purchase-management-software/). LocalPOS currently presents itself as built for Indian businesses (GST, rupee formatting), and this article does not claim support for Malaysian ringgit billing, tax set-up, payments or local support. If you are considering it, [talk to the team](/contact-us/) to confirm what works for a Malaysian shop first.'
+      }
+    ],
+    faqs: [
+      {
+        q: 'What does inventory management software do?',
+        a: 'It tracks what you have, what you sell and what you buy. Stock updates as sales and deliveries happen, and you are alerted when items run low.'
+      },
+      {
+        q: 'Do I need inventory software for a small shop?',
+        a: 'If you sell many items, have several staff at the counter, or keep running out of items, it usually saves time and money. A very small range may manage with a spreadsheet for now.'
+      },
+      {
+        q: 'Should inventory software be separate from my POS?',
+        a: 'Not necessarily. Billing and stock in one system avoid double entry. If you use separate tools, ask how they connect and who keeps them in step.'
+      },
+      {
+        q: 'How much does inventory management software cost in Malaysia?',
+        a: 'It varies by vendor, number of users and locations, and the hardware you need. Ask for a written quote for your exact setup and compare quotes on the same basis.'
+      }
+    ]
+  },
   'pos-system-sri-lanka': {
     blocks: [
       {

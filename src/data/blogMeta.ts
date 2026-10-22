@@ -6,6 +6,26 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'inventory-management-software-malaysia',
+    keyword: 'inventory management software malaysia',
+    secondary: [
+      'stock tracking',
+      'low-stock alerts',
+      'manual stock tracking',
+      'POS billing software'
+    ],
+    title: 'Inventory Management Software Malaysia: How to Choose the Right One for Your Retail Business',
+    seoTitle: 'Inventory Management Software Malaysia: How to Choose',
+    seoDescription: 'Comparing inventory management software Malaysia retailers can use? See the features that matter, manual vs software, and questions to ask first.',
+    category: 'Inventory',
+    date: '2026-10-22',
+    readingMinutes: 6,
+    excerpt: 'A buyer’s guide for Malaysian retailers: the stock features to compare, how software differs from manual tracking, and the questions to ask any vendor before you commit.',
+    tint: 'sky',
+    language: 'en-MY',
+    relatedFeatures: [ 'inventory-management-software', 'pos-billing-software', 'purchase-management-software', 'barcode-billing-software' ]
+  },
+  {
     slug: 'pos-system-sri-lanka',
     keyword: 'POS system Sri Lanka',
     secondary: [
