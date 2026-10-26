@@ -108,7 +108,7 @@ for (const route of SITE_ROUTES) {
   if (kw) {
     const p = kw.primary
     const checks = {
-      url: route.path === '/' || route.path.includes(slugify(p)),
+      url: route.path === '/' || kw.keepUrl || route.path.includes(slugify(p)),
       title: has(title, p),
       description: has(description, p),
       h1: h1s.some((h) => has(h, p)),

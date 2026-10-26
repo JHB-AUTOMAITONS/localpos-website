@@ -17,6 +17,8 @@ export interface KeywordEntry {
   path: string
   primary: string
   secondary: string[]
+  /** The URL predates the keyword, so verify-seo skips the URL check. */
+  keepUrl?: boolean
 }
 
 /**
@@ -33,7 +35,7 @@ export const KEYWORD_MAP: KeywordEntry[] = [
   ...FEATURES.map((f): KeywordEntry => ({ path: f.path, primary: f.primary, secondary: f.secondary })),
   ...SOLUTIONS.map((s): KeywordEntry => ({ path: s.path, primary: s.primary, secondary: s.secondary })),
   ...COUNTRY_CONTENT.map((c): KeywordEntry => ({ path: `/${c.slug}/`, primary: c.primary, secondary: c.secondary })),
-  ...BLOG_META.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary })),
+  ...BLOG_META.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary, keepUrl: p.keepUrl })),
 ]
 
 /**

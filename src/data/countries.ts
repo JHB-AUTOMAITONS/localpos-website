@@ -87,7 +87,7 @@ const CONTENT: Record<string, CountryContent> = {
     relatedFeatures: ['pos-billing-software', 'inventory-management-software', 'barcode-billing-software', 'sales-reporting-software'],
     ctaTitle: 'See LocalPOS with your own items',
     ctaText: 'Book a free demo and bring your item list and your questions about LKR, VAT and support.',
-    readNext: { lead: 'Still comparing vendors?', label: 'Read our guide to choosing a POS system in Sri Lanka', to: '/blog/pos-system-sri-lanka/' },
+    readNext: { lead: 'Still comparing vendors?', label: 'Read our guide to choosing POS software in Sri Lanka', to: '/blog/pos-system-sri-lanka/' },
   },
 
   'pos-system-singapore': {

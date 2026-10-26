@@ -15,7 +15,7 @@ export const BLOG_META: BlogPostMeta[] = [
       'POS billing software'
     ],
     title: 'Inventory Management Software Malaysia: How to Choose the Right One for Your Retail Business',
-    seoTitle: 'Inventory Management Software Malaysia: Buyer’s Guide | LocalPOS',
+    seoTitle: 'Inventory Management Software Malaysia: Buyer’s Guide',
     seoDescription: 'Comparing inventory management software Malaysia retailers can use? See the features that matter, manual vs software, and questions to ask first.',
     category: 'Inventory',
     date: '2026-10-22',
@@ -27,7 +27,7 @@ export const BLOG_META: BlogPostMeta[] = [
   },
   {
     slug: 'pos-system-sri-lanka',
-    keyword: 'POS system Sri Lanka',
+    keyword: 'POS software in Sri Lanka',
     secondary: [
       'POS software pricing',
       'cloud-based POS',
@@ -35,14 +35,16 @@ export const BLOG_META: BlogPostMeta[] = [
       'questions to ask a POS vendor',
       'multi-branch management'
     ],
-    title: 'POS System Sri Lanka: How to Choose the Right POS Software for Your Business',
-    seoTitle: 'POS System Sri Lanka: How to Choose the Right POS Software',
-    seoDescription: 'Looking for a POS system Sri Lanka businesses can rely on? Compare features, cloud vs local, pricing factors and vendor questions, plus a buying checklist.',
+    title: 'How to Choose POS Software in Sri Lanka: A Business Guide',
+    seoTitle: 'How to Choose POS Software in Sri Lanka: A Business Guide',
+    seoDescription: 'Choosing POS software in Sri Lanka? Compare billing, stock, reporting, cloud vs local and pricing factors, then use our checklist to pick the right fit.',
     category: 'Billing',
     date: '2026-10-21',
     readingMinutes: 9,
-    excerpt: 'A practical guide for Sri Lankan retailers, supermarkets and restaurants: the features to compare, what drives POS pricing, cloud versus local software, and questions to ask any vendor.',
+    excerpt: 'An independent guide for Sri Lankan retailers, supermarkets and restaurants: the features to compare, what drives POS pricing, cloud versus local software, and questions to ask any vendor.',
     tint: 'brand',
+    /** The URL was set before this post moved to an informational keyword, so the URL-keyword check does not apply. */
+    keepUrl: true,
     language: 'en',
     relatedFeatures: [ 'pos-billing-software', 'inventory-management-software', 'barcode-billing-software', 'sales-reporting-software', 'multi-store-management-software' ]
   },

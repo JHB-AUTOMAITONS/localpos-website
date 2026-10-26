@@ -145,7 +145,7 @@ const CONTENT: Record<string, BlogContent> = {
     blocks: [
       {
         type: 'p',
-        text: 'A POS system Sri Lanka businesses can rely on does more than print bills. It records every sale, keeps stock accurate and shows you at the end of the day what actually made money. This guide is for retail shop owners, supermarkets, restaurants and other small and medium businesses comparing POS and billing software. It explains how a POS works, which features matter, what drives the price, whether to pick cloud or local software, and which questions to ask a vendor before you pay.'
+        text: 'Choosing POS software in Sri Lanka is easier when you know what to compare. Good POS software does more than print bills. It records every sale, keeps stock accurate and shows you at the end of the day what actually made money. This guide is for retail shop owners, supermarkets, restaurants and other small and medium businesses comparing POS and billing software. It explains how a POS works, which features matter, what drives the price, whether to pick cloud or local software, and which questions to ask a vendor before you pay.'
       },
       {
         type: 'p',
@@ -180,7 +180,7 @@ const CONTENT: Record<string, BlogContent> = {
           '**Better customer records.** Regular customers, credit balances and past purchases are in one place instead of a notebook.'
         ]
       },
-      { type: 'h2', text: 'Key Features a POS System Sri Lanka Businesses Need' },
+      { type: 'h2', text: 'Key Features to Compare in POS Software in Sri Lanka' },
       {
         type: 'p',
         text: 'Most POS products list dozens of features. Compare the ones below, using your own items and your own staff, rather than comparing brochures.'
@@ -247,7 +247,7 @@ const CONTENT: Record<string, BlogContent> = {
       },
       {
         type: 'p',
-        text: 'As an illustration only, with made-up numbers: if one plan is LKR 5,000 a month but charges LKR 2,000 a month for each extra branch and LKR 1,000 for each extra user, a two-branch shop with four users could pay far more than the headline price. Always ask for a quote for your exact setup, and compare quotes on the same basis. LocalPOS’s own plans are on its [pricing page](/pricing/).'
+        text: 'As an illustration only, with made-up numbers: if one plan is LKR 5,000 a month but charges LKR 2,000 a month for each extra branch and LKR 1,000 for each extra user, a two-branch shop with four users could pay far more than the headline price. Always ask for a quote for your exact setup, and compare quotes on the same basis: the same number of users, counters and branches, the same hardware, and the total over at least a year. LocalPOS’s own plans are on its [pricing page](/pricing/).'
       },
       { type: 'h2', text: 'Cloud-Based vs Locally Installed POS' },
       {
@@ -298,14 +298,14 @@ const CONTENT: Record<string, BlogContent> = {
       },
       {
         type: 'p',
-        text: 'It is also fair to say that LocalPOS currently describes itself as built for Indian businesses first, with GST, HSN codes and rupee formatting. This article does not claim that LocalPOS supports Sri Lankan VAT rules, LKR billing, local payment integrations or local support. If you are considering it, ask the team to confirm exactly what works for a Sri Lankan business before you decide. That is the same standard you should apply to every vendor on your list. Our [LocalPOS page for Sri Lanka](/pos-system-sri-lanka/) summarises the product and what is still to be confirmed.'
+        text: 'It is also fair to say that LocalPOS currently describes itself as built for Indian businesses first, with GST, HSN codes and rupee formatting. This article does not claim that LocalPOS supports Sri Lankan VAT rules, LKR billing, local payment integrations or local support. If you are considering it, ask the team to confirm exactly what works for a Sri Lankan business before you decide. That is the same standard you should apply to every vendor on your list. For a product overview and the list of points still to be confirmed, see [LocalPOS for businesses in Sri Lanka](/pos-system-sri-lanka/).'
       },
       {
         type: 'callout',
         title: 'Test it with your own items',
         text: 'If LocalPOS is on your shortlist, [book a free demo](/book-a-demo/) or [contact the team](/contact-us/) with your questions about LKR billing, VAT invoices and support in Sri Lanka. For specific business types, see LocalPOS for [supermarkets](/solutions/supermarket-billing-software/), [restaurants](/solutions/restaurant-billing-software/) and [retail shops](/solutions/retail-billing-software/).'
       },
-      { type: 'h2', text: 'A Practical Checklist for Choosing the Right POS System' },
+      { type: 'h2', text: 'A Practical Checklist for Choosing POS Software' },
       {
         type: 'ol',
         items: [
@@ -321,10 +321,10 @@ const CONTENT: Record<string, BlogContent> = {
           'Confirm support hours and speed, and ask for references from similar businesses.'
         ]
       },
-      { type: 'h2', text: 'Final Thoughts on Choosing a POS System in Sri Lanka' },
+      { type: 'h2', text: 'Final Thoughts on Choosing POS Software in Sri Lanka' },
       {
         type: 'p',
-        text: 'The right POS system Sri Lanka businesses can depend on is the one that fits your counter, your stock and your staff, with costs and VAT handling written down clearly. Compare billing speed, inventory and barcode support, reporting, multi-branch needs, cloud versus local, backup, security and support, and put the same questions to every vendor. Run a trial with your own items before you commit, and have your accountant check the invoice format.'
+        text: 'The right POS software in Sri Lanka is the one that fits your counter, your stock and your staff, with costs and VAT handling written down clearly. Compare billing speed, inventory and barcode support, reporting, multi-branch needs, cloud versus local, backup, security and support, and put the same questions to every vendor. Run a trial with your own items before you commit, and have your accountant check the invoice format.'
       }
     ],
     faqs: [
@@ -333,7 +333,7 @@ const CONTENT: Record<string, BlogContent> = {
         a: 'A POS (point of sale) system is the software and hardware used to create bills, take payments and update stock when a customer buys. It also records each sale so you can see reports on sales, stock and customers.'
       },
       {
-        q: 'How do I choose a POS system for a shop or restaurant in Sri Lanka?',
+        q: 'How do I choose POS software for a shop or restaurant in Sri Lanka?',
         a: 'List how you sell, shortlist a few options, and trial each with your own items. Compare billing speed, stock and barcode support, reports, cloud or local setup, backup, support and the total cost in LKR, and have your accountant check the invoice and VAT setup.'
       },
       {

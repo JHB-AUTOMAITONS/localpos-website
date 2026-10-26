@@ -57,6 +57,8 @@ export interface BlogPostMeta {
   readingMinutes: number
   excerpt: string
   tint: Tint
+  /** Keep the existing URL although it no longer contains the keyword (skips the URL-keyword check in verify-seo). */
+  keepUrl?: boolean
   /** BCP 47 language tag for the Article schema; defaults to en-IN. */
   language?: string
   /** Feature slugs to promote at the end of the post. */
