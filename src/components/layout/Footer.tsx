@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { TearLine } from '@/components/ui/TearLine'
 import { FEATURE_META } from '@/data/featureMeta'
 import { SOLUTION_META } from '@/data/solutionMeta'
+import { COUNTRY_META } from '@/data/countryMeta'
 import { BLOG_META } from '@/data/blogMeta'
 import { SITE } from '@/data/site'
 
@@ -60,7 +61,7 @@ export function Footer() {
 
         <TearLine notch="bg-paper-2" />
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-12 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-12 md:grid-cols-3 lg:grid-cols-7">
           <FooterColumn title="Product">
             <FooterLink to="/pricing/">Pricing</FooterLink>
             <FooterLink to="/book-a-demo/">Book a Demo</FooterLink>
@@ -81,6 +82,14 @@ export function Footer() {
             {SOLUTION_META.map((s) => (
               <FooterLink key={s.slug} to={s.path}>
                 {s.navLabel}
+              </FooterLink>
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title="Countries">
+            {COUNTRY_META.map((c) => (
+              <FooterLink key={c.slug} to={c.path}>
+                {c.name}
               </FooterLink>
             ))}
           </FooterColumn>

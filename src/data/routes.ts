@@ -2,6 +2,8 @@ import { FEATURES } from './features'
 import { SOLUTIONS } from './solutions'
 import { BLOG_META } from './blogMeta'
 import { LEGAL_PAGES } from './legal'
+import { COUNTRY_CONTENT } from './countries'
+import { COUNTRY_META } from './countryMeta'
 
 export interface SiteRoute {
   path: string
@@ -30,6 +32,7 @@ export const KEYWORD_MAP: KeywordEntry[] = [
   },
   ...FEATURES.map((f): KeywordEntry => ({ path: f.path, primary: f.primary, secondary: f.secondary })),
   ...SOLUTIONS.map((s): KeywordEntry => ({ path: s.path, primary: s.primary, secondary: s.secondary })),
+  ...COUNTRY_CONTENT.map((c): KeywordEntry => ({ path: `/${c.slug}/`, primary: c.primary, secondary: c.secondary })),
   ...BLOG_META.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary })),
 ]
 
@@ -42,6 +45,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/', priority: 1, changefreq: 'weekly' },
   ...FEATURES.map((f): SiteRoute => ({ path: f.path, priority: 0.9, changefreq: 'monthly' })),
   ...SOLUTIONS.map((s): SiteRoute => ({ path: s.path, priority: 0.9, changefreq: 'monthly' })),
+  ...COUNTRY_META.map((c): SiteRoute => ({ path: c.path, priority: 0.8, changefreq: 'monthly' })),
   { path: '/pricing/', priority: 0.8, changefreq: 'monthly' },
   { path: '/book-a-demo/', priority: 0.8, changefreq: 'yearly' },
   { path: '/blog/', priority: 0.7, changefreq: 'weekly', lastmod: BLOG_META[0]?.date },

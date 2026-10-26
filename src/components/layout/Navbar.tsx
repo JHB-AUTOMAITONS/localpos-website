@@ -5,6 +5,7 @@ import { Logo } from '@/components/Logo'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { FEATURE_META } from '@/data/featureMeta'
 import { SOLUTION_META } from '@/data/solutionMeta'
+import { COUNTRY_META } from '@/data/countryMeta'
 import { BLOG_META } from '@/data/blogMeta'
 import { SITE } from '@/data/site'
 import { TINTS } from '@/lib/tint'
@@ -12,7 +13,7 @@ import type { Tint } from '@/data/types'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { cn } from '@/lib/cn'
 
-type MenuKey = 'features' | 'solutions' | 'resources'
+type MenuKey = 'features' | 'solutions' | 'countries' | 'resources'
 
 interface MenuItem {
   label: string
@@ -24,6 +25,8 @@ interface MenuItem {
 
 const featureItems: MenuItem[] = FEATURE_META.map((f) => ({ label: f.navLabel, blurb: f.navBlurb, href: f.path, icon: f.icon, tint: f.tint }))
 const solutionItems: MenuItem[] = SOLUTION_META.map((s) => ({ label: s.navLabel, blurb: s.navBlurb, href: s.path, icon: s.icon, tint: s.tint }))
+const COUNTRY_TINTS: Tint[] = ['brand', 'sky', 'gold', 'violet', 'coral']
+const countryItems: MenuItem[] = COUNTRY_META.map((c, i) => ({ label: c.name, blurb: c.navBlurb, href: c.path, icon: 'pin', tint: COUNTRY_TINTS[i % COUNTRY_TINTS.length] }))
 const latestPosts = BLOG_META.slice(0, 3)
 
 const linkBase =
@@ -124,6 +127,7 @@ export function Navbar() {
   const path = location.pathname
   const inFeatures = path.startsWith('/features/')
   const inSolutions = path.startsWith('/solutions/')
+  const inCountries = COUNTRY_META.some((c) => path === c.path)
   const inResources = path.startsWith('/blog')
 
   const trigger = (key: MenuKey, label: string, active: boolean) => (
@@ -200,6 +204,20 @@ export function Navbar() {
               <NavLink to="/pricing/" className={({ isActive }) => cn(linkBase, isActive && 'text-brand-800')}>
                 Pricing
               </NavLink>
+            </li>
+
+            <li className="relative" onMouseEnter={() => hoverOpen('countries')} onMouseLeave={hoverClose}>
+              {trigger('countries', 'Countries', inCountries)}
+              <DropdownPanel id="menu-countries" open={open === 'countries'} label="Countries" className="w-[min(380px,calc(100vw-2rem))]">
+                <ul className="p-3">
+                  {countryItems.map((item) => (
+                    <li key={item.href}>
+                      <ItemTile item={item} />
+                    </li>
+                  ))}
+                </ul>
+                <div className="border-t border-line bg-paper-2 px-5 py-3 text-[0.9rem] text-ink-2">POS system pages for each market.</div>
+              </DropdownPanel>
             </li>
 
             <li className="relative" onMouseEnter={() => hoverOpen('resources')} onMouseLeave={hoverClose}>
@@ -311,6 +329,7 @@ function MobileMenu() {
         <Link to="/pricing/" className="border-b border-line py-4 font-display text-[1.25rem] font-semibold text-ink">
           Pricing
         </Link>
+        <MobileGroup title="Countries" items={countryItems} defaultOpen={COUNTRY_META.some((c) => pathname === c.path)} />
         <Link to="/blog/" className="border-b border-line py-4 font-display text-[1.25rem] font-semibold text-ink">
           Blog
         </Link>

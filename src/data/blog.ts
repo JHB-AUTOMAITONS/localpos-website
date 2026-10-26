@@ -119,7 +119,7 @@ const CONTENT: Record<string, BlogContent> = {
       {
         type: 'callout',
         title: 'Where LocalPOS fits',
-        text: 'LocalPOS describes its [inventory management software](/features/inventory-management-software/) as live stock levels with low-stock alerts, alongside [purchase management](/features/purchase-management-software/). LocalPOS currently presents itself as built for Indian businesses (GST, rupee formatting), and this article does not claim support for Malaysian ringgit billing, tax set-up, payments or local support. If you are considering it, [talk to the team](/contact-us/) to confirm what works for a Malaysian shop first.'
+        text: 'LocalPOS describes its [inventory management software](/features/inventory-management-software/) as live stock levels with low-stock alerts, alongside [purchase management](/features/purchase-management-software/). LocalPOS currently presents itself as built for Indian businesses (GST, rupee formatting), and this article does not claim support for Malaysian ringgit billing, tax set-up, payments or local support. If you are considering it, [talk to the team](/contact-us/) to confirm what works for a Malaysian shop first, or read our [LocalPOS page for Malaysia](/pos-system-malaysia/).'
       }
     ],
     faqs: [
@@ -298,7 +298,7 @@ const CONTENT: Record<string, BlogContent> = {
       },
       {
         type: 'p',
-        text: 'It is also fair to say that LocalPOS currently describes itself as built for Indian businesses first, with GST, HSN codes and rupee formatting. This article does not claim that LocalPOS supports Sri Lankan VAT rules, LKR billing, local payment integrations or local support. If you are considering it, ask the team to confirm exactly what works for a Sri Lankan business before you decide. That is the same standard you should apply to every vendor on your list.'
+        text: 'It is also fair to say that LocalPOS currently describes itself as built for Indian businesses first, with GST, HSN codes and rupee formatting. This article does not claim that LocalPOS supports Sri Lankan VAT rules, LKR billing, local payment integrations or local support. If you are considering it, ask the team to confirm exactly what works for a Sri Lankan business before you decide. That is the same standard you should apply to every vendor on your list. Our [LocalPOS page for Sri Lanka](/pos-system-sri-lanka/) summarises the product and what is still to be confirmed.'
       },
       {
         type: 'callout',

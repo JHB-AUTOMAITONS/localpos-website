@@ -27,8 +27,9 @@ export const SOLUTION_ROUTES = [
   '/solutions/supermarket-billing-software/',
   '/solutions/medical-store-billing-software/',
 ]
+export const COUNTRY_ROUTES = ['/pos-system-sri-lanka/', '/pos-system-singapore/', '/pos-system-south-africa/', '/pos-system-malaysia/', '/pos-system-nigeria/']
 export const OTHER_ROUTES = ['/pricing/', '/book-a-demo/', '/blog/', '/about-us/', '/contact-us/', '/privacy-policy/', '/terms-and-conditions/', '/refund-policy/']
-export const REQUIRED_ROUTES = ['/', ...FEATURE_ROUTES, ...SOLUTION_ROUTES, ...OTHER_ROUTES]
+export const REQUIRED_ROUTES = ['/', ...FEATURE_ROUTES, ...SOLUTION_ROUTES, ...COUNTRY_ROUTES, ...OTHER_ROUTES]
 export const FORBIDDEN_ROUTES = ['/billing-software/', '/faq/', '/sitemap/']
 
 /** Navigation labels (as shown in the header) per feature / solution path. */
@@ -171,7 +172,7 @@ async function openMobileDrawer(page: Page) {
   return page.getByRole('navigation', { name: 'Mobile' })
 }
 /** Open a header menu group (Features, Solutions, Resources) in either layout. Returns the navigation landmark. */
-export async function openNavGroup(page: Page, group: 'Features' | 'Solutions' | 'Resources') {
+export async function openNavGroup(page: Page, group: 'Features' | 'Solutions' | 'Countries' | 'Resources') {
   if (isDesktopNav(page)) {
     const nav = page.getByRole('navigation', { name: 'Main' })
     await nav.getByRole('button', { name: group, exact: true }).click()

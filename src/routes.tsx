@@ -37,6 +37,13 @@ const pages: PageDef[] = [
   { path: 'solutions/supermarket-billing-software', load: () => import('@/pages/solutions/SupermarketPage') },
   { path: 'solutions/medical-store-billing-software', load: () => import('@/pages/solutions/MedicalStorePage') },
 
+  // Country landing pages (one template, content in data/countries.ts)
+  { path: 'pos-system-sri-lanka', load: () => import('@/pages/CountryPage') },
+  { path: 'pos-system-singapore', load: () => import('@/pages/CountryPage') },
+  { path: 'pos-system-south-africa', load: () => import('@/pages/CountryPage') },
+  { path: 'pos-system-malaysia', load: () => import('@/pages/CountryPage') },
+  { path: 'pos-system-nigeria', load: () => import('@/pages/CountryPage') },
+
   // Other pages
   { path: 'pricing', load: () => import('@/pages/PricingPage') },
   { path: 'book-a-demo', load: () => import('@/pages/BookDemoPage') },

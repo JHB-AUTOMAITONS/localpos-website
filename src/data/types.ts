@@ -127,3 +127,52 @@ export interface SolutionContent extends SeoFields {
 
 export interface Feature extends FeatureMeta, FeatureContent {}
 export interface Solution extends SolutionMeta, SolutionContent {}
+
+/** Light data for the Countries menu, footer and sitemap. Loaded on every page, so it holds no page copy. */
+export interface CountryMeta {
+  slug: string
+  /** Canonical path with trailing slash. */
+  path: string
+  name: string
+  navBlurb: string
+}
+
+export type CountryVisual = 'pos' | 'multistore' | 'sales' | 'inventory' | 'dashboard'
+
+/** Everything one country landing page shows. Each country writes its own sections, so the pages do not read alike. */
+export interface CountryContent {
+  slug: string
+  primary: string
+  secondary: string[]
+  seoTitle: string
+  seoDescription: string
+  h1: string
+  intro: string
+  tint: Tint
+  points: string[]
+  visual: CountryVisual
+  visualAlt: string
+  challengesTitle: string
+  challengesLead: string
+  challenges: Array<{ title: string; body: string }>
+  featuresTitle: string
+  featuresLead: string
+  featuresVariant: 'cards' | 'bento' | 'rows' | 'split'
+  features: Benefit[]
+  /** H2 that carries the primary keyword. */
+  useCasesTitle: string
+  useCasesLead: string
+  /** Body text supports inline [text](/path/) links. */
+  useCases: Array<{ title: string; body: string }>
+  spotlight: { eyebrow: string; title: string; lead: string; items: Array<{ title: string; body: string }> }
+  stepsTitle: string
+  steps: Step[]
+  localFit: { title: string; lead: string; items: string[] }
+  faqTitle: string
+  faqs: FaqItem[]
+  relatedFeatures: string[]
+  ctaTitle: string
+  ctaText: string
+  /** Optional pointer to a related guide in the blog. */
+  readNext?: { lead: string; label: string; to: string }
+}
