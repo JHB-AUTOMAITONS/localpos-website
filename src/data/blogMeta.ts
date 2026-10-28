@@ -6,6 +6,24 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'jewellery-inventory-management-software',
+    keyword: 'jewellery inventory management software',
+    secondary: [
+      'jewellery stock management software',
+      'jewellery shop inventory software',
+      'jewellery inventory tracking system'
+    ],
+    title: 'Jewellery Inventory Management Software: A Guide for Retail Jewellers',
+    seoTitle: 'Jewellery Inventory Management Software: A Buyer’s Guide',
+    seoDescription: 'Choosing jewellery inventory management software? See the features retail jewellers should compare, how to evaluate options, and what to ask before you buy.',
+    category: 'Inventory',
+    date: '2026-10-28',
+    readingMinutes: 6,
+    excerpt: 'What jewellery inventory management software does, the features retail jewellers should compare, and how to evaluate a system before you commit.',
+    tint: 'gold',
+    relatedFeatures: [ 'inventory-management-software', 'barcode-billing-software', 'sales-reporting-software', 'multi-store-management-software' ]
+  },
+  {
     slug: 'inventory-management-software-malaysia',
     keyword: 'inventory management software malaysia',
     secondary: [

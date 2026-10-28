@@ -6,6 +6,149 @@ import { BLOG_META } from './blogMeta'
  * Titles, SEO fields, dates and cards live in blogMeta.ts. Add a post by adding an entry in both files.
  */
 const CONTENT: Record<string, BlogContent> = {
+  'jewellery-inventory-management-software': {
+    blocks: [
+      {
+        type: 'p',
+        text: 'Every piece in a jewellery shop is different. It has its own weight, purity, stones and tag, and its own place in a showcase, a locker or a karigar’s workshop. Tracking that in a notebook or spreadsheet works for a while, until the day you cannot find a piece or the count does not match. This guide explains what jewellery inventory management software does, which features matter, and how to choose a system that fits your shop before you commit.'
+      },
+      { type: 'h2', text: 'What Is Jewellery Inventory Management Software?' },
+      {
+        type: 'p',
+        text: 'Jewellery inventory management software records every piece you own and updates its status as it moves. A piece can be in the showcase, sold, or out with a karigar. Unlike general stock software, it should handle the details jewellers care about: tag numbers, gross, stone and net weight, purity, making charges and stone details.'
+      },
+      {
+        type: 'p',
+        text: 'When billing and stock sit in the same system, each sale updates the stock record automatically. There is no second register to keep in step.'
+      },
+      { type: 'h2', text: 'Common Jewellery Inventory Management Challenges' },
+      {
+        type: 'ul',
+        items: [
+          '**Handwritten or spreadsheet records fall behind.** Entries are made later, if at all, so the record and the showcase drift apart.',
+          '**Pieces are hard to locate.** With hundreds of unique items, finding where a piece is, or whether it has sold, takes too long.',
+          '**Stock counts do not match.** Without a log of every movement, nobody can explain a difference.',
+          '**Limited visibility.** You cannot easily see what is selling, what has not moved in months, or what a category is worth.',
+          '**Details live in too many places.** Weights, purity and customer history are scattered across books and chats.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'If you are still working from a paper register, our guide to [moving from a stock register to software](/blog/moving-from-a-stock-register-to-software/) covers the switch step by step.'
+      },
+      { type: 'h2', text: 'Key Features to Look for in Jewellery Stock Management Software' },
+      {
+        type: 'p',
+        text: 'Use this list to compare options. Ask each vendor to show every item with your own pieces, not sample data.'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**Piece-level records.** Each item should carry a tag number, gross, stone and net weight, purity, making charge and stone details.',
+          '**Item status.** You should be able to see whether a piece is in the showcase, sold or with a karigar.',
+          '**Tags and barcodes.** Look for printable tags and scanning, so a piece is found by scanning instead of searching. See how [barcode labels and scanning](/features/barcode-billing-software/) work in LocalPOS.',
+          '**Billing that understands jewellery.** Weight, the day’s rate, making charges and tax should show on one itemised invoice. Our [jewellery billing software](/solutions/jewellery-billing-software/) page shows this.',
+          '**Stock adjustments with reasons.** Damage, loss or recounts should be logged with a reason, so every change can be explained.',
+          '**Reports.** You should be able to see best sellers, slow movers and stock value without building a spreadsheet.',
+          '**Customer records.** Purchase history and balances should sit next to the stock and sales.',
+          '**Multi-branch support, if you need it.** Check that stock is tracked per branch and can be moved between them.',
+          '**Access control.** Not every staff member should be able to change prices or delete records.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'If you record other details on each piece, such as hallmark information, ask whether the software can store them. Do not assume it can.'
+      },
+      { type: 'h2', text: 'How a Jewellery Inventory Tracking System Helps Retailers' },
+      {
+        type: 'p',
+        text: 'A good jewellery inventory tracking system saves time in a few specific places:'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**At the counter.** A customer asks for a piece. You scan or search its tag and see its weight, purity and status in seconds.',
+          '**At closing.** Sales and stock are already updated, so closing does not mean reconciling two records.',
+          '**During a stock count.** You compare the showcase with the system and log any difference with a reason.',
+          '**When reviewing the business.** You can see which categories sell and which sit, and decide what to make or buy next. Our guide on how to [reduce dead stock](/blog/how-to-reduce-dead-stock-in-a-retail-shop/) shows how to use that information.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Software does not remove the need for counts and care. It makes the record reliable enough to count against.'
+      },
+      { type: 'h2', text: 'How to Choose the Right Jewellery Shop Inventory Software' },
+      {
+        type: 'p',
+        text: 'Use this checklist when you compare options:'
+      },
+      {
+        type: 'ol',
+        items: [
+          '**Fit with your workflow.** Does it handle how you actually sell and store pieces, including karigar and repair status?',
+          '**Ease of use.** Can your counter staff use it after a short walkthrough?',
+          '**Item detail.** Can it record the weights, purity and charges you use, for each piece?',
+          '**Reporting.** Does it answer the questions you ask every week?',
+          '**Pricing transparency.** Ask for the full cost for your users and branches, including setup and support.',
+          '**Support and training.** Find out who helps when billing stops at a busy hour.',
+          '**Data and backup.** Ask how your data is stored, backed up and exported.',
+          '**A trial with your own pieces.** A demo with sample items tells you little.'
+        ]
+      },
+      { type: 'h2', text: 'Why Consider LocalPOS?' },
+      {
+        type: 'p',
+        text: 'LocalPOS is billing and inventory software for retail businesses. Its jewellery solution is described as supporting these things, based on the product’s own pages:'
+      },
+      {
+        type: 'ul',
+        items: [
+          'Item records with weight, purity, stone details and tag numbers.',
+          'Itemised invoices showing metal value, making charges and tax as separate lines.',
+          'Piece-by-piece stock, so you can see which pieces are in stock, sold or out for repair.',
+          'Searching or scanning a tag number at the counter.',
+          '[Inventory management software](/features/inventory-management-software/) features such as low-stock alerts, stock adjustments with reasons and stock value.',
+          'Customer records and [sales reports](/features/sales-reporting-software/), plus [multi-store management](/features/multi-store-management-software/) for more than one branch.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Two points to confirm: LocalPOS currently describes itself as built for Indian businesses (GST, rupee formatting), and its prices are not published yet. See the [pricing page](/pricing/) for the latest.'
+      },
+      {
+        type: 'callout',
+        title: 'Want to see it with your own pieces?',
+        text: '[Book a free demo](/book-a-demo/) and bring a few items from your stock. We will show how a piece is recorded, billed and tracked.'
+      },
+      { type: 'h2', text: 'Conclusion' },
+      {
+        type: 'p',
+        text: 'The right jewellery inventory management software gives each piece a clear record, keeps billing and stock in step, and shows you what is selling. Compare piece-level detail, tags and scanning, reports, support and the full cost, and test each option with your own stock. If you want to see how LocalPOS handles your pieces, [book a free demo](/book-a-demo/) or [contact the team](/contact-us/) to discuss your requirements.'
+      }
+    ],
+    faqs: [
+      {
+        q: 'What is jewellery inventory management software?',
+        a: 'It is software that records every piece in your shop, with details such as tag number, weight and purity, and updates each piece’s status as it is sold or moved.'
+      },
+      {
+        q: 'How does jewellery inventory software help retailers?',
+        a: 'It keeps stock records current as you bill, makes pieces easier to find, and gives you reports on what sells and what does not. Results depend on how consistently the shop enters and checks its records.'
+      },
+      {
+        q: 'What should I check before choosing inventory management software?',
+        a: 'Check that it records the details you use, shows item status, prints tags, gives usable reports, and has clear pricing and support. Test it with your own items before you decide.'
+      },
+      {
+        q: 'Can inventory management software help reduce stock discrepancies?',
+        a: 'It can help, because each sale and adjustment is recorded with a log. It cannot remove discrepancies on its own, so regular counts against the system are still needed.'
+      },
+      {
+        q: 'How do I choose software suitable for my jewellery shop?',
+        a: 'Write down how you sell, shortlist two or three options, run a trial with your own pieces, and compare the full cost and support.'
+      }
+    ]
+  },
   'inventory-management-software-malaysia': {
     blocks: [
       {
