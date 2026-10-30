@@ -6,6 +6,24 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'pharmacy-billing-software-features',
+    keyword: 'pharmacy billing software features',
+    secondary: [
+      'medicine stock management software',
+      'pharmacy inventory management software',
+      'medical shop GST billing software'
+    ],
+    title: 'Pharmacy Billing Software Features: What to Check Before You Choose',
+    seoTitle: 'Pharmacy Billing Software Features to Check Before You Buy',
+    seoDescription: 'Comparing pharmacy billing software features? See what to check for batches, expiry, GST, stock and purchases, plus a demo checklist for medical shop owners.',
+    category: 'Billing',
+    date: '2026-10-30',
+    readingMinutes: 7,
+    excerpt: 'A practical checklist for pharmacy and medical shop owners: the billing, batch, expiry, GST and stock features to compare, and how to test them in a demo.',
+    tint: 'violet',
+    relatedFeatures: [ 'inventory-management-software', 'gst-billing-software', 'purchase-management-software', 'customer-management-software-for-small-business' ]
+  },
+  {
     slug: 'jewellery-inventory-management-software',
     keyword: 'jewellery inventory management software',
     secondary: [

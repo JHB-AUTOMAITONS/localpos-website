@@ -6,6 +6,130 @@ import { BLOG_META } from './blogMeta'
  * Titles, SEO fields, dates and cards live in blogMeta.ts. Add a post by adding an entry in both files.
  */
 const CONTENT: Record<string, BlogContent> = {
+  'pharmacy-billing-software-features': {
+    blocks: [
+      {
+        type: 'p',
+        text: 'A wrong batch sold at the counter, a strip that expired on the shelf, a GST rate entered by hand: small slips like these cost a medical shop real money. Most of them trace back to billing and stock being handled separately. This guide lists the pharmacy billing software features worth checking before you choose, which are essential and which are optional, and how to test them in a demo with your own medicines.'
+      },
+      { type: 'h2', text: 'What Is Pharmacy Billing Software?' },
+      {
+        type: 'p',
+        text: 'Pharmacy billing software is the system at your counter that creates bills, records payments and updates stock in one step. Unlike general billing tools, it should understand how medicines are sold: in batches, with expiry dates, and by strip or by tablet.'
+      },
+      { type: 'h2', text: 'Pharmacy Billing Software Features to Check' },
+      {
+        type: 'p',
+        text: 'Not every feature matters equally. Start with the essentials, then decide which optional ones fit your shop.'
+      },
+      { type: 'h3', text: 'Essential features' },
+      {
+        type: 'ul',
+        items: [
+          '**Batch and expiry on every bill.** The software should record the batch number and expiry date for each medicine sold, and let you choose the batch.',
+          '**Oldest-expiry-first selling.** When the same medicine sits in several batches, it should help staff sell the one that expires soonest.',
+          '**Strip and tablet units.** You should be able to sell a full strip or a few tablets and keep stock accurate in both.',
+          '**Quick search.** Staff should find a medicine by name or by scanning its pack, even with thousands of items.',
+          '**GST on every bill.** For a medical shop, GST billing software should let you set the rate on each item and print correct invoices. See [GST billing](/features/gst-billing-software/) for how LocalPOS handles tax.',
+          '**Stock that updates with every sale.** Billing and stock should be one system, not two registers.',
+          '**Customer records.** Regular customers, purchase history and pending balances should be one tap away.'
+        ]
+      },
+      { type: 'h3', text: 'Optional features, depending on your shop' },
+      {
+        type: 'ul',
+        items: [
+          '**Barcode scanning and label printing,** if you handle many items a day.',
+          '**Purchase and supplier management,** if you want supplier bills, returns and balances in the same system.',
+          '**Multi-branch support,** if you run more than one shop.',
+          '**Staff access control,** if several people bill and you want to limit price changes.',
+          '**Records required by your licence.** Rules depend on your licence and local regulations. If you must keep specific registers, ask the vendor whether the software supports them. Do not assume it does.'
+        ]
+      },
+      { type: 'h2', text: 'How to Evaluate Medicine Inventory Management' },
+      {
+        type: 'p',
+        text: 'Good medicine stock management software does more than count boxes. When you compare options, look at three things:'
+      },
+      {
+        type: 'ul',
+        items: [
+          '**Near-expiry visibility.** Can you see what expires in the next 30, 60 or 90 days, without opening every batch? Our guide on how to [track medicine expiry in a pharmacy](/blog/how-to-track-medicine-expiry-in-a-pharmacy/) explains a simple weekly routine.',
+          '**Reorder signals.** Can you set a minimum for each medicine and see a list of what to reorder?',
+          '**Explainable changes.** Are damage, returns and recounts recorded with a reason, so differences can be explained?'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Pharmacy inventory management software that links purchases to stock helps too. When goods arrive, stock should rise from the same entry, and supplier bills and balances should be visible. Read more about [purchase management](/features/purchase-management-software/).'
+      },
+      { type: 'h2', text: 'How to Choose the Right Billing Solution for Your Medical Shop' },
+      {
+        type: 'ol',
+        items: [
+          '**List how you sell.** Number of counters, medicines, suppliers, credit customers and whether you sell by strip or tablet.',
+          '**Shortlist two or three options** and avoid choosing from a ranked list alone.',
+          '**Run a demo with your own data.** Bring five medicines, two of them with more than one batch.',
+          '**Test the awkward cases.** Sell the oldest batch, sell three tablets from a strip, process a return and bill a credit customer.',
+          '**Check the tax set-up.** Confirm GST rates and invoices with your accountant.',
+          '**Compare the full cost.** Include users, branches, hardware, setup, training and support.',
+          '**Ask about support and data.** Who helps when billing stops at a busy hour, and how is your data backed up?'
+        ]
+      },
+      { type: 'h2', text: 'What LocalPOS Offers for Medical Shops' },
+      {
+        type: 'p',
+        text: 'LocalPOS has a [solution for medical stores](/solutions/medical-store-billing-software/). Based on the product’s own pages, it supports:'
+      },
+      {
+        type: 'ul',
+        items: [
+          'Batch numbers and expiry dates on every bill, with the batch that expires soonest suggested first.',
+          'Expiry alerts for the next 30, 60 or 90 days.',
+          'Selling by strip or by tablet, with stock accurate in both.',
+          'Customer purchase history and pending balances.',
+          'GST rates and HSN codes set on each item, and purchase and supplier management.',
+          '[Inventory management](/features/inventory-management-software/) with low-stock alerts and stock adjustments with reasons.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Two points to confirm: this guide does not claim that LocalPOS supports any specific regulatory register required by your drug licence, and its prices are not published yet. See the [pricing page](/pricing/) for the latest.'
+      },
+      {
+        type: 'callout',
+        title: 'Test it with your own medicines',
+        text: '[Book a free demo](/book-a-demo/) and bring a few medicines with more than one batch. We will show how batch, expiry and strip billing work, or [contact the team](/contact-us/) with your questions.'
+      },
+      { type: 'h2', text: 'Conclusion' },
+      {
+        type: 'p',
+        text: 'The pharmacy billing software features that matter most are batch and expiry on every bill, strip and tablet units, correct GST, and stock that updates with each sale. Compare them with your own medicines in a demo, check the full cost and support, and confirm any licence-related records with the vendor. When you are ready to see how LocalPOS handles them, [book a free demo](/book-a-demo/).'
+      }
+    ],
+    faqs: [
+      {
+        q: 'What is pharmacy billing software?',
+        a: 'It is software at the counter that creates bills, records payments and updates stock, with support for batches, expiry dates and strip or tablet units.'
+      },
+      {
+        q: 'What features should medical shop billing software include?',
+        a: 'At minimum: batch and expiry on every bill, quick search, strip and tablet units, correct GST invoices, stock that updates with each sale and customer records. Optional extras include barcode scanning, purchase management and multi-branch support.'
+      },
+      {
+        q: 'How can billing software help manage medicine inventory?',
+        a: 'It reduces stock as you bill, adds it when goods arrive, shows what is near expiry and flags what to reorder. It still needs regular physical checks against the system.'
+      },
+      {
+        q: 'What should a pharmacy check before choosing billing software?',
+        a: 'Test it with your own medicines, including multiple batches, returns and credit customers. Confirm GST and any licence-related records, compare the full cost, and ask about support and backups.'
+      },
+      {
+        q: 'Can billing software help track stock and purchases?',
+        a: 'Yes. Software that links purchases to stock raises stock when goods arrive and shows supplier bills and balances, so purchases and stock stay in step.'
+      }
+    ]
+  },
   'jewellery-inventory-management-software': {
     blocks: [
       {
