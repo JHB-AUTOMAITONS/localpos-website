@@ -17,3 +17,11 @@
 # There is deliberately no catch-all "/*  /index.html  200" rewrite. Every route is a real file in dist/, and Netlify
 # serves dist/404.html with a true 404 status for any other URL. A catch-all would answer unknown URLs with the
 # homepage and a 200 (a "soft 404" for Google), and would hand React Router HTML that does not match the URL.
+
+# Everything in /assets/ is emitted by Vite with a content hash in its name (e.g. index-BjCHnrQv.js), so a changed file always gets a new URL
+# and the old URL can be cached for a year. Only /assets/ gets this rule. HTML pages, robots.txt, sitemap.xml and the unhashed files in the
+# site root (favicon, logo, og-default.jpg, site.webmanifest) keep Netlify's default revalidation, so a new deploy is picked up immediately.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

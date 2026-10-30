@@ -53,14 +53,17 @@ export function breadcrumbSchema(crumbs: Crumb[]): Record<string, unknown> {
   }
 }
 
+/** Content text may carry [text](/path/) links and **bold**. Structured data must hold the readable text only. */
+export const stripInlineMarkup = (s: string): string => s.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1')
+
 export function faqSchema(faqs: FaqItem[]): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.map((f) => ({
       '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
+      name: stripInlineMarkup(f.q),
+      acceptedAnswer: { '@type': 'Answer', text: stripInlineMarkup(f.a) },
     })),
   }
 }

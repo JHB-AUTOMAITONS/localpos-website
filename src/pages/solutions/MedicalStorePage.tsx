@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { BenefitsSection } from '@/components/Benefits'
 import { FloatNote } from '@/components/FloatNote'
 import { PageHero } from '@/components/PageHero'
@@ -140,7 +141,7 @@ export default function MedicalStorePage() {
       <Section tone="paper" labelledBy="medical-steps-heading">
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <div className="lg:sticky lg:top-28">
-            <SectionHeading id="medical-steps-heading" eyebrow="At the counter" eyebrowTone="violet" title={solution.workflowHeading} align="left" lead="A short routine that keeps bills accurate and shelves fresh. Always follow the regulations that apply to your pharmacy." />
+            <SectionHeading id="medical-steps-heading" eyebrow="At the counter" eyebrowTone="violet" title={solution.workflowHeading} align="left" lead={<>A short routine that keeps bills accurate and shelves fresh. Always follow the regulations that apply to your pharmacy. Comparing options? See the <Link to="/blog/pharmacy-billing-software-features/" className="font-semibold text-brand-700 underline underline-offset-4 hover:text-brand-900">pharmacy billing software features to evaluate</Link>.</>} />
           </div>
           <StepList steps={solution.workflow} variant="stack" tint="violet" />
         </div>

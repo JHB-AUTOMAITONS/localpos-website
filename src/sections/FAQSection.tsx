@@ -1,4 +1,5 @@
 import { Icon } from '@/components/Icon'
+import { Inline } from '@/components/Inline'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Reveal } from '@/components/ui/Reveal'
@@ -46,7 +47,11 @@ export function FAQSection({ faqs, title = 'Frequently asked questions', lead, i
                     <Icon name="plus" size={16} strokeWidth={2.4} />
                   </span>
                 </summary>
-                <div className="px-5 pb-5 text-[1.0125rem] leading-relaxed text-ink-2 sm:px-6 sm:pb-6">{f.a}</div>
+                <div className="px-5 pb-5 text-[1.0125rem] leading-relaxed text-ink-2 sm:px-6 sm:pb-6 [&_a]:font-medium [&_a]:text-brand-700 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-brand-900">
+                  <p>
+                    <Inline text={f.a} />
+                  </p>
+                </div>
               </details>
             ))}
           </div>
