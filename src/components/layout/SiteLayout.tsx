@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Outlet, useLocation } from 'react-router'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
 
@@ -59,6 +60,7 @@ export function SiteLayout() {
         </ErrorBoundary>
       </main>
       <Footer />
+      <WhatsAppButton />
       <RouteEffects />
     </>
   )

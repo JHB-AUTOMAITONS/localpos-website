@@ -26,6 +26,11 @@ export const SITE = {
     address: null as string | null,
     hours: null as string | null,
   },
+  /** Floating WhatsApp chat button (see components/WhatsAppButton.tsx). Number is +91 70900 06577, digits only with the country code. */
+  whatsapp: {
+    number: '917090006577',
+    message: 'Hello LocalPOS Team, I would like to know more about your billing software.',
+  },
   /** Only add real profile links here; icons are rendered only for entries that exist. */
   social: [] as Array<{ label: string; href: string }>,
 } as const

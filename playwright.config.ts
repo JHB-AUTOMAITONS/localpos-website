@@ -21,7 +21,7 @@ const channel = process.env.PW_CHANNEL === '' ? undefined : (process.env.PW_CHAN
  */
 const BLOCK_TRACKING = '--host-resolver-rules=MAP *.googletagmanager.com ~NOTFOUND, MAP *.google-analytics.com ~NOTFOUND, MAP *.analytics.google.com ~NOTFOUND, MAP *.clarity.ms ~NOTFOUND'
 
-const SHARED_SPECS = /(routes|navigation|journeys|links|a11y|layout-quality)\.spec\.ts/
+const SHARED_SPECS = /(routes|navigation|journeys|links|a11y|layout-quality|whatsapp)\.spec\.ts/
 const SINGLE_SPECS = /(responsive|forms|seo|perf|deploy|analytics|analytics-live)\.spec\.ts/
 
 export default defineConfig({
