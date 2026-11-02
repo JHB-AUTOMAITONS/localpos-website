@@ -6,6 +6,20 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'stock-reconciliation-retail-shop',
+    keyword: 'stock reconciliation',
+    secondary: [ 'inventory reconciliation', 'inventory discrepancy', 'inventory reconciliation process' ],
+    title: 'Stock Reconciliation: A Complete Guide for Retail Shops to Identify and Fix Stock Differences',
+    seoTitle: 'Stock Reconciliation Guide for Retail Shops | LocalPOS',
+    seoDescription: 'Stock reconciliation made simple: learn why stock differences happen, follow a 7-step process to count, compare and fix them, and avoid repeats.',
+    category: 'Inventory',
+    date: '2026-11-02',
+    readingMinutes: 8,
+    excerpt: 'Why your system stock and shelf stock disagree, and a seven-step process to count, compare, investigate and correct the difference.',
+    tint: 'sky',
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'barcode-billing-software', 'multi-store-management-software' ]
+  },
+  {
     slug: 'pharmacy-billing-software-features',
     keyword: 'pharmacy billing software features',
     secondary: [
