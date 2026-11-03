@@ -6,6 +6,30 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'pharmacy-inventory-management',
+    keyword: 'pharmacy inventory management',
+    secondary: [
+      'pharmacy inventory management system',
+      'pharmacy stock management',
+      'medical store inventory management',
+      'medicine stock management',
+      'pharmacy inventory software',
+      'medicine expiry management',
+      'medicine batch tracking',
+      'pharmacy stock control',
+      'pharmacy inventory management best practices'
+    ],
+    title: 'Pharmacy Inventory Management: How to Manage Medicine Stock, Expiry Dates and Batches',
+    seoTitle: 'Pharmacy Inventory Management: Stock, Expiry and Batches',
+    seoDescription: 'Learn pharmacy inventory management: how to control medicine stock, track expiry dates and batches, cut wastage, and choose software for your medical store.',
+    category: 'Inventory',
+    date: '2026-11-03',
+    readingMinutes: 8,
+    excerpt: 'How medical stores can control medicine stock, expiry dates and batches: the common problems, practical habits, and what to look for in pharmacy inventory software.',
+    tint: 'violet',
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'gst-billing-software', 'sales-reporting-software' ]
+  },
+  {
     slug: 'stock-reconciliation-retail-shop',
     keyword: 'stock reconciliation',
     secondary: [ 'inventory reconciliation', 'inventory discrepancy', 'inventory reconciliation process' ],
