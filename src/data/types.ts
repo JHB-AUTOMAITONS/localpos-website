@@ -38,6 +38,7 @@ export type ContentBlock =
   | { type: 'ul'; items: string[] }
   | { type: 'ol'; items: string[] }
   | { type: 'callout'; title: string; text: string }
+  | { type: 'table'; caption: string; head: string[]; rows: string[][] }
 
 export type BlogCategory = 'GST & Compliance' | 'Inventory' | 'Billing' | 'Retail Tips' | 'Industry Guides'
 

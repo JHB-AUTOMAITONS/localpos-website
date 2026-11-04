@@ -6,6 +6,26 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'how-to-choose-the-best-pos-billing-software',
+    keyword: 'how to choose the best POS billing software',
+    secondary: [
+      'POS billing software features',
+      'POS software for small business',
+      'retail POS software',
+      'billing and inventory management software',
+      'retail shop management software'
+    ],
+    title: 'How to Choose the Best POS Billing Software for Your Retail Business',
+    seoTitle: 'How to Choose the Best POS Billing Software | LocalPOS',
+    seoDescription: 'How to choose the best POS billing software for your retail shop: 10 key features, a buying checklist, common mistakes and questions to ask before a demo.',
+    category: 'Billing',
+    date: '2026-11-04',
+    readingMinutes: 10,
+    excerpt: 'A buying guide for Indian retail owners: the ten features that matter, a ten-step checklist, manual billing against POS billing, and the mistakes to avoid before you pick a system.',
+    tint: 'brand',
+    relatedFeatures: [ 'pos-billing-software', 'gst-billing-software', 'inventory-management-software', 'barcode-billing-software', 'multi-store-management-software' ]
+  },
+  {
     slug: 'pharmacy-inventory-management',
     keyword: 'pharmacy inventory management',
     secondary: [

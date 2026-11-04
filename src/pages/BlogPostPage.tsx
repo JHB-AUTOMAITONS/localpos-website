@@ -56,6 +56,40 @@ function Block({ block }: { block: ContentBlock }) {
           ))}
         </ol>
       )
+    case 'table':
+      return (
+        <div className="my-8 overflow-x-auto rounded-2xl border border-line" tabIndex={0} role="region" aria-label={block.caption}>
+          <table className="w-full min-w-[34rem] border-collapse text-left text-[0.95rem] leading-snug">
+            <caption className="sr-only">{block.caption}</caption>
+            <thead className="bg-paper-2 text-ink">
+              <tr>
+                {block.head.map((h) => (
+                  <th key={h} scope="col" className="px-4 py-3 font-semibold">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((r) => (
+                <tr key={r[0]} className="border-t border-line align-top">
+                  {r.map((c, i) =>
+                    i === 0 ? (
+                      <th key={c} scope="row" className="px-4 py-3 font-semibold text-ink">
+                        {c}
+                      </th>
+                    ) : (
+                      <td key={c} className="px-4 py-3">
+                        <Inline text={c} />
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
     case 'callout':
       return (
         <aside className="my-8 rounded-2xl border border-gold-200 bg-gold-50 p-5 sm:p-6">
