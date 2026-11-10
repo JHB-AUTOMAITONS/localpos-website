@@ -56,6 +56,39 @@ function Block({ block }: { block: ContentBlock }) {
           ))}
         </ol>
       )
+    case 'table':
+      return (
+        <table className="my-8 w-full border-collapse text-left text-[0.95rem] max-sm:block">
+          <caption className="sr-only">{block.caption}</caption>
+          <thead className="max-sm:sr-only">
+            <tr className="border-b-2 border-line-strong">
+              {block.headers.map((h) => (
+                <th key={h} scope="col" className="px-3 py-3 font-display font-semibold text-ink first:pl-0">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="max-sm:block">
+            {block.rows.map((row) => (
+              <tr key={row[0]} className="border-b border-line max-sm:mb-4 max-sm:block max-sm:rounded-2xl max-sm:border max-sm:bg-white max-sm:p-4">
+                <th scope="row" className="px-3 py-3 align-top font-display font-semibold text-ink first:pl-0 max-sm:block max-sm:p-0 max-sm:pb-2 max-sm:text-[1.05rem]">
+                  {row[0]}
+                </th>
+                {[1, 2].map((i) => (
+                  <td
+                    key={i}
+                    data-label={block.headers[i]}
+                    className="px-3 py-3 align-top text-ink-2 max-sm:block max-sm:p-0 max-sm:py-1.5 max-sm:before:mb-0.5 max-sm:before:block max-sm:before:text-[0.75rem] max-sm:before:font-bold max-sm:before:uppercase max-sm:before:tracking-wide max-sm:before:text-ink-3 max-sm:before:content-[attr(data-label)]"
+                  >
+                    <Inline text={row[i]} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )
     case 'callout':
       return (
         <aside className="my-8 rounded-2xl border border-gold-200 bg-gold-50 p-5 sm:p-6">

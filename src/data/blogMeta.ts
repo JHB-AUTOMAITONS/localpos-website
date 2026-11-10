@@ -6,6 +6,25 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'manual-gst-billing-vs-automated-gst-billing',
+    keyword: 'manual GST billing vs automated GST billing',
+    secondary: [
+      'automated GST billing',
+      'GST billing software',
+      'GST invoice',
+      'CGST and SGST'
+    ],
+    title: 'Manual GST Billing vs Automated GST Billing: Key Differences',
+    seoTitle: 'Manual GST Billing vs Automated GST Billing: Key Differences',
+    seoDescription: 'Manual GST billing vs automated GST billing: compare invoices, tax calculation, records and reports, and see when a small business should switch to software.',
+    category: 'GST & Compliance',
+    date: '2026-11-10',
+    readingMinutes: 10,
+    excerpt: 'How manual and automated GST billing compare on invoices, tax calculation, records and reports, and the signs that a growing shop should move from a bill book to billing software.',
+    tint: 'gold',
+    relatedFeatures: [ 'gst-billing-software', 'pos-billing-software', 'inventory-management-software', 'sales-reporting-software' ]
+  },
+  {
     slug: 'pharmacy-billing-software-features',
     keyword: 'pharmacy billing software features',
     secondary: [
