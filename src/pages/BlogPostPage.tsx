@@ -58,36 +58,37 @@ function Block({ block }: { block: ContentBlock }) {
       )
     case 'table':
       return (
-        <table className="my-8 w-full border-collapse text-left text-[0.95rem] max-sm:block">
-          <caption className="sr-only">{block.caption}</caption>
-          <thead className="max-sm:sr-only">
-            <tr className="border-b-2 border-line-strong">
-              {block.headers.map((h) => (
-                <th key={h} scope="col" className="px-3 py-3 font-display font-semibold text-ink first:pl-0">
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="max-sm:block">
-            {block.rows.map((row) => (
-              <tr key={row[0]} className="border-b border-line max-sm:mb-4 max-sm:block max-sm:rounded-2xl max-sm:border max-sm:bg-white max-sm:p-4">
-                <th scope="row" className="px-3 py-3 align-top font-display font-semibold text-ink first:pl-0 max-sm:block max-sm:p-0 max-sm:pb-2 max-sm:text-[1.05rem]">
-                  {row[0]}
-                </th>
-                {[1, 2].map((i) => (
-                  <td
-                    key={i}
-                    data-label={block.headers[i]}
-                    className="px-3 py-3 align-top text-ink-2 max-sm:block max-sm:p-0 max-sm:py-1.5 max-sm:before:mb-0.5 max-sm:before:block max-sm:before:text-[0.75rem] max-sm:before:font-bold max-sm:before:uppercase max-sm:before:tracking-wide max-sm:before:text-ink-3 max-sm:before:content-[attr(data-label)]"
-                  >
-                    <Inline text={row[i]} />
-                  </td>
+        <div className="my-8 overflow-x-auto rounded-2xl border border-line" tabIndex={0} role="region" aria-label={block.caption}>
+          <table className="w-full min-w-[34rem] border-collapse text-left text-[0.95rem] leading-snug">
+            <caption className="sr-only">{block.caption}</caption>
+            <thead className="bg-paper-2 text-ink">
+              <tr>
+                {block.head.map((h) => (
+                  <th key={h} scope="col" className="px-4 py-3 font-semibold">
+                    {h}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {block.rows.map((r) => (
+                <tr key={r[0]} className="border-t border-line align-top">
+                  {r.map((c, i) =>
+                    i === 0 ? (
+                      <th key={c} scope="row" className="px-4 py-3 font-semibold text-ink">
+                        {c}
+                      </th>
+                    ) : (
+                      <td key={c} className="px-4 py-3">
+                        <Inline text={c} />
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )
     case 'callout':
       return (

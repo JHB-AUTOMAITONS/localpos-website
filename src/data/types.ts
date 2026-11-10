@@ -38,8 +38,7 @@ export type ContentBlock =
   | { type: 'ul'; items: string[] }
   | { type: 'ol'; items: string[] }
   | { type: 'callout'; title: string; text: string }
-  /** Three-column comparison: row label, then one column per option. Stacks into cards on phones. */
-  | { type: 'table'; caption: string; headers: [string, string, string]; rows: Array<[string, string, string]> }
+  | { type: 'table'; caption: string; head: string[]; rows: string[][] }
 
 export type BlogCategory = 'GST & Compliance' | 'Inventory' | 'Billing' | 'Retail Tips' | 'Industry Guides'
 

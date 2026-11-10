@@ -120,7 +120,8 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-line-strong pt-6 text-[0.9rem] text-ink-3 sm:flex-row sm:items-center sm:justify-between">
+        {/* max-lg:pb-16 leaves room under the last line for the floating WhatsApp button, which would otherwise sit on top of it at the end of the page. */}
+        <div className="mt-14 flex flex-col gap-2 border-t border-line-strong pt-6 text-[0.9rem] text-ink-3 max-lg:pb-16 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {SITE.name}. All rights reserved.
           </p>

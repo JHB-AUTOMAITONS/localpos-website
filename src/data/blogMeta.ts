@@ -25,6 +25,106 @@ export const BLOG_META: BlogPostMeta[] = [
     relatedFeatures: [ 'gst-billing-software', 'pos-billing-software', 'inventory-management-software', 'sales-reporting-software' ]
   },
   {
+    slug: 'how-restaurant-pos-software-simplifies-billing-and-order-management',
+    keyword: 'how restaurant POS software simplifies billing',
+    secondary: [
+      'restaurant POS software',
+      'restaurant order management software',
+      'POS software for restaurants',
+      'restaurant billing system',
+      'cafe billing software',
+      'restaurant management software'
+    ],
+    title: 'How Restaurant POS Software Simplifies Billing and Order Management',
+    seoTitle: 'How Restaurant POS Software Simplifies Billing & Orders',
+    seoDescription: 'See how restaurant POS software simplifies billing and order management: faster GST bills, fewer mistakes, clear payments, and what to check before buying.',
+    category: 'Industry Guides',
+    date: '2026-11-06',
+    readingMinutes: 9,
+    excerpt: 'Handwritten slips, calculator mistakes and slow bills cost restaurants time and money. See how restaurant POS software fixes billing and orders, and how to choose one.',
+    tint: 'coral',
+    relatedFeatures: [ 'pos-billing-software', 'gst-billing-software', 'payment-management-software', 'inventory-management-software', 'sales-reporting-software' ]
+  },
+  {
+    slug: 'manual-billing-vs-pos-billing-software',
+    keyword: 'manual billing vs POS billing software',
+    secondary: [
+      'manual billing system',
+      'manual billing vs computerized billing',
+      'digital billing software',
+      'POS software for small business',
+      'billing and inventory management software',
+      'small business billing software'
+    ],
+    title: 'Manual Billing vs POS Billing Software: Which Is Better for Small Businesses?',
+    seoTitle: 'Manual Billing vs POS Billing Software: Which Is Better?',
+    seoDescription: 'Manual billing vs POS billing software: compare speed, GST invoices, stock and reports, see when to switch, and what to check before choosing for your shop.',
+    category: 'Billing',
+    date: '2026-11-05',
+    readingMinutes: 10,
+    excerpt: 'A practical comparison for Indian shop owners: how manual billing and POS billing software differ on 12 points, the problems a bill book causes, and when it is time to switch.',
+    tint: 'coral',
+    relatedFeatures: [ 'pos-billing-software', 'gst-billing-software', 'inventory-management-software', 'barcode-billing-software', 'sales-reporting-software' ]
+  },
+  {
+    slug: 'how-to-choose-the-best-pos-billing-software',
+    keyword: 'how to choose the best POS billing software',
+    secondary: [
+      'POS billing software features',
+      'POS software for small business',
+      'retail POS software',
+      'billing and inventory management software',
+      'retail shop management software'
+    ],
+    title: 'How to Choose the Best POS Billing Software for Your Retail Business',
+    seoTitle: 'How to Choose the Best POS Billing Software | LocalPOS',
+    seoDescription: 'How to choose the best POS billing software for your retail shop: 10 key features, a buying checklist, common mistakes and questions to ask before a demo.',
+    category: 'Billing',
+    date: '2026-11-04',
+    readingMinutes: 10,
+    excerpt: 'A buying guide for Indian retail owners: the ten features that matter, a ten-step checklist, manual billing against POS billing, and the mistakes to avoid before you pick a system.',
+    tint: 'brand',
+    relatedFeatures: [ 'pos-billing-software', 'gst-billing-software', 'inventory-management-software', 'barcode-billing-software', 'multi-store-management-software' ]
+  },
+  {
+    slug: 'pharmacy-inventory-management',
+    keyword: 'pharmacy inventory management',
+    secondary: [
+      'pharmacy inventory management system',
+      'pharmacy stock management',
+      'medical store inventory management',
+      'medicine stock management',
+      'pharmacy inventory software',
+      'medicine expiry management',
+      'medicine batch tracking',
+      'pharmacy stock control',
+      'pharmacy inventory management best practices'
+    ],
+    title: 'Pharmacy Inventory Management: How to Manage Medicine Stock, Expiry Dates and Batches',
+    seoTitle: 'Pharmacy Inventory Management: Stock, Expiry and Batches',
+    seoDescription: 'Learn pharmacy inventory management: how to control medicine stock, track expiry dates and batches, cut wastage, and choose software for your medical store.',
+    category: 'Inventory',
+    date: '2026-11-03',
+    readingMinutes: 8,
+    excerpt: 'How medical stores can control medicine stock, expiry dates and batches: the common problems, practical habits, and what to look for in pharmacy inventory software.',
+    tint: 'violet',
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'gst-billing-software', 'sales-reporting-software' ]
+  },
+  {
+    slug: 'stock-reconciliation-retail-shop',
+    keyword: 'stock reconciliation',
+    secondary: [ 'inventory reconciliation', 'inventory discrepancy', 'inventory reconciliation process' ],
+    title: 'Stock Reconciliation: A Complete Guide for Retail Shops to Identify and Fix Stock Differences',
+    seoTitle: 'Stock Reconciliation Guide for Retail Shops | LocalPOS',
+    seoDescription: 'Stock reconciliation made simple: learn why stock differences happen, follow a 7-step process to count, compare and fix them, and avoid repeats.',
+    category: 'Inventory',
+    date: '2026-11-02',
+    readingMinutes: 8,
+    excerpt: 'Why your system stock and shelf stock disagree, and a seven-step process to count, compare, investigate and correct the difference.',
+    tint: 'sky',
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'barcode-billing-software', 'multi-store-management-software' ]
+  },
+  {
     slug: 'pharmacy-billing-software-features',
     keyword: 'pharmacy billing software features',
     secondary: [
