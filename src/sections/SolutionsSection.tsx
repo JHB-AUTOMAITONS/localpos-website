@@ -1,10 +1,11 @@
+import type { ReactNode } from 'react'
 import { SolutionCard } from '@/components/SolutionCard'
 import { Reveal } from '@/components/ui/Reveal'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { SOLUTION_META } from '@/data/solutionMeta'
 
-export function SolutionsSection({ title = 'Built for the way your kind of business bills', lead }: { title?: string; lead?: string }) {
+export function SolutionsSection({ title = 'Built for the way your kind of business bills', lead, footer }: { title?: string; lead?: string; footer?: ReactNode }) {
   return (
     <Section tone="paper" labelledBy="solutions-heading">
       <SectionHeading
@@ -23,6 +24,7 @@ export function SolutionsSection({ title = 'Built for the way your kind of busin
           </li>
         ))}
       </ul>
+      {footer}
     </Section>
   )
 }

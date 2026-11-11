@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { Icon } from '@/components/Icon'
 import { ProductScreenshot } from '@/components/ProductScreenshot'
 import { CTAButton } from '@/components/ui/CTAButton'
@@ -6,6 +7,14 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { DashboardPreview } from '@/mockups/DashboardPreview'
 import { HeroReceipt } from '@/mockups/InvoicePreview'
 import { FloatCard } from '@/mockups/parts'
+
+/** Hero shortcuts to the feature pages that back each claim in the intro. */
+const CAPABILITIES = [
+  { label: 'GST billing', to: '/features/gst-billing-software/' },
+  { label: 'Inventory management', to: '/features/inventory-management-software/' },
+  { label: 'Barcode scanning', to: '/features/barcode-billing-software/' },
+  { label: 'Sales tracking', to: '/features/sales-reporting-software/' },
+]
 
 /** Home hero: positioning on the left, an original billing dashboard with a self-printing receipt on the right. */
 export function HeroSection() {
@@ -23,13 +32,13 @@ export function HeroSection() {
           <div className="lg:col-span-6">
             {/* The headline and intro are the largest text on screen, so they paint immediately (no fade-in) to keep LCP fast. */}
             <div>
-              <Eyebrow>Billing software for Indian businesses</Eyebrow>
+              <Eyebrow>POS billing software for Indian businesses</Eyebrow>
             </div>
             <h1 id="hero-heading" className="display-1 mt-5">
               Billing software that bills fast and keeps your shop in order
             </h1>
             <p className="lead mt-6 max-w-xl">
-              LocalPOS is billing software for shops, restaurants, jewellers, supermarkets and medical stores. Make GST invoices in seconds, take payments, track stock and see your day’s sales from one simple platform your whole team can pick up quickly.
+              LocalPOS is POS billing software for shops, restaurants, jewellers, supermarkets and medical stores. Make GST invoices in seconds, scan barcodes at the counter, track stock as you sell and see your day’s sales from one simple platform your whole team can pick up quickly.
             </p>
             <div className="mt-8 flex flex-col gap-3 animate-fade-up [animation-delay:240ms] sm:flex-row">
               <CTAButton to="/book-a-demo/" size="lg" arrow>
@@ -39,7 +48,21 @@ export function HeroSection() {
                 Explore Features
               </CTAButton>
             </div>
-            <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[0.95rem] text-ink-2 animate-fade-up [animation-delay:320ms]">
+            <nav aria-label="Core LocalPOS capabilities" className="mt-7 animate-fade-up [animation-delay:280ms]">
+              <ul className="flex flex-wrap gap-2">
+                {CAPABILITIES.map((c) => (
+                  <li key={c.to}>
+                    <Link
+                      to={c.to}
+                      className="inline-flex min-h-11 items-center rounded-full border border-line-strong bg-white px-4 text-[0.9375rem] font-medium text-ink-2 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800"
+                    >
+                      {c.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.95rem] text-ink-2 animate-fade-up [animation-delay:320ms]">
               {['Free demo', 'GST-ready invoices', 'Made for Indian businesses'].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Icon name="circle-check" size={18} className="text-brand-600" />
