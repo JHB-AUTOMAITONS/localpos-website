@@ -353,11 +353,11 @@ const CONTENT: Record<string, FeatureContent> = {
     faqs: [
       {
         q: 'What do I need to start with barcode billing?',
-        a: 'You need LocalPOS on a computer or tablet and a barcode scanner. If your products already carry barcodes, you can start scanning straight away. For loose items, print labels from LocalPOS.'
+        a: 'You need LocalPOS on a computer or tablet and a barcode scanner. If your products already carry barcodes, you can start scanning straight away. For loose items, print labels from LocalPOS. Barcode billing and label printing are part of the Business plan, which the Multi-store plan also includes; see [pricing](/pricing/).'
       },
       {
         q: 'Does LocalPOS work as barcode billing software with scanner support?',
-        a: 'Yes. LocalPOS works with the common USB and Bluetooth barcode scanners that act like a keyboard, so there is no special driver to hunt for.'
+        a: 'Yes. LocalPOS works with the common USB and Bluetooth barcode scanners that act like a keyboard, so there is no special driver to hunt for. A quick test: if your scanner can type a code into a text box, it can scan an item onto a bill.'
       },
       {
         q: 'Can I print my own barcode labels?',
@@ -370,6 +370,22 @@ const CONTENT: Record<string, FeatureContent> = {
       {
         q: 'What if an item has no barcode?',
         a: 'You can still add it to a bill by searching its name, or give it a barcode by printing a label.'
+      },
+      {
+        q: 'What is barcode billing software and how does it work?',
+        a: 'Barcode billing software lets you add items to a bill by scanning their barcodes instead of typing or searching. Each scan brings in the item’s name, price and tax, and when the bill is made the stock for those items goes down. In LocalPOS you scan the manufacturer’s barcode or a label you printed, take payment and move to the next customer.'
+      },
+      {
+        q: 'Does stock update automatically when I scan and bill an item?',
+        a: 'Yes. The items on a bill leave stock as soon as the bill is made, and a return puts them back. You can also count stock by scanning the shelf and adjust any difference, so your figures stay close to what is physically there.'
+      },
+      {
+        q: 'Can I create GST invoices with barcode billing?',
+        a: 'Yes. Each item has its GST rate and HSN code, so a scanned item arrives on the invoice with tax worked out and split into CGST and SGST, or IGST. Add the customer’s GSTIN for business sales. See [GST billing software](/features/gst-billing-software/) for how the tax side works.'
+      },
+      {
+        q: 'Is barcode billing suitable for grocery, clothing and footwear shops?',
+        a: 'Yes. Grocery shops scan packaged goods as they are and print labels only for loose items. Clothing and footwear shops can handle sizes and colours as variants, so the item list stays tidy. Any retail shop that sells many small items a day benefits from scanning.'
       }
     ],
     related: [
