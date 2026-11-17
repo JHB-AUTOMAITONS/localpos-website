@@ -7,34 +7,51 @@ import { SOLUTION_META } from './solutionMeta'
  */
 const CONTENT: Record<string, SolutionContent> = {
   'retail-billing-software': {
-    primary: 'retail billing software',
+    primary: 'billing software for retail shop',
     secondary: [
+      'retail billing software',
+      'retail shop billing software',
+      'POS billing software for retail',
       'retail POS software',
-      'POS software for retail',
-      'best retail billing software',
-      'free retail billing software'
+      'GST billing software',
+      'barcode billing software',
+      'retail inventory management software',
+      'billing and inventory software',
+      'shop billing software'
     ],
-    seoTitle: 'Retail Billing Software for Shops & Stores | LocalPOS',
-    seoDescription: 'Fast checkout, barcode billing, stock control and customer records in one retail billing software. Built for shops that serve a queue every day.',
-    h1: 'Retail billing software built for the rush at your counter',
-    intro: 'LocalPOS is retail billing software for shops that serve a steady stream of customers. Scan or search items, bill in seconds, take cash, UPI or card, and keep stock and daily sales up to date without extra effort. It works as retail POS software for a single counter or a growing chain.',
-    h2Main: 'Retail billing software for every part of your shop day',
+    seoTitle: 'Billing Software for Retail Shop in India | LocalPOS',
+    seoDescription: 'LocalPOS is billing software for retail shop owners: fast barcode checkout, GST invoices, live stock and customer dues in one place. Book a free demo.',
+    h1: 'Billing Software for Retail Shop',
+    intro: 'LocalPOS is billing software for retail shop owners who want faster checkout, correct GST invoices and stock that matches the shelf. Scan or search an item, take cash, UPI or card, and print or share the bill. Stock, customer dues and the day’s sales update on their own. It is retail billing software for one counter, and it can grow into a multi-store setup.',
+    h2Main: 'Everything your counter needs, in one retail billing system',
     painPoints: [
       {
-        title: 'Queues build up at the counter',
-        body: 'Searching for prices and writing bills by hand slows every customer down.'
+        title: 'Manual billing and calculation errors',
+        body: 'Handwritten bills and calculator totals go wrong when the queue is long. Software works out price, quantity, discount and tax for you.'
       },
       {
-        title: 'Shelf and system never match',
-        body: 'Stock registers are updated late, so you find out about an empty shelf from a customer.'
+        title: 'Slow checkout',
+        body: 'Looking up prices and rewriting item names adds minutes at peak hour. Scan or search an item and it joins the bill in one step.'
       },
       {
-        title: 'Regulars are strangers',
-        body: 'Without records you cannot see who your best customers are or who owes you money.'
+        title: 'Difficulty managing inventory',
+        body: 'A paper register is updated when someone remembers. In LocalPOS stock falls when the bill is made and rises when goods or returns come in.'
       },
       {
-        title: 'Daily totals take hours',
-        body: 'Adding up bills, discounts and payment modes at closing time eats your evening.'
+        title: 'Poor stock visibility',
+        body: 'Without live counts you hear about an empty shelf from a customer. Set a minimum per item and a low-stock list shows what to reorder.'
+      },
+      {
+        title: 'Customer credit tracking',
+        body: 'Udhaar entries in a notebook get lost or disputed. Each customer record holds bills, payments and the pending balance.'
+      },
+      {
+        title: 'Difficulty monitoring daily sales',
+        body: 'Without a daily total you are guessing how the day went. Sales by payment mode are ready the moment you close.'
+      },
+      {
+        title: 'Lack of organised business reports',
+        body: 'Piles of bills do not show your best-selling item or tax collected. Date-range reports do.'
       }
     ],
     highlights: [
@@ -71,24 +88,64 @@ const CONTENT: Record<string, SolutionContent> = {
     ],
     faqs: [
       {
-        q: 'What is retail billing software?',
-        a: 'Retail billing software helps a shop create bills, take payments and keep stock and sales records in one place. It replaces handwritten bills and separate registers with a single system at the counter.'
+        q: 'What is billing software for retail shop?',
+        a: 'Billing software for retail shop businesses creates bills at the counter, records how the customer paid and keeps stock, customer and sales records current from the same bill. It replaces handwritten bills, a stock register and a credit notebook with one system.'
       },
       {
-        q: 'What makes the best retail billing software?',
-        a: 'Look for fast billing, reliable stock tracking, clear reports and screens your team can learn in a day. LocalPOS focuses on those basics, and the demo lets you test them with your own products.'
+        q: 'Which is the best billing software for retail shop?',
+        a: 'The best one is the one that fits your counter. Look for fast billing, correct GST invoices, stock that updates on every bill, clear reports and screens your staff can learn in a day. Test it with your own items in a demo. LocalPOS focuses on those basics.'
       },
       {
-        q: 'Is there free retail billing software?',
-        a: 'Free tools are usually limited in invoices, users or features. You can book a free LocalPOS demo to see the full product, and check our pricing page for current plans.'
+        q: 'How does retail billing software work?',
+        a: 'You scan or search items, the software calculates price and tax, you take payment and print or share the invoice. The bill then reduces stock, updates the customer’s record and joins the day’s sales.'
       },
       {
-        q: 'Can LocalPOS work as retail POS software for more than one shop?',
-        a: 'Yes. If you grow to several branches, you can manage them from one login with store-wise stock and reports.'
+        q: 'Can retail billing software generate GST invoices?',
+        a: 'Yes. LocalPOS invoices carry your GSTIN, each item’s HSN code and the tax split. Same-state sales show CGST and SGST; other-state sales show IGST. Reports show tax by rate. Confirm rates and filing with your chartered accountant.'
       },
       {
-        q: 'Do I need barcode scanners for POS software for retail?',
-        a: 'Not to start. You can search items by name. A scanner speeds things up when you sell many items a day, and LocalPOS supports common scanners.'
+        q: 'Does retail billing software support barcode scanning?',
+        a: 'Yes. LocalPOS works with common USB and Bluetooth scanners that type like a keyboard, and you can print labels for items without barcodes. Barcode billing is part of the Business plan.'
+      },
+      {
+        q: 'Can I manage stock using retail billing software?',
+        a: 'Yes. Every bill reduces stock, purchases and returns add it back, and a low-stock list shows what to reorder. You can also count stock by scanning and adjust any difference with a reason.'
+      },
+      {
+        q: 'Can billing software track customer credit?',
+        a: 'Yes. Each customer has a record with bills, payments and balance. A part payment leaves the rest as a balance due, and a list shows dues by how long they have been pending.'
+      },
+      {
+        q: 'Can I manage multiple retail shops using one software?',
+        a: 'Yes, on the Multi-store plan. Each store tracks its own stock under one master item list, you can transfer stock between stores, and reports can be store-wise or combined. Managers can be limited to their own store.'
+      },
+      {
+        q: 'Does retail billing software support UPI and card payments?',
+        a: 'LocalPOS records cash, UPI and card payments, including a split across modes on one bill. It records how the customer paid; it does not process the payment, so you collect money the way you do today.'
+      },
+      {
+        q: 'How much does retail billing software cost?',
+        a: 'LocalPOS has three plans: Starter, Business and Multi-store. Pricing is being finalised, so there are no public prices yet. [Book a free demo](/book-a-demo/) and we will share current plans.'
+      },
+      {
+        q: 'Is billing software suitable for small retail shops?',
+        a: 'Yes. A small shop gains the most from not rewriting bills, guessing stock or keeping a credit notebook. A computer or tablet is enough to start, and you can add a scanner and printer later.'
+      },
+      {
+        q: 'What should I check before choosing retail billing software?',
+        a: 'Check billing speed, GST invoices, stock updates, barcode support, payment modes, reports, ease of use for your staff, the hardware you own, branch needs, price and support. The buying guide above gives a question for each.'
+      },
+      {
+        q: 'Is there free billing software for retail shop?',
+        a: 'Free tools usually limit invoices, users or features. You can book a free LocalPOS demo to see the full product on your own items. Pricing is being finalised; see the [pricing page](/pricing/) for plans.'
+      },
+      {
+        q: 'What is the difference between POS software and billing software?',
+        a: 'Billing software creates the invoice. POS software is the counter system where you sell, take payment and update stock. LocalPOS combines both, with GST, inventory and customer records.'
+      },
+      {
+        q: 'Do I need special hardware for retail billing software?',
+        a: 'No. A computer or tablet is enough to begin. A barcode scanner and a receipt printer help when you bill many items a day, and you can add them when you are ready.'
       }
     ],
     relatedFeatures: [

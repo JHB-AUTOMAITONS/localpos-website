@@ -33,7 +33,8 @@ export const KEYWORD_MAP: KeywordEntry[] = [
     secondary: ['GST billing software', 'POS software', 'retail billing software', 'POS billing software'],
   },
   ...FEATURES.map((f): KeywordEntry => ({ path: f.path, primary: f.primary, secondary: f.secondary })),
-  ...SOLUTIONS.map((s): KeywordEntry => ({ path: s.path, primary: s.primary, secondary: s.secondary })),
+  // The retail URL (/solutions/retail-billing-software/) predates its primary keyword "billing software for retail shop", so keep the URL.
+  ...SOLUTIONS.map((s): KeywordEntry => ({ path: s.path, primary: s.primary, secondary: s.secondary, keepUrl: s.slug === 'retail-billing-software' })),
   ...COUNTRY_CONTENT.map((c): KeywordEntry => ({ path: `/${c.slug}/`, primary: c.primary, secondary: c.secondary })),
   ...BLOG_META.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary, keepUrl: p.keepUrl })),
 ]

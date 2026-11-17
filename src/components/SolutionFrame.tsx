@@ -13,7 +13,7 @@ export const solutionCrumbs = (s: Solution) => [
 ]
 
 /** Metadata, structured data, FAQ, related features and closing CTA shared by every industry page. */
-export function SolutionFrame({ solution, children, ctaTitle }: { solution: Solution; children: ReactNode; ctaTitle?: string }) {
+export function SolutionFrame({ solution, children, afterFaq, ctaTitle }: { solution: Solution; children: ReactNode; afterFaq?: ReactNode; ctaTitle?: string }) {
   return (
     <>
       <Seo
@@ -33,6 +33,7 @@ export function SolutionFrame({ solution, children, ctaTitle }: { solution: Solu
       />
       {children}
       <FAQSection faqs={solution.faqs} title={`Questions about ${solution.primary}`} />
+      {afterFaq}
       <RelatedFeatures slugs={solution.relatedFeatures} title={`Features that power ${solution.navLabel.toLowerCase()} billing`} />
       <CTASection title={ctaTitle ?? `See LocalPOS set up for your ${solution.navLabel.toLowerCase()} business`} />
     </>
