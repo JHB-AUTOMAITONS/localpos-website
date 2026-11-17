@@ -21,7 +21,7 @@ const CONTENT: Record<string, SolutionContent> = {
     ],
     seoTitle: 'Billing Software for Retail Shop in India | LocalPOS',
     seoDescription: 'LocalPOS is billing software for retail shop owners: fast barcode checkout, GST invoices, live stock and customer dues in one place. Book a free demo.',
-    h1: 'Billing Software for Retail Shop',
+    h1: 'Billing Software for Retail Shop to Manage Billing, Stock & Sales Easily',
     intro: 'LocalPOS is billing software for retail shop owners who want faster checkout, correct GST invoices and stock that matches the shelf. Scan or search an item, take cash, UPI or card, and print or share the bill. Stock, customer dues and the day’s sales update on their own. It is retail billing software for one counter, and it can grow into a multi-store setup.',
     h2Main: 'Everything your counter needs, in one retail billing system',
     painPoints: [
