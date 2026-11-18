@@ -209,7 +209,7 @@ export default function BlogPostPage() {
         </Container>
       </article>
 
-      {post.faqs && post.faqs.length > 0 && <FAQSection faqs={post.faqs} title="Quick answers" id="post-faq" tone="soft" />}
+      {post.faqs && post.faqs.length > 0 && <FAQSection faqs={post.faqs} title={post.faqTitle ?? 'Quick answers'} id="post-faq" tone="soft" />}
       <RelatedFeatures slugs={post.relatedFeatures} title="LocalPOS features related to this article" />
 
       <Section tone="paper" labelledBy="more-heading">

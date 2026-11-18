@@ -70,6 +70,8 @@ export interface BlogPostMeta {
 export interface BlogContent {
   blocks: ContentBlock[]
   faqs?: FaqItem[]
+  /** Heading for the FAQ section; defaults to "Quick answers". */
+  faqTitle?: string
 }
 
 export interface BlogPost extends BlogPostMeta, BlogContent {}

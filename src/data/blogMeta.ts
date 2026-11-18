@@ -6,6 +6,33 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'cloud-based-inventory-software-benefits',
+    keyword: 'cloud based inventory software',
+    secondary: [
+      'cloud inventory management software',
+      'cloud based inventory management system',
+      'inventory management software',
+      'online inventory management software',
+      'stock management software',
+      'inventory tracking software',
+      'real-time inventory management',
+      'retail inventory management software',
+      'inventory software for small business',
+      'cloud-based stock management system',
+      'multi-store inventory management',
+      'automated inventory management software'
+    ],
+    title: 'Cloud Based Inventory Software: Benefits for Small and Growing Businesses',
+    seoTitle: 'Cloud Based Inventory Software: Benefits for Small Business',
+    seoDescription: 'Cloud based inventory software lets small businesses track stock from anywhere. See the benefits, key features and how to choose the right system in India.',
+    category: 'Inventory',
+    date: '2026-11-18',
+    readingMinutes: 10,
+    excerpt: 'What cloud based inventory software is, how it works, ten benefits for small and growing businesses, the features to look for and a checklist for choosing the right system.',
+    tint: 'sky',
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'multi-store-management-software', 'barcode-billing-software' ]
+  },
+  {
     slug: 'manual-gst-billing-vs-automated-gst-billing',
     keyword: 'manual GST billing vs automated GST billing',
     secondary: [
