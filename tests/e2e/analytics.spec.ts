@@ -90,7 +90,7 @@ test.describe('analytics: what is built into every page', () => {
       }
       const policy = Object.fromEntries(meta.split(';').map((d) => d.trim().split(/\s+/)).map(([k, ...v]) => [k, v]))
       const eq = (a: string[] | undefined, b: string[]) => JSON.stringify([...(a ?? [])].sort()) === JSON.stringify([...b].sort())
-      if (!eq(policy['script-src'], ["'self'", ...wantedHashes, 'https://www.googletagmanager.com', 'https://www.clarity.ms', 'https://scripts.clarity.ms'])) problems.push(`${name}: script-src is ${policy['script-src']?.join(' ')}`)
+      if (!eq(policy['script-src'], ["'self'", ...wantedHashes, 'https://www.googletagmanager.com', 'https://www.clarity.ms', 'https://scripts.clarity.ms', 'https://connect.automationclub.in' /* the Book a Demo form's embed script, see demo-form.spec.ts */])) problems.push(`${name}: script-src is ${policy['script-src']?.join(' ')}`)
       if (!eq(policy['connect-src'], ["'self'", ...leadOrigin, 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.clarity.ms'])) problems.push(`${name}: connect-src is ${policy['connect-src']?.join(' ')}`)
       if (!eq(policy['img-src'], ["'self'", 'data:', 'https://*.google-analytics.com', 'https://*.clarity.ms'])) problems.push(`${name}: img-src is ${policy['img-src']?.join(' ')}`)
       // Everything that existed before analytics must be exactly as it was.

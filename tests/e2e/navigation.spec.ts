@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { clickBookDemo, clickNavLink, collectIssues, expectNoOverflow, FEATURE_NAV, isDesktopNav, open, openNavGroup, SOLUTION_NAV } from './helpers'
+import { clickBookDemo, clickNavLink, collectIssues, DEMO_FRAME, expectNoOverflow, FEATURE_NAV, isDesktopNav, open, openNavGroup, SOLUTION_NAV } from './helpers'
 
 test.describe('header navigation (desktop dropdowns / mobile drawer)', () => {
   for (const [label, path] of FEATURE_NAV) {
@@ -59,7 +59,7 @@ test.describe('header navigation (desktop dropdowns / mobile drawer)', () => {
     await open(page, '/pricing/')
     await clickBookDemo(page)
     await expect(page).toHaveURL(/\/book-a-demo\/$/)
-    await expect(page.getByRole('button', { name: /Request my free demo/ })).toBeVisible()
+    await expect(page.locator(DEMO_FRAME), 'the demo form frame').toBeVisible()
   })
 
   test('logo returns home from any page', async ({ page }) => {

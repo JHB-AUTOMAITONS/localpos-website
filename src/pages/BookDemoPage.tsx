@@ -1,36 +1,9 @@
 import { Icon, type IconName } from '@/components/Icon'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
-import { LeadForm, type FieldDef } from '@/components/forms/LeadForm'
+import { DemoFormEmbed } from '@/components/forms/DemoFormEmbed'
 import { Container } from '@/components/ui/Container'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Seo } from '@/lib/head'
-import { validators } from '@/lib/forms'
-
-const FIELDS: FieldDef[] = [
-  {
-    name: 'businessType',
-    label: 'Business type',
-    type: 'select',
-    required: true,
-    options: ['Retail shop', 'Restaurant or café', 'Jewellery', 'Supermarket', 'Medical store or pharmacy', 'Other'],
-    wide: true,
-    requiredMessage: 'Choose your business type.',
-  },
-  { name: 'name', label: 'Your name', type: 'text', required: true, autoComplete: 'name', maxLength: 120, requiredMessage: 'Enter your name.' },
-  { name: 'phone', label: 'Phone number', type: 'tel', required: true, autoComplete: 'tel', placeholder: '98765 43210', validate: validators.phone, maxLength: 20, requiredMessage: 'Enter your phone number.' },
-  { name: 'email', label: 'Email', type: 'email', required: true, autoComplete: 'email', placeholder: 'you@yourbusiness.com', validate: validators.email, maxLength: 254, requiredMessage: 'Enter your email address.' },
-  { name: 'company', label: 'Business name', type: 'text', required: true, autoComplete: 'organization', maxLength: 160, requiredMessage: 'Enter your business name.' },
-  {
-    name: 'size',
-    label: 'Number of stores',
-    type: 'select',
-    required: true,
-    options: ['1 store', '2 to 5 stores', '6 to 20 stores', 'More than 20 stores'],
-    wide: true,
-    requiredMessage: 'Choose the number of stores.',
-  },
-  { name: 'message', label: 'Anything we should know?', type: 'textarea', placeholder: 'What you sell, how you bill today, or what you would like to see in the demo.', maxLength: 2000 },
-]
 
 const EXPECT: Array<{ icon: IconName; title: string; text: string }> = [
   { icon: 'phone', title: 'We get in touch', text: 'We contact you to find a time that suits you.' },
@@ -73,13 +46,7 @@ export default function BookDemoPage() {
             <div className="rounded-[28px] border border-line bg-white p-6 shadow-lift sm:p-9 lg:col-start-2 lg:row-span-2 lg:row-start-1">
               <h2 className="h3-lg">Tell us about your business</h2>
               <p className="mb-6 mt-1.5 text-ink-2">It takes about a minute.</p>
-              <LeadForm
-                kind="book-a-demo"
-                fields={FIELDS}
-                submitLabel="Request my free demo"
-                successTitle="Thank you. Your demo request is in."
-                successText="We will get in touch using the phone number or email you gave us to arrange a time."
-              />
+              <DemoFormEmbed />
             </div>
 
             <div className="lg:col-start-1 lg:row-start-2">

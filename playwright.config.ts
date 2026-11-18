@@ -14,15 +14,15 @@ const DEV_PORT = Number(process.env.E2E_DEV_PORT ?? 4521)
 const channel = process.env.PW_CHANNEL === '' ? undefined : (process.env.PW_CHANNEL ?? 'chrome')
 
 /**
- * Google Analytics and Microsoft Clarity must never receive traffic from tests (it would pollute the live accounts) and tests must not depend on the internet.
+ * Google Analytics, Microsoft Clarity and the Book a Demo lead form (connect.automationclub.in) must never receive traffic from tests (it would pollute the live accounts) and tests must not depend on the internet.
  * They are blocked inside the browser with a DNS rule, which, unlike Playwright's request interception, leaves Chrome's HTTP cache working, so every
  * test sees the site loading the way a real visitor's browser does. Only tests/e2e/analytics.spec.ts opts out (to run the real scripts), and it
  * keeps all measurement data local by interception instead. helpers.ts fails any test in which a tracking host actually answers.
  */
-const BLOCK_TRACKING = '--host-resolver-rules=MAP *.googletagmanager.com ~NOTFOUND, MAP *.google-analytics.com ~NOTFOUND, MAP *.analytics.google.com ~NOTFOUND, MAP *.clarity.ms ~NOTFOUND'
+const BLOCK_TRACKING = '--host-resolver-rules=MAP *.googletagmanager.com ~NOTFOUND, MAP *.google-analytics.com ~NOTFOUND, MAP *.analytics.google.com ~NOTFOUND, MAP *.clarity.ms ~NOTFOUND, MAP connect.automationclub.in ~NOTFOUND'
 
-const SHARED_SPECS = /(routes|navigation|journeys|links|a11y|layout-quality|whatsapp)\.spec\.ts/
-const SINGLE_SPECS = /(responsive|forms|seo|perf|deploy|analytics|analytics-live)\.spec\.ts/
+const SHARED_SPECS = /(routes|navigation|journeys|links|a11y|layout-quality|whatsapp|demo-form)\.spec\.ts/
+const SINGLE_SPECS = /(responsive|forms|seo|perf|deploy|analytics|analytics-live|demo-form-live)\.spec\.ts/
 
 export default defineConfig({
   testDir: 'tests/e2e',

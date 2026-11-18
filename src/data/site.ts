@@ -31,6 +31,14 @@ export const SITE = {
     number: '917090006577',
     message: 'Hello LocalPOS Team, I would like to know more about your billing software.',
   },
+  /**
+   * The Book a Demo form is a GoHighLevel (LeadConnector) form, shown in an iframe on /book-a-demo/ (components/forms/DemoFormEmbed.tsx).
+   * Its fields, labels, button colour and where the leads go are all set in that GoHighLevel account, not in this repository.
+   * The build derives the Content Security Policy (frame and script source) from this address, so change it only here.
+   */
+  demoForm: {
+    url: 'https://connect.automationclub.in/widget/form/atiBoP0INNvxgI3l1Ut1',
+  },
   /** Only add real profile links here; icons are rendered only for entries that exist. */
   social: [] as Array<{ label: string; href: string }>,
 } as const

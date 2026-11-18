@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { createRequire } from 'node:module'
-import { open, ROUTES, scrollThrough } from './helpers'
+import { DEMO_FRAME, open, ROUTES, scrollThrough } from './helpers'
 
 const axePath = createRequire(import.meta.url).resolve('axe-core/axe.min.js')
 
@@ -51,7 +51,7 @@ test.describe('keyboard and focus', () => {
   })
 
   test('every form control has an accessible name and errors are announced', async ({ page }) => {
-    for (const route of ['/book-a-demo/', '/contact-us/']) {
+    for (const route of ['/contact-us/']) {
       await open(page, route)
       const unnamed = await page.evaluate(() =>
         [...document.querySelectorAll('input:not([tabindex="-1"]), select, textarea')].filter((el) => {
@@ -67,6 +67,15 @@ test.describe('keyboard and focus', () => {
       const withoutDescription = await page.locator('[aria-invalid="true"]:not([aria-describedby])').count()
       expect(withoutDescription, `${route}: invalid fields linked to their message`).toBe(0)
     }
+  })
+
+  test('the Book a Demo form frame has a title, so assistive technology can announce it, and the page has no unlabeled controls of its own', async ({ page }) => {
+    await open(page, '/book-a-demo/')
+    const frame = page.locator(DEMO_FRAME)
+    await expect(frame).toHaveCount(1)
+    expect(((await frame.getAttribute('title')) ?? '').length, 'iframe title').toBeGreaterThan(10)
+    const ownControls = await page.locator('main').locator('input:not([tabindex="-1"]), select, textarea').count()
+    expect(ownControls, 'form controls in the page itself (the form lives inside the frame)').toBe(0)
   })
 
   test('reduced motion: entrance animations are disabled', async ({ browser }) => {

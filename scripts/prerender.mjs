@@ -35,9 +35,14 @@ function headHtml(head) {
 // 'unsafe-inline' is needed for styles only (the prerendered HTML carries inline style attributes). The only inline scripts are the
 // Google Analytics and Microsoft Clarity snippets (scripts/analytics.mjs); they are allowed by SHA-256 hash, not by 'unsafe-inline'.
 const leadOrigin = SITE.leadEndpoint ? new URL(SITE.leadEndpoint).origin : ''
+// The Book a Demo form is a GoHighLevel form in an iframe (SITE.demoForm.url). Two things are allowed, both for that one origin only: showing it
+// in a frame (frame-src) and its small embed script, which keeps the frame as tall as the form (script-src). The form's own scripts, fonts and
+// requests run inside the frame, under the form provider's rules, not this page's. Nothing else in the policy changes.
+const demoFormOrigin = new URL(SITE.demoForm.url).origin
 const csp = [
   "default-src 'self'",
-  ["script-src 'self'", ...inlineScriptHashes(), ...ANALYTICS_CSP.script].join(' '),
+  ["script-src 'self'", ...inlineScriptHashes(), ...ANALYTICS_CSP.script, demoFormOrigin].join(' '),
+  `frame-src ${demoFormOrigin}`,
   "style-src 'self' 'unsafe-inline'",
   ["img-src 'self' data:", ...ANALYTICS_CSP.img].join(' '),
   "font-src 'self' data:",

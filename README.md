@@ -164,6 +164,22 @@ Both tools are installed once, site-wide, as the exact snippets Google and Micro
   bracketed placeholder where the analytics tools and consent approach must be described; fill it in, and decide whether you need a cookie notice.
 - **Your own visits** (and any `npm run start:prod` preview on localhost) are counted. Filter them in GA4 (Admin > Data settings > Data filters, or by hostname in reports) and in Clarity (Settings > Setup > IP blocking).
 
+## Book a Demo form (GoHighLevel)
+
+The form on `/book-a-demo/` is not built in this repository: it is a GoHighLevel (LeadConnector) form shown in an iframe, and leads go to that GoHighLevel account.
+
+- **Where:** `src/components/forms/DemoFormEmbed.tsx`. The address is `SITE.demoForm.url` in `src/data/site.ts` (the only place to change it).
+- **What you control in GoHighLevel, not here:** the fields and their labels, the button's text and colour, the phone placeholder and default country, the thank-you message,
+  notifications and automations. The page cannot restyle the form, because it is on another origin.
+- **Sizing:** the provider's own script (`<form origin>/js/form_embed.js`, added once by the component) keeps the frame exactly as tall as the form. The frame starts at 560 px.
+  Without that script the form still works, in a fixed-height frame.
+- **Content Security Policy:** `scripts/prerender.mjs` allows the form's origin in two places only: `frame-src` (to show the frame) and `script-src` (for the embed script),
+  both derived from `SITE.demoForm.url`. The form's own scripts and requests run inside the frame under its provider's rules.
+- **Fallback:** a plain "Open it in a new tab" link is shown under the form for visitors whose network or extension blocks frames.
+- **Tests:** `demo-form.spec.ts` checks the page around the frame; `demo-form-live.spec.ts` looks at the real form read-only (it never types or clicks in it, and fails on any unexpected POST).
+  In the test browser the form's host is blocked, like the analytics hosts, and a test fails if it ever answers, so a test run cannot create a lead.
+- **Contact page:** `/contact-us/` still uses the built-in form (`LeadForm`), which sends nothing until `VITE_LEAD_ENDPOINT` is set.
+- **Privacy:** name, phone and email now go to the GoHighLevel account. Describe that in the privacy policy template (`src/data/legal.ts`).
 ## Placeholders and things to confirm before launch
 
 These are intentionally marked, not invented:

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
-import { clickBookDemo, clickNavLink, collectIssues, expectNoOverflow, FEATURE_NAV, open, openNavGroup, scrollThrough, SOLUTION_NAV } from './helpers'
+import { clickBookDemo, clickNavLink, collectIssues, DEMO_FRAME, expectNoOverflow, FEATURE_NAV, open, openNavGroup, scrollThrough, SOLUTION_NAV } from './helpers'
 
 const logo = (page: Page) => page.getByRole('banner').getByRole('link', { name: /LocalPOS home/ })
 
@@ -25,7 +25,7 @@ test.describe('user journeys (run at 390 mobile, 768 tablet and 1440 desktop)', 
     await expect(page).toHaveURL(/\/pricing\/$/)
     await clickBookDemo(page)
     await expect(page).toHaveURL(/\/book-a-demo\/$/)
-    await expect(page.getByRole('button', { name: /Request my free demo/ })).toBeVisible()
+    await expect(page.locator(DEMO_FRAME), 'the demo form frame').toBeVisible()
     expect(issues).toEqual([])
   })
 

@@ -53,13 +53,20 @@ export const SOLUTION_NAV: Array<[label: RegExp, path: string]> = [
   [/^Medical Store/, SOLUTION_ROUTES[4]],
 ]
 
+/** The Book a Demo form frame (a GoHighLevel form), and the exact address it must point at. */
+export const DEMO_FRAME = 'iframe[title^="Book a free LocalPOS demo"]'
+export const DEMO_FORM_URL = 'https://connect.automationclub.in/widget/form/atiBoP0INNvxgI3l1Ut1'
+
 /** The full width matrix from the audit brief. */
 export const WIDTHS = [320, 360, 375, 390, 414, 430, 768, 820, 834, 1024, 1280, 1366, 1440, 1536, 1920]
 
-/** Google Analytics and Microsoft Clarity hosts. playwright.config.ts blocks them in the browser, so they can never answer a test. */
+/**
+ * Third-party hosts that tests must never reach: Google Analytics, Microsoft Clarity, and the GoHighLevel lead form on the Book a Demo page
+ * (a test that reached the form could create a real lead in the owner's account). playwright.config.ts blocks them in the browser, so they can never answer a test.
+ */
 export const isTrackingUrl = (url: string) => {
   try {
-    return /(^|\.)(googletagmanager\.com|google-analytics\.com|analytics\.google\.com|clarity\.ms)$/.test(new URL(url).hostname)
+    return /(^|\.)(googletagmanager\.com|google-analytics\.com|analytics\.google\.com|clarity\.ms|automationclub\.in|leadconnectorhq\.com)$/.test(new URL(url).hostname)
   } catch {
     return false
   }
@@ -85,7 +92,7 @@ export function collectIssues(page: Page, { allowTracking = false }: { allowTrac
   })
   page.on('response', (r) => {
     if (isTrackingUrl(r.url())) {
-      if (!allowTracking) issues.push(`TRACKING HOST ANSWERED (the test block is not working, real analytics traffic is possible): ${r.url().slice(0, 100)}`)
+      if (!allowTracking) issues.push(`THIRD-PARTY HOST ANSWERED (the test block is not working: real analytics traffic or a real lead is possible): ${r.url().slice(0, 100)}`)
       return
     }
     if (r.status() >= 400) issues.push(`http ${r.status()}: ${r.url()}`)
