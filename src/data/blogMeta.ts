@@ -6,6 +6,31 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'gst-invoice-billing-software-guide',
+    keyword: 'GST invoice billing software',
+    secondary: [
+      'GST billing software',
+      'GST invoice software',
+      'GST invoicing software',
+      'billing software for small businesses',
+      'automated GST billing',
+      'GST billing system',
+      'invoice management software',
+      'digital invoicing software',
+      'billing and invoicing software',
+      'GST billing software for retail shops'
+    ],
+    title: 'GST Invoice Billing Software: A Complete Guide for Businesses',
+    seoTitle: 'GST Invoice Billing Software: A Complete Guide | LocalPOS',
+    seoDescription: 'GST invoice billing software helps Indian businesses create GST invoices faster. Learn how it works, key features, benefits and how to choose the right one.',
+    category: 'GST & Compliance',
+    date: '2026-11-19',
+    readingMinutes: 11,
+    excerpt: 'What GST invoice billing software is, how it works step by step, the features to compare, the benefits for small businesses and a checklist for choosing the right one in India.',
+    tint: 'gold',
+    relatedFeatures: [ 'gst-billing-software', 'pos-billing-software', 'sales-reporting-software', 'customer-management-software-for-small-business', 'inventory-management-software' ]
+  },
+  {
     slug: 'cloud-based-inventory-software-benefits',
     keyword: 'cloud based inventory software',
     secondary: [
