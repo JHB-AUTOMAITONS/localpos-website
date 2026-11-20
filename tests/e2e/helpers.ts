@@ -28,7 +28,7 @@ export const SOLUTION_ROUTES = [
   '/solutions/medical-store-billing-software/',
 ]
 export const COUNTRY_ROUTES = ['/pos-system-sri-lanka/', '/pos-system-singapore/', '/pos-system-south-africa/', '/pos-system-malaysia/', '/pos-system-nigeria/']
-export const OTHER_ROUTES = ['/pricing/', '/book-a-demo/', '/blog/', '/about-us/', '/contact-us/', '/privacy-policy/', '/terms-and-conditions/', '/refund-policy/']
+export const OTHER_ROUTES = ['/pricing/', '/book-a-demo/', '/blog/', '/about-us/', '/contact-us/', '/privacy-policy/', '/delete-account/', '/terms-and-conditions/', '/refund-policy/']
 export const REQUIRED_ROUTES = ['/', ...FEATURE_ROUTES, ...SOLUTION_ROUTES, ...COUNTRY_ROUTES, ...OTHER_ROUTES]
 export const FORBIDDEN_ROUTES = ['/billing-software/', '/faq/', '/sitemap/']
 

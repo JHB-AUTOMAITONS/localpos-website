@@ -83,7 +83,7 @@ export interface LegalSection {
 }
 
 export interface LegalPage {
-  slug: 'privacy-policy' | 'terms-and-conditions' | 'refund-policy'
+  slug: 'privacy-policy' | 'delete-account' | 'terms-and-conditions' | 'refund-policy'
   path: string
   title: string
   seoTitle: string

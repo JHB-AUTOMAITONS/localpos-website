@@ -115,6 +115,7 @@ export function Footer() {
 
           <FooterColumn title="Legal">
             <FooterLink to="/privacy-policy/">Privacy Policy</FooterLink>
+            <FooterLink to="/delete-account/">Delete your account</FooterLink>
             <FooterLink to="/terms-and-conditions/">Terms &amp; Conditions</FooterLink>
             <FooterLink to="/refund-policy/">Refund Policy</FooterLink>
           </FooterColumn>
