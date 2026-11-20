@@ -52,6 +52,7 @@ const pages: PageDef[] = [
   { path: 'about-us', load: () => import('@/pages/AboutPage') },
   { path: 'contact-us', load: () => import('@/pages/ContactPage') },
   { path: 'privacy-policy', load: () => import('@/pages/LegalPage') },
+  { path: 'delete-account', load: () => import('@/pages/LegalPage') },
   { path: 'terms-and-conditions', load: () => import('@/pages/LegalPage') },
   { path: 'refund-policy', load: () => import('@/pages/LegalPage') },
 
