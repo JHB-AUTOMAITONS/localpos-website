@@ -64,6 +64,8 @@ export interface BlogPostMeta {
   language?: string
   /** Feature slugs to promote at the end of the post. */
   relatedFeatures: string[]
+  /** Optional featured image shown at the top of the article (file in public/). Posts without one use the generated cover. */
+  image?: { src: string; alt: string; title?: string; caption?: string; width: number; height: number }
 }
 
 /** The article itself. Loaded only on article pages. */

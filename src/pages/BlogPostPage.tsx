@@ -112,7 +112,7 @@ function articleSchema(post: BlogPost): Record<string, unknown> {
     dateModified: post.date,
     inLanguage: post.language ?? 'en-IN',
     keywords: [post.keyword, ...post.secondary].join(', '),
-    image: [absoluteUrl(SITE.ogImage)],
+    image: [absoluteUrl(post.image?.src ?? SITE.ogImage)],
     author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
     publisher: { '@id': `${SITE.url}/#organization` },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}/`),
@@ -176,7 +176,23 @@ export default function BlogPostPage() {
         </header>
 
         <Container>
-          <BlogCover post={post} large className="mx-auto mb-10 h-36 max-w-[1000px] rounded-[28px] border border-line sm:h-44 lg:mb-12" />
+          {post.image ? (
+            <figure className="mx-auto mb-10 max-w-[1000px] lg:mb-12">
+              <img
+                src={post.image.src}
+                alt={post.image.alt}
+                title={post.image.title}
+                width={post.image.width}
+                height={post.image.height}
+                fetchPriority="high"
+                decoding="async"
+                className="h-auto w-full rounded-[28px] border border-line"
+              />
+              {post.image.caption && <figcaption className="mt-3 text-center text-[0.9rem] text-ink-3">{post.image.caption}</figcaption>}
+            </figure>
+          ) : (
+            <BlogCover post={post} large className="mx-auto mb-10 h-36 max-w-[1000px] rounded-[28px] border border-line sm:h-44 lg:mb-12" />
+          )}
           <div className="mx-auto grid max-w-[1000px] gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14">
             <aside className="hidden lg:block">
               {toc.length > 1 && (

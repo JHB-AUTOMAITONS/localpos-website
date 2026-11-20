@@ -6,6 +6,41 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'cloud-stock-management-software',
+    keyword: 'cloud stock management software',
+    secondary: [
+      'cloud inventory management software',
+      'cloud based stock management software',
+      'cloud inventory software',
+      'stock management software',
+      'inventory management software',
+      'inventory tracking software',
+      'stock tracking software',
+      'inventory management system',
+      'inventory software for small businesses',
+      'online stock management software',
+      'real time inventory management software',
+      'inventory management software for retail businesses'
+    ],
+    title: 'Cloud Stock Management Software: A Complete Guide for Businesses',
+    seoTitle: 'Cloud Stock Management Software: A Complete Business Guide',
+    seoDescription: 'Cloud stock management software helps Indian businesses track stock online. Learn how it works, its benefits, key features and how to choose the right one.',
+    category: 'Inventory',
+    date: '2026-11-20',
+    readingMinutes: 12,
+    excerpt: 'What cloud stock management software is, how it tracks stock movement step by step, the benefits and features that matter, the mistakes to avoid and how to choose a system for your business.',
+    tint: 'brand',
+    image: {
+      src: '/blog/cloud-stock-management-software.webp',
+      alt: 'Cloud stock management software for tracking business inventory',
+      title: 'Cloud Stock Management Software: A Complete Guide for Businesses',
+      caption: 'Cloud stock management software keeps stock records online, so they can be checked from any connected device.',
+      width: 1600,
+      height: 900
+    },
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'barcode-billing-software', 'multi-store-management-software', 'sales-reporting-software' ]
+  },
+  {
     slug: 'gst-invoice-billing-software-guide',
     keyword: 'GST invoice billing software',
     secondary: [
