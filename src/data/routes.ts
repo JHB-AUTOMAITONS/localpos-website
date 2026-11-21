@@ -4,6 +4,7 @@ import { BLOG_META } from './blogMeta'
 import { LEGAL_PAGES } from './legal'
 import { COUNTRY_CONTENT } from './countries'
 import { COUNTRY_META } from './countryMeta'
+import { RESOURCE_META } from './resourceMeta'
 
 export interface SiteRoute {
   path: string
@@ -36,6 +37,7 @@ export const KEYWORD_MAP: KeywordEntry[] = [
   // The retail URL (/solutions/retail-billing-software/) predates its primary keyword "billing software for retail shop", so keep the URL.
   ...SOLUTIONS.map((s): KeywordEntry => ({ path: s.path, primary: s.primary, secondary: s.secondary, keepUrl: s.slug === 'retail-billing-software' })),
   ...COUNTRY_CONTENT.map((c): KeywordEntry => ({ path: `/${c.slug}/`, primary: c.primary, secondary: c.secondary })),
+  ...RESOURCE_META.map((r): KeywordEntry => ({ path: r.path, primary: r.primary, secondary: r.secondary })),
   ...BLOG_META.map((p): KeywordEntry => ({ path: `/blog/${p.slug}/`, primary: p.keyword, secondary: p.secondary, keepUrl: p.keepUrl })),
 ]
 
@@ -49,6 +51,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   ...FEATURES.map((f): SiteRoute => ({ path: f.path, priority: 0.9, changefreq: 'monthly' })),
   ...SOLUTIONS.map((s): SiteRoute => ({ path: s.path, priority: 0.9, changefreq: 'monthly' })),
   ...COUNTRY_META.map((c): SiteRoute => ({ path: c.path, priority: 0.8, changefreq: 'monthly' })),
+  ...RESOURCE_META.map((r): SiteRoute => ({ path: r.path, priority: 0.7, changefreq: 'monthly' })),
   { path: '/pricing/', priority: 0.8, changefreq: 'monthly' },
   { path: '/book-a-demo/', priority: 0.8, changefreq: 'yearly' },
   { path: '/blog/', priority: 0.7, changefreq: 'weekly', lastmod: BLOG_META[0]?.date },

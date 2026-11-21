@@ -1,0 +1,122 @@
+import type { Block } from '@/components/resource/blocks'
+import { ResourcePage } from '@/components/resource/ResourcePage'
+import { ImageScanner } from '@/components/tools/ImageScanner'
+import type { FaqItem } from '@/lib/seo'
+
+const blocks: Block[] = [
+  {
+    kind: 'prose',
+    title: 'Privacy: your image stays on your device',
+    body: [
+      'The picture you choose is decoded inside your browser. It is **never uploaded** to LocalPOS or to anyone else, and the result is shown only on your screen.',
+      'That matters because a QR code can hold private details: a Wi-Fi password, a UPI ID, a phone number or a link to a personal document. The tool is free and needs no sign-up, so there is no account in which results could be stored.',
+    ],
+    aside: {
+      title: 'Closing the tab clears it',
+      body: 'Nothing is saved between visits. Copy the result before you leave the page if you need it later.',
+    },
+  },
+  {
+    kind: 'cards',
+    title: 'When scanning from an image is the only way',
+    lead: 'A phone camera cannot point at its own screen. These are the usual situations.',
+    items: [
+      { icon: 'phone', title: 'A code sent on WhatsApp or email', body: 'A supplier sends a payment code or a customer sends a location link as a picture. Save the image and open it here.' },
+      { icon: 'monitor', title: 'A screenshot', body: 'You captured a code from a website, an app or a video call and want to see what it contains before acting on it.' },
+      { icon: 'file', title: 'A code on a PDF invoice', body: 'Take a screenshot of the part of the invoice that carries the code, then paste it straight into the tool.' },
+      { icon: 'printer', title: 'Your own artwork before printing', body: 'Check that the file you are sending to the printer really holds the right link or UPI ID. Codes from the [QR code generator](/qr-code-generator/) can be verified this way.' },
+    ],
+  },
+  {
+    kind: 'steps',
+    title: 'How to scan a QR from an image',
+    steps: [
+      { title: 'Add the picture', body: 'Choose a file, drag and drop it on the box, or paste a copied image. JPG, PNG, WebP and other formats your browser can open are accepted, up to 15 MB.' },
+      { title: 'Read the result', body: 'The decoded content appears with a label that says what it is: a link, plain text, Wi-Fi details, UPI payment details or a contact card.' },
+      { title: 'Copy or open', body: 'Press **Copy** to put the content on your clipboard. For a link you also get an **Open link** button. Read the address first.' },
+    ],
+  },
+  {
+    kind: 'defs',
+    title: 'Reading the result by type',
+    items: [
+      { term: 'Link', desc: 'The full web address is shown. Look at the domain name, the part just after https://, before opening it.' },
+      { term: 'Plain text', desc: 'The text is shown exactly as stored. It may be a note, a serial number or a coupon code.' },
+      { term: 'Wi-Fi details', desc: 'The network name, the security type and the password. You can type these into a laptop or another device that cannot scan.' },
+      { term: 'UPI payment details', desc: 'The UPI ID and payee name, plus the amount and note if the code carries them. This shows who would be paid.' },
+      { term: 'Contact card', desc: 'The name, phone, email and other fields saved in the card.' },
+    ],
+  },
+  {
+    kind: 'table',
+    title: 'Troubleshooting: when the code is not read',
+    head: ['Problem', 'Likely cause', 'What to try'],
+    rows: [
+      ['“Not an image” message', 'The file is a PDF, a document or a damaged file', 'Take a screenshot of the code and use that instead'],
+      ['No readable QR code found', 'The code is very small inside a large photo', 'Crop closer so the code fills most of the picture'],
+      ['Blurred photo', 'Camera shake or a forwarded, compressed image', 'Ask for the original file or retake the photo in good light'],
+      ['Faint or coloured code', 'Low contrast between the squares and the background', 'Use a clearer copy. Dark squares on a light background read well'],
+      ['Tilted or curved code', 'Photographed at a steep angle or on a bottle', 'Retake the photo straight on, with the code lying flat'],
+    ],
+    note: 'The tool reads one code per image. If a picture has several, crop to the one you need.',
+  },
+  {
+    kind: 'split',
+    title: 'What this tool covers',
+    left: {
+      title: 'Good for',
+      items: [
+        'Codes saved as pictures or screenshots',
+        'Seeing the content before you open or pay',
+        'Copying a Wi-Fi password or a long link to another device',
+        'Checking print files before a print run',
+      ],
+    },
+    right: {
+      title: 'Not built for',
+      items: [
+        'Live camera scanning. Use your phone’s camera app for that',
+        'Several codes in a single image',
+        'Product barcodes. Those go to the [barcode scanner](/barcode-scanner/)',
+        'Making payments. It only shows the details',
+      ],
+    },
+  },
+  {
+    kind: 'note',
+    title: 'Check before you open or pay',
+    body: 'A QR code from an unknown source can lead to a fake website. Read the address and open it only if you recognise it. For a UPI code, verify that the payee name is the person or shop you mean to pay. Remember that scanning a code is for paying money. You do not need to scan anything or enter your UPI PIN to receive money.',
+  },
+]
+
+const faqs: FaqItem[] = [
+  { q: 'Is my image uploaded when I scan it?', a: 'No. The image is decoded in your browser on your own device. It is not sent to a server and it is not stored.' },
+  { q: 'Can I scan with my camera on this page?', a: 'No. This page reads codes from image files only. For a printed code in front of you, the camera app on most phones scans it directly.' },
+  { q: 'Which image formats work?', a: 'JPG, PNG and WebP, and any other format your browser can display. The file can be up to 15 MB. A PDF is not an image, so take a screenshot of the page that has the code.' },
+  { q: 'Why does the tool say there is no readable code?', a: 'The usual reasons are blur, a code that is too small in the frame, poor contrast or a steep angle. Crop closer to the code and try again, or use a sharper copy of the picture.' },
+  { q: 'Can it read a UPI QR code from a screenshot?', a: 'Yes. It shows the UPI ID, the payee name and any amount or note stored in the code. It does not start a payment. To pay, use your UPI app, most of which can also load a code from the gallery.' },
+  { q: 'How do I keep track of payments received through a shop QR?', a: 'A printed code does not record anything by itself. Match each receipt in your bank or UPI app with the bill. [LocalPOS billing software](/features/pos-billing-software/) lets you mark the payment mode on every bill so the totals are easy to compare.' },
+]
+
+export default function QrCodeScannerPage() {
+  return (
+    <ResourcePage
+      slug="qr-code-scanner"
+      seoTitle="QR Code Scanner from Image: Read a QR Online | LocalPOS"
+      seoDescription="Free QR code scanner for photos and screenshots. Choose, drop or paste an image to read the link, text, Wi-Fi or UPI details. Nothing is uploaded."
+      h1="QR Code Scanner: read a QR from an image"
+      intro="This QR code scanner reads a code from a photo or screenshot and shows you what is inside it. Choose, drop or paste the image, and the content appears with a button to copy it."
+      points={['Decoded in your browser', 'Image never uploaded', 'Choose, drop or paste']}
+      toolTitle="QR code scanner from image"
+      toolLead="Add a picture that contains one QR code."
+      featureList={['Read a QR code from a photo or screenshot', 'Choose, drag and drop or paste an image', 'Recognises links, text, Wi-Fi, UPI and contact cards', 'Copy the decoded content', 'Decoding in the browser with no upload']}
+      blocks={blocks}
+      faqs={faqs}
+      faqTitle="Questions about reading QR codes from images"
+      related={['qr-code-generator', 'barcode-scanner', 'barcode-generator', 'receipt-maker']}
+      cta={{ title: 'Know which bills were paid by UPI', text: 'LocalPOS records the payment mode on every bill, so the day’s UPI, cash and card totals are ready when you close the counter.' }}
+    >
+      <ImageScanner mode="qr" />
+    </ResourcePage>
+  )
+}

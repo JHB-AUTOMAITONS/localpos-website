@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { collectIssues, isDesktopNav, open, ROUTES } from './helpers'
+import { collectIssues, FORMAT_ROUTES, isDesktopNav, open, ROUTES, TOOL_ROUTES } from './helpers'
 
 const KNOWN = new Set(ROUTES)
 
@@ -116,14 +116,13 @@ test.describe('important calls to action go where they say', () => {
     const footer = page.locator('footer')
     const tools = footer.getByRole('navigation', { name: 'LocalPOS Tools' })
     const formats = footer.getByRole('navigation', { name: 'LocalPOS Business Formats' })
-    await expect(tools.getByRole('listitem')).toHaveCount(11)
-    await expect(formats.getByRole('listitem')).toHaveCount(12)
-    await expect(tools.getByRole('listitem').first()).toHaveText('GST Calculator')
-    await expect(formats.getByRole('listitem').last()).toHaveText('Income Statement')
-    // An item is a link only when its page exists; every other item is plain text.
-    for (const href of await footer.locator('nav a[href]').evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
-      expect(KNOWN.has(href), `footer directory link ${href}`).toBe(true)
-    }
+    // Every tool and format is a crawlable link to its own page, each page linked once.
+    const toolHrefs = await tools.getByRole('link').evaluateAll((els) => els.map((e) => e.getAttribute('href')!))
+    const formatHrefs = await formats.getByRole('link').evaluateAll((els) => els.map((e) => e.getAttribute('href')!))
+    expect(toolHrefs).toEqual(TOOL_ROUTES)
+    expect(formatHrefs).toEqual(FORMAT_ROUTES)
+    await expect(tools.getByRole('link').first()).toHaveText('GST Calculator')
+    await expect(formats.getByRole('link').last()).toHaveText('Income Statement')
 
     const trust = footer.getByRole('list', { name: 'Why businesses trust LocalPOS' })
     await expect(trust.getByRole('listitem')).toHaveText(['Made in India', 'SecureSSL Encryption', 'Trusted by MSMEs'])

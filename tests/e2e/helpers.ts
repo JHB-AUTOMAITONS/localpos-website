@@ -28,8 +28,11 @@ export const SOLUTION_ROUTES = [
   '/solutions/medical-store-billing-software/',
 ]
 export const COUNTRY_ROUTES = ['/pos-system-sri-lanka/', '/pos-system-singapore/', '/pos-system-south-africa/', '/pos-system-malaysia/', '/pos-system-nigeria/']
+/** Free tools and business-format pages (src/data/resourceMeta.ts), written out independently of the code. */
+export const TOOL_ROUTES = ['/gst-calculator/', '/invoice-generator/', '/quotation-maker/', '/proforma-invoice-generator/', '/purchase-order-generator/', '/receipt-maker/', '/qr-code-generator/', '/barcode-generator/', '/qr-code-scanner/', '/barcode-scanner/', '/logo-maker/']
+export const FORMAT_ROUTES = ['/invoice-formats/', '/quotation-format/', '/balance-sheet-format/', '/bill-book-format/', '/receipt-format/', '/credit-note-format/', '/debit-note-format/', '/sales-report-format/', '/estimate-format/', '/delivery-challan-format/', '/work-order-format/', '/income-statement-format/']
 export const OTHER_ROUTES = ['/pricing/', '/book-a-demo/', '/blog/', '/about-us/', '/contact-us/', '/privacy-policy/', '/delete-account/', '/terms-and-conditions/', '/refund-policy/']
-export const REQUIRED_ROUTES = ['/', ...FEATURE_ROUTES, ...SOLUTION_ROUTES, ...COUNTRY_ROUTES, ...OTHER_ROUTES]
+export const REQUIRED_ROUTES = ['/', ...FEATURE_ROUTES, ...SOLUTION_ROUTES, ...COUNTRY_ROUTES, ...TOOL_ROUTES, ...FORMAT_ROUTES, ...OTHER_ROUTES]
 export const FORBIDDEN_ROUTES = ['/billing-software/', '/faq/', '/sitemap/']
 
 /** Navigation labels (as shown in the header) per feature / solution path. */

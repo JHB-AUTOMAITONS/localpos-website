@@ -98,6 +98,7 @@ export function softwareSchema(opts: {
   description: string
   path: string
   featureList?: string[]
+  category?: string
 }): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
@@ -105,9 +106,22 @@ export function softwareSchema(opts: {
     name: opts.name ?? SITE.name,
     description: opts.description,
     url: absoluteUrl(opts.path),
-    applicationCategory: 'BusinessApplication',
+    applicationCategory: opts.category ?? 'BusinessApplication',
     operatingSystem: 'Web',
     ...(opts.featureList ? { featureList: opts.featureList } : {}),
+    publisher: { '@id': `${SITE.url}/#organization` },
+  }
+}
+
+export function webPageSchema(opts: { name: string; description: string; path: string }): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: opts.name,
+    description: opts.description,
+    url: absoluteUrl(opts.path),
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE.url}/#website` },
     publisher: { '@id': `${SITE.url}/#organization` },
   }
 }

@@ -1,0 +1,207 @@
+import type { Block } from '@/components/resource/blocks'
+import { ResourcePage } from '@/components/resource/ResourcePage'
+import { TemplateViewer } from '@/components/templates/TemplateViewer'
+import type { TemplateDoc } from '@/components/templates/types'
+import type { FaqItem } from '@/lib/seo'
+
+const templates: TemplateDoc[] = [
+  {
+    id: 'trading',
+    name: 'Trading business',
+    description: 'For a shop, wholesaler or distributor that buys and sells goods. Shows cost of goods sold, gross profit and net profit.',
+    fileName: 'income-statement-trading-business',
+    blocks: [
+      { t: 'title', text: 'Income Statement (Profit and Loss)', sub: 'For the year ended 31 March 2027' },
+      { t: 'org', name: 'Gupta Hardware & Paints', lines: ['31 Birhana Road, Kanpur, Uttar Pradesh 208001', 'Proprietor: Rakesh Gupta · GSTIN: 09ABCDE1234F1Z5'] },
+      {
+        t: 'table',
+        head: ['Particulars', 'Amount (₹)', 'Total (₹)'],
+        align: ['l', 'r', 'r'],
+        keep: [0],
+        rows: [
+          { section: 'Revenue' },
+          ['Revenue from sales', '48,60,000.00', ''],
+          ['Less: sales returns', '60,000.00', ''],
+          { total: ['Net sales (A)', '', '48,00,000.00'] },
+          { section: 'Cost of goods sold' },
+          ['Opening stock', '6,20,000.00', ''],
+          ['Add: purchases, net of returns', '35,40,000.00', ''],
+          ['Add: direct expenses (freight inward, loading)', '90,000.00', ''],
+          ['Less: closing stock', '6,50,000.00', ''],
+          { total: ['Cost of goods sold (B)', '', '36,00,000.00'] },
+          { total: ['Gross profit (C = A − B)', '', '12,00,000.00'] },
+          { section: 'Operating expenses' },
+          ['Salaries and wages', '3,36,000.00', ''],
+          ['Shop rent', '1,80,000.00', ''],
+          ['Electricity', '48,000.00', ''],
+          ['Delivery and transport outward', '36,000.00', ''],
+          ['Repairs and maintenance', '18,000.00', ''],
+          ['Printing, phone and internet', '24,000.00', ''],
+          ['Bank charges and payment fees', '12,000.00', ''],
+          ['Depreciation', '42,000.00', ''],
+          ['Miscellaneous expenses', '24,000.00', ''],
+          { total: ['Total operating expenses (D)', '', '7,20,000.00'] },
+          { total: ['Operating profit (E = C − D)', '', '4,80,000.00'] },
+          { section: 'Other income and finance cost' },
+          ['Add: other income (interest and discount received)', '', '30,000.00'],
+          ['Less: interest on loan', '', '78,000.00'],
+          { total: ['Net profit before tax (E + other income − interest)', '', '4,32,000.00'] },
+        ],
+      },
+      { t: 'text', label: 'Notes', text: 'Sales and purchases are shown net of GST. Stock is valued at cost or market value, whichever is lower.', keep: true },
+      { t: 'sign', labels: ['Prepared by', 'Proprietor'] },
+    ],
+  },
+  {
+    id: 'service',
+    name: 'Service business',
+    description: 'For consultants, agencies, clinics, coaching centres and repair services. There is no stock, so expenses come straight off revenue.',
+    fileName: 'income-statement-service-business',
+    blocks: [
+      { t: 'title', text: 'Income Statement (Profit and Loss)', sub: 'For the year ended 31 March 2027' },
+      { t: 'org', name: 'Narmada Digital Services', lines: ['2nd Floor, Shree Plaza, M P Nagar, Bhopal, Madhya Pradesh 462011', 'GSTIN: 23PQRSX5678K1Z3 · Email: accounts@example.com'] },
+      {
+        t: 'table',
+        head: ['Particulars', 'Amount (₹)', 'Total (₹)'],
+        align: ['l', 'r', 'r'],
+        keep: [0],
+        rows: [
+          { section: 'Revenue' },
+          ['Service fees billed', '18,40,000.00', ''],
+          ['Less: refunds and discounts', '40,000.00', ''],
+          { total: ['Net revenue (A)', '', '18,00,000.00'] },
+          { section: 'Operating expenses' },
+          ['Staff salaries', '7,20,000.00', ''],
+          ['Office rent', '1,44,000.00', ''],
+          ['Software subscriptions', '60,000.00', ''],
+          ['Electricity and internet', '54,000.00', ''],
+          ['Travel and conveyance', '36,000.00', ''],
+          ['Advertising and marketing', '48,000.00', ''],
+          ['Professional fees', '30,000.00', ''],
+          ['Depreciation on computers and furniture', '66,000.00', ''],
+          ['Miscellaneous expenses', '18,000.00', ''],
+          { total: ['Total operating expenses (B)', '', '11,76,000.00'] },
+          { total: ['Operating profit (C = A − B)', '', '6,24,000.00'] },
+          { section: 'Other income and finance cost' },
+          ['Add: other income (interest on deposits)', '', '12,000.00'],
+          ['Less: interest on loan', '', '24,000.00'],
+          { total: ['Net profit before tax (C + other income − interest)', '', '6,12,000.00'] },
+        ],
+      },
+      { t: 'text', label: 'Notes', text: 'Revenue is shown net of GST.', keep: true },
+      { t: 'sign', labels: ['Prepared by', 'Owner / Partner'] },
+    ],
+  },
+]
+
+const blocks: Block[] = [
+  {
+    kind: 'prose',
+    title: 'How an income statement is laid out',
+    body: [
+      'An income statement, which most Indian traders call a profit and loss account or P&L, shows what a business earned and spent over a period and what was left. The period is usually the financial year from 1 April to 31 March, though many owners also prepare one every month or quarter.',
+      'It reads from top to bottom in steps. Sales come first. The cost of the goods sold is taken off to give gross profit. Running expenses are taken off next to give operating profit. Other income and interest are adjusted last, leaving net profit before tax.',
+      'A service business has no goods to buy and sell, so it skips the cost of goods sold step. Its P&L format goes from revenue straight to operating expenses, as the second layout shows.',
+    ],
+  },
+  {
+    kind: 'defs',
+    title: 'The lines of the statement, one by one',
+    items: [
+      { term: 'Revenue from sales', desc: 'The value of goods sold or services billed in the period, without GST. Sales returns are deducted to reach net sales. The monthly totals of your [sales report](/sales-report-format/) add up to this figure.' },
+      { term: 'Opening and closing stock', desc: 'The value of unsold goods at the start and at the end of the period. Closing stock of one year is the opening stock of the next.' },
+      { term: 'Purchases and direct expenses', desc: 'Goods bought for resale, less purchase returns, plus the costs of bringing them in, such as freight inward and loading.' },
+      { term: 'Cost of goods sold', desc: 'Opening stock plus purchases plus direct expenses, less closing stock. It is the cost of only those goods that were actually sold.' },
+      { term: 'Gross profit', desc: 'Net sales less cost of goods sold. It shows the margin made on the goods themselves, before shop expenses.' },
+      { term: 'Operating expenses', desc: 'The costs of running the business: salaries, rent, electricity, delivery, repairs, bank charges, depreciation and the like.' },
+      { term: 'Operating profit', desc: 'Gross profit less operating expenses. It is the profit from the main activity of the business.' },
+      { term: 'Other income and interest', desc: 'Income outside the main activity, such as interest earned, is added. Interest paid on loans is deducted.' },
+      { term: 'Net profit before tax', desc: 'What remains after all of the above. Income tax is worked out separately and is not shown in this layout.' },
+    ],
+  },
+  {
+    kind: 'table',
+    title: 'Worked example: the profit formulas with the sample figures',
+    lead: 'Every figure below comes from the trading business sample at the top of the page. Amounts are in rupees.',
+    head: ['Step', 'Formula', 'Working', 'Result'],
+    rows: [
+      ['Net sales', 'Sales − returns', '48,60,000 − 60,000', '48,00,000'],
+      ['Cost of goods sold', 'Opening stock + purchases + direct expenses − closing stock', '6,20,000 + 35,40,000 + 90,000 − 6,50,000', '36,00,000'],
+      ['Gross profit', 'Net sales − cost of goods sold', '48,00,000 − 36,00,000', '12,00,000'],
+      ['Gross margin', 'Gross profit ÷ net sales × 100', '12,00,000 ÷ 48,00,000 × 100', '25.0%'],
+      ['Operating profit', 'Gross profit − operating expenses', '12,00,000 − 7,20,000', '4,80,000'],
+      ['Net profit before tax', 'Operating profit + other income − interest', '4,80,000 + 30,000 − 78,000', '4,32,000'],
+      ['Net margin', 'Net profit ÷ net sales × 100', '4,32,000 ÷ 48,00,000 × 100', '9.0%'],
+    ],
+    note: 'Read the two margins together. This shop keeps ₹25 out of every ₹100 of sales after paying for the goods, and ₹9 after all expenses and interest. In the service sample there is no gross profit step: net profit before tax is 6,12,000 on revenue of 18,00,000, a net margin of 34.0%.',
+  },
+  {
+    kind: 'split',
+    title: 'Income statement and balance sheet: how they differ',
+    lead: 'The two statements are prepared together and answer different questions.',
+    left: {
+      title: 'Income statement',
+      items: [
+        'Covers a period, such as “the year ended 31 March 2027”.',
+        'Lists income and expenses.',
+        'Answers: did the business make a profit?',
+        'Starts from zero every year.',
+      ],
+    },
+    right: {
+      title: 'Balance sheet',
+      items: [
+        'Shows one date, such as “as at 31 March 2027”.',
+        'Lists assets, liabilities and the owner’s capital.',
+        'Answers: what does the business own and owe?',
+        'Carries its balances forward to the next year.',
+      ],
+    },
+  },
+  {
+    kind: 'prose',
+    title: 'How the two statements connect, and where the figures come from',
+    body: [
+      'The net profit at the foot of the P&L is added to the owner’s capital in the balance sheet, and the closing stock appears there as an asset. That is why the two are always drawn up for the same date. Layouts for the second statement are on the [balance sheet format](/balance-sheet-format/) page.',
+      'The statement is only as reliable as the records behind it. Sales come from your bills, purchases from supplier invoices, expenses from the cash book and bank statement, and closing stock from a physical count at the year end.',
+      'If your bills are in software, the sales side is already added up. [LocalPOS sales reporting software](/features/sales-reporting-software/) gives sales and returns for any period, which you or your accountant can carry to the top of the statement.',
+    ],
+  },
+  {
+    kind: 'note',
+    title: 'A learning format, not accounting advice',
+    body: 'These layouts are meant to help a small business owner understand and draft a profit and loss statement. They are not a statutory format. Companies must present their statement of profit and loss as set out in Schedule III to the Companies Act, 2013, and tax and audit rules may require further details. Please have your final accounts prepared or reviewed by a chartered accountant.',
+  },
+]
+
+const faqs: FaqItem[] = [
+  { q: 'Is an income statement the same as a profit and loss account?', a: 'Yes, for practical purposes. “Income statement”, “profit and loss account”, “P&L” and “statement of profit and loss” all describe the statement of income and expenses for a period. Traditional Indian books split it into a trading account, which ends at gross profit, and a profit and loss account, which ends at net profit.' },
+  { q: 'How is gross profit different from net profit?', a: 'Gross profit is net sales less the cost of the goods sold. Net profit is what remains after operating expenses and interest are also deducted and other income is added. In the trading sample, gross profit is 12,00,000 and net profit before tax is 4,32,000.' },
+  { q: 'Can I download a profit and loss statement format in Excel?', a: 'Yes. Both layouts download as an Excel workbook (.xlsx) and as a Word document (.docx), with the sample figures or with the row names kept and the amounts blank. For a PDF, print the page and choose “Save as PDF”. It is free and needs no sign-up.' },
+  { q: 'Should GST be included in sales and purchases?', a: 'For a GST-registered business, sales and purchases are normally shown without GST, because the tax collected is payable to the government and eligible tax paid on purchases is claimed as credit. A business that cannot claim credit treats the tax paid as part of its cost. Ask your accountant which applies to you.' },
+  { q: 'Why does closing stock reduce the cost of goods sold?', a: 'Goods still on the shelf at the year end have been bought but not sold, so their cost does not belong to this year’s sales. Deducting closing stock leaves only the cost of what was sold.' },
+  { q: 'How often should a small business prepare this statement?', a: 'At least once a year for tax and for any lender who asks. Preparing it every month or quarter is useful too, because a fall in margin shows up while there is still time to act.' },
+]
+
+export default function IncomeStatementFormatPage() {
+  return (
+    <ResourcePage
+      slug="income-statement-format"
+      seoTitle="Income Statement Format with Worked Example | LocalPOS"
+      seoDescription="Free income statement format in Excel and Word for trading and service businesses, with cost of goods sold, gross profit, net profit and a worked example."
+      h1="Income statement format for a small business"
+      intro="This income statement format sets out revenue, cost of goods sold, expenses and profit in the usual order. Study the sample for the year ended 31 March 2027, then download it with the row names kept and the amounts blank."
+      points={['Trading and service layouts', 'Excel, Word or print', 'Figures that add up']}
+      toolTitle="Income statement format templates"
+      toolLead="Switch to Blank to keep the row names and clear the amounts."
+      blocks={blocks}
+      faqs={faqs}
+      faqTitle="Questions about the profit and loss statement"
+      related={['balance-sheet-format', 'sales-report-format', 'invoice-formats', 'gst-calculator']}
+      relatedTitle="Related formats and tools"
+      cta={{ title: 'Start with sales figures you can trust', text: 'LocalPOS records every bill, return and payment, so the sales and tax totals behind your accounts are ready for any period.' }}
+    >
+      <TemplateViewer templates={templates} />
+    </ResourcePage>
+  )
+}

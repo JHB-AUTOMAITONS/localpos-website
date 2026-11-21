@@ -16,6 +16,6 @@ export default defineConfig({
   },
   ssr: {
     // Bundle these so the SSR build runs standalone in plain Node.
-    noExternal: ['lucide-react', 'react-router'],
+    noExternal: ['lucide-react', 'react-router', 'qrcode-generator'],
   },
 })

@@ -1,12 +1,10 @@
 import type { IconName } from '@/components/Icon'
+import { FORMAT_META, TOOL_META, type ResourceMeta } from './resourceMeta'
 
 export interface FooterDirectoryItem {
   label: string
   icon: IconName
-  /**
-   * Path of the page for this tool or format. Leave it out until the page exists in src/routes.tsx and data/routes.ts:
-   * the footer shows the item as plain text rather than linking to a URL that would 404.
-   */
+  /** Path of the page. An item without one is shown as plain text rather than linking to a URL that would 404. */
   to?: string
 }
 
@@ -16,42 +14,12 @@ export interface FooterDirectorySection {
   items: FooterDirectoryItem[]
 }
 
+const item = (r: ResourceMeta): FooterDirectoryItem => ({ label: r.label, icon: r.icon, to: r.path })
+
+/** The two footer grids. The pages themselves are listed in data/resourceMeta.ts. */
 export const FOOTER_DIRECTORY: FooterDirectorySection[] = [
-  {
-    id: 'footer-tools',
-    title: 'LocalPOS Tools',
-    items: [
-      { label: 'GST Calculator', icon: 'calculator' },
-      { label: 'Invoice Generator', icon: 'gst-receipt' },
-      { label: 'Quotation Maker', icon: 'file' },
-      { label: 'Proforma Invoice Generator', icon: 'file-check' },
-      { label: 'Purchase Order Generator', icon: 'cart' },
-      { label: 'Receipt Maker', icon: 'receipt' },
-      { label: 'QR Code Generator', icon: 'qr' },
-      { label: 'Online Barcode Generator', icon: 'barcode' },
-      { label: 'QR Code Scanner from Image', icon: 'scan-qr' },
-      { label: 'Online Barcode Scanner', icon: 'scan' },
-      { label: 'Logo Maker', icon: 'palette' },
-    ],
-  },
-  {
-    id: 'footer-formats',
-    title: 'LocalPOS Business Formats',
-    items: [
-      { label: 'Invoice Formats', icon: 'file' },
-      { label: 'Quotation Format', icon: 'file-search' },
-      { label: 'Balance Sheet Formats', icon: 'scale' },
-      { label: 'BillBook Formats', icon: 'book' },
-      { label: 'Receipt Formats', icon: 'receipt' },
-      { label: 'Credit Note Formats', icon: 'file-plus' },
-      { label: 'Debit Note Formats', icon: 'file-minus' },
-      { label: 'Sales Report Format', icon: 'chart' },
-      { label: 'Estimate Format', icon: 'file-sheet' },
-      { label: 'Delivery Challan Format', icon: 'truck' },
-      { label: 'Work Order Format', icon: 'clipboard-check' },
-      { label: 'Income Statement', icon: 'trend' },
-    ],
-  },
+  { id: 'footer-tools', title: 'LocalPOS Tools', items: TOOL_META.map(item) },
+  { id: 'footer-formats', title: 'LocalPOS Business Formats', items: FORMAT_META.map(item) },
 ]
 
 export const FOOTER_TRUST: Array<{ icon: IconName; title: string; note?: string; tone: string }> = [

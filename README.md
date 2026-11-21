@@ -124,6 +124,18 @@ Feature pages (10) and solution pages (5) read their SEO fields and copy from `s
 `src/data/solutions.ts`. Each has its own page component with its own layout and visuals, built from shared parts
 (`PageHero`, `BenefitsSection`, `StepList`, `FlowRow`, `PainPointsSection`, `FAQSection`, ...).
 
+## Free tools and business formats
+
+Twenty-three landing pages linked from the footer: 11 tools and 12 business formats. They are listed in `src/data/resourceMeta.ts` (slug, label, icon and keyword mapping), which feeds the footer, the sitemap and the related-link cards.
+
+- **Pages**: one file per page in `src/pages/tools/` and `src/pages/formats/`. Each holds its own copy, FAQs and SEO text and renders the shared scaffold `components/resource/ResourcePage.tsx`. Content sections are the `Block` types in `components/resource/blocks.ts`.
+- **Tools**: `components/tools/`. The arithmetic and encoding live in `src/lib/` (`gst.ts`, `money.ts`, `qr.ts`, `barcode.ts`, `scan.ts`, `logo.ts`) and `components/tools/docBuilder.ts`.
+- **Templates**: a document is described once as a `TemplateDoc` (`components/templates/types.ts`). The same description is shown on the page, printed (the `[data-print-area]` rules at the end of `styles/index.css`) and written as real `.xlsx` and `.docx` files by `src/lib/office/`, with no office library.
+- **Privacy**: everything runs in the browser. Nothing a visitor types or uploads is sent anywhere or stored.
+- **Libraries**: `qrcode-generator` (QR pattern), `jsbarcode` (barcodes, loaded when the barcode page draws) and `@zxing/library` (reading codes from images, loaded only when a visitor chooses an image).
+- **Adding a page**: add it to `resourceMeta.ts`, add its route in `src/routes.tsx`, create the page file, and add its path to `TOOL_ROUTES` or `FORMAT_ROUTES` in `tests/e2e/helpers.ts`.
+- **Tests**: `tests/e2e/tools.spec.ts` checks the calculations, the downloads, printing, and that the scanners read back what the generators make.
+
 ## Design system
 
 Light UI only. Warm-white paper, deep emerald primary (`brand-*`), marigold accent (`gold-*`), small coral/sky/violet

@@ -19,7 +19,10 @@
     "preview": "node scripts/preview.mjs"
   },
   "dependencies": {
+    "@zxing/library": "^0.23.0",
+    "jsbarcode": "^3.12.3",
     "lucide-react": "^1.52.0",
+    "qrcode-generator": "^2.0.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.18.4",

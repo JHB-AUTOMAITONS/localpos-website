@@ -1,0 +1,200 @@
+import type { Block } from '@/components/resource/blocks'
+import { ResourcePage } from '@/components/resource/ResourcePage'
+import { TemplateViewer } from '@/components/templates/TemplateViewer'
+import type { TemplateDoc } from '@/components/templates/types'
+import type { FaqItem } from '@/lib/seo'
+
+const templates: TemplateDoc[] = [
+  {
+    id: 'gst-supplier',
+    name: 'GST debit note (by supplier)',
+    description: 'Raised by a GST-registered supplier when the tax invoice charged too little. It adds taxable value and tax to the earlier invoice. The 18% rate is for illustration.',
+    fileName: 'gst-debit-note-format',
+    blocks: [
+      { t: 'title', text: 'Debit Note' },
+      { t: 'org', name: 'Deccan Packaging Industries', lines: ['Plot 44, IDA Jeedimetla, Hyderabad, Telangana 500055', 'GSTIN: 36ABCDE1234F1Z8 · Phone: 98765 43210'] },
+      {
+        t: 'pairs',
+        cols: [
+          { heading: 'Issued to', rows: [['Name', 'Spice Route Foods'], ['Address', '15 Sarojini Devi Road, Secunderabad, Telangana 500003'], ['GSTIN', '36PQRSX5678K1Z1']] },
+          { heading: 'Debit note details', rows: [['Debit note no.', 'DN/26-27/0009'], ['Date', '26 Nov 2026'], ['Against invoice no.', 'DPI/26-27/0542'], ['Invoice date', '12 Nov 2026'], ['Place of supply', 'Telangana (36)']] },
+        ],
+      },
+      {
+        t: 'table',
+        head: ['#', 'Description', 'HSN', 'Qty', 'Rate difference', 'Additional taxable value', 'GST %', 'GST', 'Total'],
+        align: ['c', 'l', 'c', 'r', 'r', 'r', 'r', 'r', 'r'],
+        rows: [
+          ['1', 'Corrugated box, 5-ply: billed at 18.00, agreed rate 19.50', '4819', '2,000', '1.50', '3,000.00', '18%', '540.00', '3,540.00'],
+          ['2', 'Printed carton, 3-ply: billed at 6.10, agreed rate 6.50', '4819', '5,000', '0.40', '2,000.00', '18%', '360.00', '2,360.00'],
+        ],
+        totals: [
+          ['Additional taxable value', '5,000.00'],
+          ['CGST at 9%', '450.00'],
+          ['SGST at 9%', '450.00'],
+          ['Total debit (₹)', '5,900.00'],
+        ],
+        blankRows: 6,
+      },
+      { t: 'text', label: 'Amount in words', text: 'Rupees Five Thousand Nine Hundred Only' },
+      { t: 'text', label: 'Reason', text: 'The invoice was raised at the old price list. Revised rates were agreed in your purchase order dated 8 Nov 2026.' },
+      { t: 'text', label: 'Note', text: 'Your account has been debited with the above amount. Please pay it along with the original invoice.', keep: true },
+      { t: 'sign', labels: ['For Deccan Packaging Industries (Authorised signatory)'] },
+    ],
+  },
+  {
+    id: 'purchase-return',
+    name: 'Purchase return debit note (by buyer)',
+    description: 'Sent by a buyer to a supplier with goods being returned. It is a commercial document that asks the supplier to reduce the amount due. Tax is shown as charged on the supplier’s invoice. The 5% rate is for illustration.',
+    fileName: 'purchase-return-debit-note',
+    blocks: [
+      { t: 'title', text: 'Debit Note', sub: 'Purchase return' },
+      { t: 'org', name: 'Greenleaf Supermarket', lines: ['8 AB Road, Vijay Nagar, Indore, Madhya Pradesh 452010', 'GSTIN: 23ABCDE1234F1Z2 · Phone: 98765 43210'] },
+      {
+        t: 'pairs',
+        cols: [
+          { heading: 'To (supplier)', rows: [['Name', 'Malwa Agro Distributors'], ['Address', 'Siyaganj, Indore, Madhya Pradesh 452007'], ['GSTIN', '23PQRSX5678K1Z9']] },
+          { heading: 'Debit note details', rows: [['Debit note no.', 'GS/DN/031'], ['Date', '23 Nov 2026'], ['Your invoice no.', 'MAD/4471'], ['Your invoice date', '15 Nov 2026'], ['Returned through', 'Your delivery van']] },
+        ],
+      },
+      {
+        t: 'table',
+        head: ['#', 'Goods returned', 'Qty', 'Rate', 'Amount', 'Reason'],
+        align: ['c', 'l', 'r', 'r', 'r', 'l'],
+        rows: [
+          ['1', 'Wheat flour, 10 kg bag', '8', '410.00', '3,280.00', 'Bags torn'],
+          ['2', 'Refined oil, 5 litre can', '4', '780.00', '3,120.00', 'Cans leaking'],
+          ['3', 'Biscuits, carton of 48 packs', '3', '1,200.00', '3,600.00', 'Near expiry'],
+        ],
+        totals: [
+          ['Value of goods returned', '10,000.00'],
+          ['GST as charged on your invoice (5%)', '500.00'],
+          ['Total debited to your account (₹)', '10,500.00'],
+        ],
+        blankRows: 6,
+      },
+      { t: 'text', label: 'Amount in words', text: 'Rupees Ten Thousand Five Hundred Only' },
+      { t: 'text', label: 'Request', text: 'We have debited your account with the above amount for the goods returned. Kindly issue your GST credit note against the invoice mentioned and send us a copy.', keep: true },
+      { t: 'sign', labels: ['Goods received back by (supplier)', 'For Greenleaf Supermarket'] },
+    ],
+  },
+]
+
+const blocks: Block[] = [
+  {
+    kind: 'split',
+    title: 'The two meanings of “debit note”',
+    lead: 'The same name is used for two different documents. Knowing which one you need saves a round of phone calls with the other party’s accountant.',
+    left: {
+      title: 'Issued by a supplier (GST debit note)',
+      items: [
+        'Goes from the seller to the buyer.',
+        'Used when the tax invoice showed a lower taxable value or lower tax than it should have.',
+        'Adds to the amount the buyer has to pay.',
+        'Is a document recognised under GST law and is reported in the supplier’s returns.',
+      ],
+    },
+    right: {
+      title: 'Raised by a buyer (purchase return)',
+      items: [
+        'Goes from the buyer to the seller.',
+        'Used when goods are sent back, received short or billed above the agreed rate.',
+        'Reduces the amount the buyer intends to pay.',
+        'Is a commercial document. For GST, the supplier’s credit note makes the adjustment.',
+      ],
+    },
+  },
+  {
+    kind: 'cards',
+    title: 'Situations that call for one',
+    items: [
+      { icon: 'trend', title: 'Price revised upwards', body: 'A rate increase applied from an earlier date, or an invoice raised by mistake at an old price list.' },
+      { icon: 'truck', title: 'Charges left out', body: 'Freight, packing, loading or insurance that was agreed and should have been part of the invoice value.' },
+      { icon: 'percent', title: 'Tax charged short', body: 'The invoice used a lower GST rate than the one that applied, and the difference has to be collected.' },
+      { icon: 'package', title: 'Goods sent back', body: 'A shop returns damaged, expired or excess stock to its distributor and debits the distributor’s account.' },
+      { icon: 'scale', title: 'Short receipt', body: 'Fewer pieces or less weight arrived than the supplier billed for.' },
+      { icon: 'file-minus', title: 'Rate dispute', body: 'The supplier billed more than the rate in the buyer’s purchase order, and the buyer claims the difference.' },
+    ],
+  },
+  {
+    kind: 'defs',
+    title: 'What to fill in on each debit note format',
+    lead: 'The first six entries are needed on both versions. The last three depend on who is issuing the note.',
+    items: [
+      { term: 'Heading', desc: 'The words “Debit Note” at the top, so the document is not mistaken for an invoice.' },
+      { term: 'Issuer', desc: 'Name, address and GSTIN of the business raising the note.' },
+      { term: 'Number and date', desc: 'A running number in a series of its own. For a GST debit note it must be consecutive, unique for the financial year and within 16 characters.' },
+      { term: 'Other party', desc: 'Name, address and GSTIN of the business whose account is being debited.' },
+      { term: 'Invoice reference', desc: 'Number and date of the invoice the note relates to. Without it the other side cannot match the entry.' },
+      { term: 'Signature', desc: 'Signed by the issuer or an authorised person.' },
+      { term: 'Additional value and tax (supplier)', desc: 'The extra taxable value, the rate of tax and the tax amount debited to the recipient.' },
+      { term: 'Goods and quantity (buyer)', desc: 'Each item returned, with quantity, the rate at which it was billed and the reason.' },
+      { term: 'Mode of return (buyer)', desc: 'How the goods went back: the supplier’s van, a transporter or by hand. A [delivery challan](/delivery-challan-format/) can travel with the goods.' },
+    ],
+  },
+  {
+    kind: 'steps',
+    title: 'Returning goods to a supplier, step by step',
+    steps: [
+      { title: 'Check the purchase papers', body: 'Compare what arrived with the supplier’s invoice and with your own order. The [purchase order generator](/purchase-order-generator/) helps you keep that order in writing.' },
+      { title: 'Inform the supplier', body: 'Call or message before sending anything back. Most distributors have a time limit and conditions for returns.' },
+      { title: 'Prepare the note', body: 'List the goods, quantities, billed rates and reasons. Quote the supplier’s invoice number and date.' },
+      { title: 'Get an acknowledgement', body: 'Send the goods with a copy of the note, and have the person who receives them sign your copy. Then follow up for the supplier’s credit note.' },
+    ],
+    lead: 'This is the usual trade practice for the buyer’s version of the document.',
+  },
+  {
+    kind: 'table',
+    title: 'Debit note or credit note: which side are you on?',
+    lead: 'Both documents correct an invoice. They differ in direction. For the layout of the other document, see the [credit note format](/credit-note-format/).',
+    head: ['Question', 'Debit note', 'Credit note'],
+    rows: [
+      ['What it tells the receiver', '“You owe us more”, or “we owe you less”', '“You owe us less”'],
+      ['Entry in the issuer’s books', 'Other party’s account is debited', 'Other party’s account is credited'],
+      ['Supplier’s example', 'Freight left out of the invoice', 'Discount allowed after billing'],
+      ['Buyer’s example', 'Damaged stock sent back', 'Rarely issued by a buyer'],
+      ['Usual reply to it', 'Payment, or the supplier’s credit note', 'Lower payment or a refund'],
+    ],
+  },
+  {
+    kind: 'prose',
+    title: 'Before you send it',
+    body: [
+      'The GST rules list the particulars of a debit note but no fixed layout, so the supplier’s version above can be adapted freely as long as the details stay. Reporting and time limits for these documents are set by GST law. This page describes the paperwork and is not tax advice. Confirm the treatment of your case with a chartered accountant.',
+      'Download either layout as a Word or Excel file, with sample values or blank, or print it. For a PDF, choose “Save as PDF” in the print window. The files are free and nothing is uploaded.',
+      'Returns and rate differences are easier to settle when every supplier bill is on record. [LocalPOS purchase management](/features/purchase-management-software/) keeps purchase orders, supplier bills and returns together and shows what you owe each supplier.',
+    ],
+  },
+]
+
+const faqs: FaqItem[] = [
+  { q: 'Can a buyer issue a GST debit note?', a: 'Under GST law, debit notes and credit notes that change the tax on an invoice are issued by the supplier. A buyer’s note for a purchase return is a commercial document. The tax is adjusted when the supplier issues a credit note.' },
+  { q: 'Is a debit note the same as a revised invoice?', a: 'No. A debit note adds to an invoice that stays as it is. A revised invoice is a separate document that the GST rules provide for in specific cases, such as supplies made before a registration certificate was granted.' },
+  { q: 'Does this debit note template come in Excel and Word?', a: 'Yes. Both versions download as an Excel workbook (.xlsx) and a Word document (.docx). Switch to Blank first if you want an empty copy.' },
+  { q: 'Should the buyer’s note include GST?', a: 'It is common to show the tax as charged on the supplier’s invoice, so that the total matches what the supplier will credit. The buyer’s input tax credit is a separate matter to settle with your accountant.' },
+  { q: 'How should debit notes be numbered?', a: 'Use a separate running series, for example DN/26-27/0001. Do not take numbers from your invoice series, and do not reuse a number in the same financial year.' },
+  { q: 'What if the supplier does not accept the return?', a: 'A buyer’s note is a claim, not a settlement. If the supplier disputes it, the terms of the order and the supplier’s return policy decide the matter. Keep the acknowledgement of goods returned and any messages exchanged.' },
+]
+
+export default function DebitNoteFormatPage() {
+  return (
+    <ResourcePage
+      slug="debit-note-format"
+      seoTitle="Debit Note Format for GST and Purchase Return | LocalPOS"
+      seoDescription="Free debit note format in two versions: a supplier’s GST note for an undercharged invoice and a buyer’s purchase return note. Download in Excel or Word."
+      h1="Debit note format for suppliers and buyers"
+      intro="This page gives a debit note format for both common uses: a supplier adding value and tax to an invoice that charged too little, and a buyer returning goods to a supplier."
+      points={['Supplier and buyer versions', 'Excel, Word and print', 'Sample or blank']}
+      toolTitle="Debit note templates"
+      toolLead="Check the tab name to see who issues each version."
+      blocks={blocks}
+      faqs={faqs}
+      faqTitle="Debit note questions"
+      related={['credit-note-format', 'purchase-order-generator', 'invoice-formats', 'delivery-challan-format']}
+      relatedTitle="Related formats and tools"
+      cta={{ title: 'Keep supplier accounts straight', text: 'LocalPOS records purchase orders, supplier bills and returns, and shows the balance you owe each supplier after every adjustment.' }}
+    >
+      <TemplateViewer templates={templates} />
+    </ResourcePage>
+  )
+}

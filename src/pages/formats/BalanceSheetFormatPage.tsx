@@ -1,0 +1,202 @@
+import type { Block } from '@/components/resource/blocks'
+import { ResourcePage } from '@/components/resource/ResourcePage'
+import { TemplateViewer } from '@/components/templates/TemplateViewer'
+import type { TemplateDoc } from '@/components/templates/types'
+import type { FaqItem } from '@/lib/seo'
+
+const templates: TemplateDoc[] = [
+  {
+    id: 'vertical',
+    name: 'Vertical (statement form)',
+    description: 'Capital and liabilities first, assets below, in one column. Easy to read on a phone and easy to total in Excel. Sample figures are for a small grocery shop run by its owner.',
+    fileName: 'balance-sheet-vertical',
+    blocks: [
+      { t: 'title', text: 'Balance Sheet', sub: 'As at 31 March 2027' },
+      { t: 'org', name: 'Annapurna Kirana Stores', lines: ['Proprietor: Shri Mahesh Agarwal', '12 Station Road, Indore, Madhya Pradesh 452001'] },
+      {
+        t: 'table',
+        head: ['Particulars', 'Amount (₹)', 'Total (₹)'],
+        align: ['l', 'r', 'r'],
+        keep: [0],
+        rows: [
+          { section: 'Capital and liabilities' },
+          ['Owner’s capital: opening balance', '6,00,000.00', ''],
+          ['Add: net profit for the year', '2,40,000.00', ''],
+          ['Less: drawings', '1,20,000.00', ''],
+          { total: ['Owner’s capital: closing balance', '', '7,20,000.00'] },
+          ['Bank term loan', '2,00,000.00', ''],
+          ['Loan from family members', '50,000.00', ''],
+          { total: ['Total loans', '', '2,50,000.00'] },
+          ['Sundry creditors (suppliers)', '1,35,000.00', ''],
+          ['Outstanding expenses', '15,000.00', ''],
+          ['GST payable', '10,000.00', ''],
+          { total: ['Total current liabilities', '', '1,60,000.00'] },
+          { total: ['Total capital and liabilities', '', '11,30,000.00'] },
+          { section: 'Assets' },
+          ['Furniture and fittings', '1,80,000.00', ''],
+          ['Refrigerator and equipment', '1,20,000.00', ''],
+          ['Computer and billing machine', '60,000.00', ''],
+          { total: ['Total fixed assets (after depreciation)', '', '3,60,000.00'] },
+          ['Stock in hand', '4,75,000.00', ''],
+          ['Sundry debtors (customers)', '95,000.00', ''],
+          ['Cash in hand', '40,000.00', ''],
+          ['Bank balance', '1,50,000.00', ''],
+          ['Advances to suppliers', '10,000.00', ''],
+          { total: ['Total current assets', '', '7,70,000.00'] },
+          { total: ['Total assets', '', '11,30,000.00'] },
+        ],
+      },
+      { t: 'text', label: 'Note', text: 'Fixed assets are shown at cost less depreciation. Stock is valued at cost or market price, whichever is lower.', keep: true },
+      { t: 'sign', labels: ['Prepared by', 'Proprietor'] },
+    ],
+  },
+  {
+    id: 't-form',
+    name: 'Horizontal (T-form)',
+    description: 'The traditional two-sided layout: liabilities on the left, assets on the right. The same sample shop, so you can compare the two layouts line by line.',
+    fileName: 'balance-sheet-t-form',
+    blocks: [
+      { t: 'title', text: 'Balance Sheet', sub: 'As at 31 March 2027' },
+      { t: 'org', name: 'Annapurna Kirana Stores', lines: ['Proprietor: Shri Mahesh Agarwal', '12 Station Road, Indore, Madhya Pradesh 452001'] },
+      {
+        t: 'table',
+        head: ['Liabilities', 'Amount (₹)', 'Assets', 'Amount (₹)'],
+        align: ['l', 'r', 'l', 'r'],
+        keep: [0, 2],
+        rows: [
+          ['Capital (closing balance)', '7,20,000.00', 'Furniture and fittings', '1,80,000.00'],
+          ['Bank term loan', '2,00,000.00', 'Refrigerator and equipment', '1,20,000.00'],
+          ['Loan from family members', '50,000.00', 'Computer and billing machine', '60,000.00'],
+          ['Sundry creditors', '1,35,000.00', 'Stock in hand', '4,75,000.00'],
+          ['Outstanding expenses', '15,000.00', 'Sundry debtors', '95,000.00'],
+          ['GST payable', '10,000.00', 'Cash in hand', '40,000.00'],
+          ['', '', 'Bank balance', '1,50,000.00'],
+          ['', '', 'Advances to suppliers', '10,000.00'],
+          { total: ['Total', '11,30,000.00', 'Total', '11,30,000.00'] },
+        ],
+      },
+      { t: 'text', label: 'Capital account', text: 'Opening capital 6,00,000.00, add net profit 2,40,000.00, less drawings 1,20,000.00. Closing capital 7,20,000.00.' },
+      { t: 'sign', labels: ['Prepared by', 'Proprietor'] },
+    ],
+  },
+]
+
+const blocks: Block[] = [
+  {
+    kind: 'prose',
+    title: 'How a balance sheet is built',
+    body: [
+      'A balance sheet is a picture of a business on one date, usually 31 March. It lists what the business owns, what it owes to outsiders and what is left for the owner. It does not show sales or profit for the year. That is the job of the profit and loss account, which you can lay out with the [income statement format](/income-statement-format/).',
+      'Every balance sheet rests on one rule, called the accounting equation: **Assets = Liabilities + Owner’s capital**. Whatever the business owns was paid for either with borrowed money or with the owner’s money, so the two sides must always be equal.',
+      'The year’s profit links the two statements. Net profit is added to the owner’s capital, and money or goods the owner took out for personal use (drawings) are deducted. The closing capital then goes into the balance sheet.',
+    ],
+    aside: {
+      title: 'Vertical or T-form?',
+      body: 'Both show the same figures. The T-form is what most people learnt in school and what many small traders still use. The vertical form is easier to print on one page and to compare year on year.',
+    },
+  },
+  {
+    kind: 'defs',
+    title: 'Assets, liabilities and equity explained',
+    items: [
+      { term: 'Fixed assets', desc: 'Things bought to use in the business for years, not to sell: furniture, machines, vehicles, computers. They are shown at cost less depreciation.' },
+      { term: 'Current assets', desc: 'Cash and things expected to turn into cash within about a year: stock, money due from customers (debtors), bank balance and advances paid.' },
+      { term: 'Current liabilities', desc: 'Amounts to be paid within about a year: supplier dues (creditors), unpaid expenses such as rent or salaries, and taxes payable.' },
+      { term: 'Loans', desc: 'Money borrowed from a bank, a finance company or family. The part still to be repaid on the balance sheet date is the liability.' },
+      { term: 'Owner’s capital (equity)', desc: 'What belongs to the owner: money put in, plus profits kept in the business, minus drawings and losses.' },
+      { term: 'Drawings', desc: 'Cash or goods taken by the proprietor for personal use. They reduce capital and are not a business expense.' },
+    ],
+  },
+  {
+    kind: 'table',
+    title: 'A short worked example',
+    lead: 'Follow a new shop through its first four transactions. After every step, assets equal liabilities plus capital. Amounts are in rupees.',
+    head: ['Transaction', 'Total assets', 'Liabilities', 'Capital'],
+    rows: [
+      ['Owner deposits 3,00,000 in the business bank account', '3,00,000', '0', '3,00,000'],
+      ['Bank gives a loan of 1,00,000', '4,00,000', '1,00,000', '3,00,000'],
+      ['Furniture bought for 80,000 by cheque', '4,00,000', '1,00,000', '3,00,000'],
+      ['Stock of 2,00,000 bought: 1,50,000 paid, 50,000 on credit', '4,50,000', '1,50,000', '3,00,000'],
+    ],
+    note: 'At the end the assets are furniture 80,000, stock 2,00,000 and bank 1,70,000, which is 4,50,000. The other side is the loan 1,00,000, the supplier 50,000 and capital 3,00,000, also 4,50,000. Buying furniture changed one asset into another, so the totals did not move.',
+  },
+  {
+    kind: 'steps',
+    title: 'Filling the balance sheet format for a small business',
+    lead: 'The file gives you the layout. The figures come from your books on the closing date.',
+    steps: [
+      { title: 'Close the year’s accounts', body: 'Finish the profit and loss account first. You need the net profit or loss before you can work out closing capital.' },
+      { title: 'Count and value what you hold', body: 'Take a physical count of stock and cash on the closing date. Take bank balances from the reconciled passbook or statement, and debtors and creditors from your ledgers.' },
+      { title: 'Enter the figures', body: 'Use the blank Excel file and replace the row names that do not apply to you. Add a row for anything missing, such as a vehicle or a deposit paid to the landlord.' },
+      { title: 'Check that it tallies', body: 'Total both sides. If they differ, do not adjust capital to force a match. Look for an entry posted on one side only.' },
+    ],
+  },
+  {
+    kind: 'split',
+    title: 'Common mistakes, and the checks that catch them',
+    left: {
+      title: 'Mistakes seen often',
+      items: [
+        'Mixing personal assets, such as the family home or car, with business assets.',
+        'Showing fixed assets at purchase price year after year, with no depreciation.',
+        'Leaving out unpaid bills because the payment was made in April.',
+        'Treating the owner’s withdrawals as salary expense.',
+        'Stock entered at selling price and not at cost.',
+      ],
+    },
+    right: {
+      title: 'Quick checks',
+      items: [
+        'The bank figure agrees with the reconciled bank statement.',
+        'Debtors and creditors agree with the list of party-wise balances.',
+        'Loan balances agree with the lender’s statement on the closing date.',
+        'Closing capital equals opening capital plus profit minus drawings.',
+      ],
+    },
+  },
+  {
+    kind: 'note',
+    title: 'Companies and audited accounts use a prescribed layout',
+    body: 'These layouts suit a proprietor or a small firm that wants to understand its own position. A company registered under the Companies Act, 2013 must prepare its balance sheet as set out in Schedule III of that Act, and banks or tax auditors may ask for a particular presentation. This page explains the document and is not accounting advice. Use the format your chartered accountant gives you for filing, audit and loan papers.',
+  },
+  {
+    kind: 'prose',
+    title: 'Where the figures come from',
+    body: [
+      'A balance sheet is only as reliable as the daily records behind it. Stock, customer dues and supplier dues are the three numbers small shops find hardest to get right at year end.',
+      'When billing and purchases are entered in one system through the year, those numbers are already there on 31 March. [LocalPOS inventory management](/features/inventory-management-software/) keeps the stock quantity and value current, and the [sales report format](/sales-report-format/) on this site helps if you still total sales by hand.',
+    ],
+  },
+]
+
+const faqs: FaqItem[] = [
+  { q: 'What is the accounting equation?', a: 'Assets = Liabilities + Owner’s capital. It means everything the business owns is financed either by outsiders or by the owner. A balance sheet is this equation written out in detail.' },
+  { q: 'Can I download the balance sheet format in Excel?', a: 'Yes. Both layouts download as an Excel workbook (.xlsx) and as a Word document (.docx), with the sample figures or blank. The blank file keeps the row names. To get a PDF, print the page and choose “Save as PDF”.' },
+  { q: 'Why does my balance sheet not tally?', a: 'The usual causes are an entry posted on one side only, a wrong opening balance, a totalling error, or profit and drawings not carried to capital. Check each of these before looking further.' },
+  { q: 'Does a proprietor have to prepare a balance sheet?', a: 'Many proprietors prepare one for a bank loan, for their income tax return or simply to know where they stand. Whether you are required to, and in what form, depends on your turnover and the law that applies to you. Ask your chartered accountant.' },
+  { q: 'What is the difference between a balance sheet and a profit and loss account?', a: 'The profit and loss account covers a period, such as 1 April to 31 March, and shows income, expenses and profit. The balance sheet shows the position on the last day of that period.' },
+  { q: 'Is GST payable a liability?', a: 'Yes. Tax collected from customers and not yet paid to the government on the closing date is shown under current liabilities. Input tax credit still available is shown as an asset.' },
+]
+
+export default function BalanceSheetFormatPage() {
+  return (
+    <ResourcePage
+      slug="balance-sheet-format"
+      seoTitle="Balance Sheet Format for Small Business | LocalPOS"
+      seoDescription="Free balance sheet format for a shop or proprietorship, in vertical and T-form. Download in Excel or Word, with assets, liabilities and capital explained."
+      h1="Balance sheet format for shops and small firms"
+      intro="This balance sheet format lays out capital, loans, current liabilities, fixed assets and current assets for a small business. See it with sample figures that tally, then download a blank copy."
+      points={['Vertical and T-form', 'Sample totals that tally', 'Excel, Word and print']}
+      toolTitle="Balance sheet templates"
+      toolLead="The blank version keeps the row names and clears the amounts."
+      blocks={blocks}
+      faqs={faqs}
+      faqTitle="Balance sheet questions"
+      related={['income-statement-format', 'sales-report-format', 'invoice-formats', 'receipt-format']}
+      relatedTitle="Related formats"
+      cta={{ title: 'Keep the numbers ready before year end', text: 'LocalPOS records every sale, purchase and payment as it happens, so your stock, customer dues and supplier dues are up to date when your accountant asks for them.' }}
+    >
+      <TemplateViewer templates={templates} />
+    </ResourcePage>
+  )
+}

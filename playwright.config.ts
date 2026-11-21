@@ -22,7 +22,7 @@ const channel = process.env.PW_CHANNEL === '' ? undefined : (process.env.PW_CHAN
 const BLOCK_TRACKING = '--host-resolver-rules=MAP *.googletagmanager.com ~NOTFOUND, MAP *.google-analytics.com ~NOTFOUND, MAP *.analytics.google.com ~NOTFOUND, MAP *.clarity.ms ~NOTFOUND, MAP connect.automationclub.in ~NOTFOUND'
 
 const SHARED_SPECS = /(routes|navigation|journeys|links|a11y|layout-quality|whatsapp|demo-form)\.spec\.ts/
-const SINGLE_SPECS = /(responsive|forms|seo|perf|deploy|analytics|analytics-live|demo-form-live)\.spec\.ts/
+const SINGLE_SPECS = /(tools|responsive|forms|seo|perf|deploy|analytics|analytics-live|demo-form-live)\.spec\.ts/
 
 export default defineConfig({
   testDir: 'tests/e2e',

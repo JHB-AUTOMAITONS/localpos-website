@@ -458,3 +458,44 @@
   color: var(--color-ink);
   font-weight: 650;
 }
+
+/* ---------- Printing a document (tool and format pages) ----------
+   A page that holds a [data-print-area] prints that element alone: the invoice, the receipt, the template or the barcode.
+   Everything that is not the print area, not inside it and not one of its ancestors is removed, and the ancestors lose their
+   spacing and decoration so the sheet starts at the top-left corner of the paper. */
+@media print {
+  body:has([data-print-area]) *:not(:has([data-print-area])):not([data-print-area]):not([data-print-area] *) {
+    display: none !important;
+  }
+  body:has([data-print-area]) *:has([data-print-area]) {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+  [data-print-area] {
+    margin: 0 !important;
+    max-width: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  [data-print-area] .doc-scroll {
+    overflow: visible !important;
+  }
+  [data-print-area] table {
+    min-width: 0 !important;
+  }
+  @page {
+    margin: 12mm;
+  }
+}

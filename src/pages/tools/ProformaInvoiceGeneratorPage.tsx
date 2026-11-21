@@ -1,0 +1,117 @@
+import type { Block } from '@/components/resource/blocks'
+import { ResourcePage } from '@/components/resource/ResourcePage'
+import { DocumentBuilder } from '@/components/tools/DocumentBuilder'
+import type { FaqItem } from '@/lib/seo'
+
+const blocks: Block[] = [
+  {
+    kind: 'prose',
+    title: 'A proforma invoice is not a tax invoice',
+    body: [
+      'A proforma invoice is an advance statement of what you intend to bill. It tells the buyer the goods or services, the price, the tax you expect to charge and how to pay, before the sale actually happens.',
+      'It is generally not the same as the final tax invoice. It is a commercial document, not a demand for tax, and it is not normally recorded or reported as a sale. The buyer cannot usually claim input tax credit on it. The tax invoice is issued separately, when the supply is made, with its own number from your invoice series.',
+      'To keep the two apart, every document made here carries the line “This is a proforma invoice and not a tax invoice.” Give it a number from a separate series, not from your tax invoice numbers.',
+    ],
+    aside: {
+      title: 'Ready to bill?',
+      body: 'Once the goods are dispatched or the service is done, prepare the final bill with the [invoice generator](/invoice-generator/).',
+    },
+  },
+  {
+    kind: 'table',
+    title: 'Proforma invoice, tax invoice and quotation compared',
+    head: ['', 'Quotation', 'Proforma invoice', 'Tax invoice'],
+    rows: [
+      ['Purpose', 'Offers a price', 'Confirms what will be billed', 'Bills a supply that is made'],
+      ['When it is sent', 'Before the customer decides', 'After agreement, before supply', 'At or after supply, as GST rules require'],
+      ['Shows GST', 'As an indication', 'As the amount expected', 'As tax actually charged'],
+      ['Entered as a sale', 'No', 'Generally no', 'Yes'],
+      ['Can it change', 'Yes, until accepted', 'Yes, a revised one can be sent', 'Only through a credit or debit note'],
+    ],
+    note: 'Still negotiating the price? Start with the [quotation maker](/quotation-maker/) and send a proforma once the order is agreed.',
+  },
+  {
+    kind: 'cards',
+    title: 'Where a proforma is typically used',
+    items: [
+      { icon: 'banknote', title: 'Collecting an advance', body: 'A fabricator in Rajkot asks for 40% before cutting steel. The proforma shows the full order value, the payment terms and the bank details to pay into.' },
+      { icon: 'package', title: 'Export and import paperwork', body: 'Overseas buyers often ask for a proforma to arrange a letter of credit or an import approval. This tool works in rupees only, so it suits the Indian side of such paperwork.' },
+      { icon: 'building', title: 'Bank or customer approval', body: 'A buyer’s accounts team or a lender may want a document to approve a purchase or release a loan before the goods move.' },
+    ],
+  },
+  {
+    kind: 'defs',
+    title: 'Fields you will not find on an ordinary bill',
+    lead: 'Besides the two parties, the item rows and the GST type, this form adds a few details about dispatch and payment.',
+    items: [
+      { term: 'Proforma number and date', desc: 'Your reference for this document. A prefix such as PI keeps it distinct from invoice numbers.' },
+      { term: 'Valid until', desc: 'The date up to which the prices hold. After it, issue a fresh proforma.' },
+      { term: 'Ship-to address', desc: 'Where the goods will go, if that differs from the buyer’s billing address.' },
+      { term: 'Mode of dispatch', desc: 'How the order will travel, for example by road transport, courier or the buyer’s own pickup.' },
+      { term: 'Expected dispatch date', desc: 'When you plan to send the goods. Many sellers tie this to receipt of the advance.' },
+      { term: 'Payment terms', desc: 'What is due and when, such as “40% advance, balance against delivery”.' },
+      { term: 'Bank details', desc: 'The account name, number, IFSC and branch for the transfer, or a UPI ID.' },
+    ],
+  },
+  {
+    kind: 'steps',
+    title: 'Using the proforma invoice generator',
+    steps: [
+      { title: 'Fill in seller and buyer', body: 'Enter your name, address, GSTIN, phone and email, then the buyer’s name, address, GSTIN and phone.' },
+      { title: 'List what will be supplied', body: 'For each line give a description, HSN or SAC code, quantity, unit rate, discount % and GST %. Select CGST + SGST for a buyer in your state, IGST for another state, or No GST.' },
+      { title: 'Add dispatch and payment details', body: 'Complete the ship-to address, dispatch mode and date, payment terms and bank details. Use the terms and notes boxes for anything else.' },
+      { title: 'Review and share', body: 'The preview shows the subtotal, discount, taxable value, tax, optional round-off, grand total and amount in words. Print it, save it as a PDF, or download Excel or Word.' },
+    ],
+  },
+  {
+    kind: 'prose',
+    title: 'What this tool leaves to you',
+    body: [
+      'It is a form that produces a document, nothing more. It is free, runs in your browser without sign-up and uploads nothing, which also means it stores nothing.',
+      'If you would like a file to keep and edit instead, download the Word or Excel file from this tool, or start from one of the ready [invoice formats](/invoice-formats/) and change its heading.',
+    ],
+    bullets: [
+      'Your entries disappear when the page is reloaded or closed, so download a copy first.',
+      'There is no logo upload. Insert your logo after downloading the Word or Excel version.',
+      'It does not issue numbers in sequence, record the advance when it arrives or adjust stock.',
+      'It does not create a GST e-invoice, so there is no IRN or signed QR code.',
+    ],
+  },
+  {
+    kind: 'note',
+    title: 'Advances and GST',
+    body: 'Sending a proforma does not by itself create a tax liability, but receiving money can have its own GST treatment, particularly advances for services. The rules differ for goods and services and change from time to time. Check your case with a chartered accountant.',
+  },
+]
+
+const faqs: FaqItem[] = [
+  { q: 'Is a proforma invoice a legal bill under GST?', a: 'Generally no. It is a commercial document that shows what you plan to charge. The document GST rules recognise for a taxable sale is the tax invoice, issued when the supply is made.' },
+  { q: 'Do I report a proforma in my GST returns?', a: 'A proforma by itself is generally not reported as a sale, because no supply has been made yet. What you report is the tax invoice. Advances received may need separate treatment, so ask your accountant.' },
+  { q: 'Can the final invoice differ from the proforma?', a: 'Yes. Quantities, freight or the tax rate may change before dispatch. The tax invoice should show what was actually supplied. If the change is large, send a revised proforma first so the buyer is not surprised.' },
+  { q: 'Can my customer pay against a proforma?', a: 'Yes, that is one of its main uses. Put your payment terms and bank details on it. When the money arrives, you can give a receipt from the [receipt maker](/receipt-maker/).' },
+  { q: 'Should a proforma have the same number as the invoice?', a: 'No. Keep a separate series for proformas. Tax invoice numbers must run consecutively, and using them for documents that may never become sales leaves gaps.' },
+  { q: 'What should I do when proformas become a daily job?', a: 'A free form means retyping every customer and item. Once orders are regular, billing software such as [LocalPOS](/features/gst-billing-software/) keeps customers, items and tax rates saved and produces the tax invoice at the time of sale.' },
+]
+
+export default function ProformaInvoiceGeneratorPage() {
+  return (
+    <ResourcePage
+      slug="proforma-invoice-generator"
+      seoTitle="Proforma Invoice Generator: Free, with GST | LocalPOS"
+      seoDescription="Free proforma invoice generator for India. Add items, GST, dispatch details, payment terms and bank details, then print, save as PDF or get Excel or Word."
+      h1="Proforma Invoice Generator for advance billing"
+      intro="This free proforma invoice generator prepares an advance statement of an order, with items, GST, dispatch details and your bank details, for the buyer to approve or pay against. It is clearly marked as not being a tax invoice."
+      points={['Marked “not a tax invoice”', 'Bank and dispatch details', 'PDF, Excel and Word']}
+      toolTitle="Fill in your proforma"
+      toolLead="The document on the right changes as you type."
+      featureList={['Proforma invoice with validity date', 'Ship-to address and dispatch details', 'Payment terms and bank details', 'GST totals and amount in words', 'Print, PDF, Excel and Word output']}
+      blocks={blocks}
+      faqs={faqs}
+      faqTitle="Proforma invoice questions"
+      related={['invoice-generator', 'quotation-maker', 'invoice-formats', 'receipt-maker']}
+      cta={{ title: 'From order to final bill in one system', text: 'LocalPOS keeps your customers, items and GST rates ready, so the tax invoice is correct and on record when the goods leave.' }}
+    >
+      <DocumentBuilder kind="proforma" />
+    </ResourcePage>
+  )
+}

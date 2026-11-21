@@ -44,6 +44,33 @@ const pages: PageDef[] = [
   { path: 'pos-system-malaysia', load: () => import('@/pages/CountryPage') },
   { path: 'pos-system-nigeria', load: () => import('@/pages/CountryPage') },
 
+  // Free tools (listed in data/resourceMeta.ts)
+  { path: 'gst-calculator', load: () => import('@/pages/tools/GstCalculatorPage') },
+  { path: 'invoice-generator', load: () => import('@/pages/tools/InvoiceGeneratorPage') },
+  { path: 'quotation-maker', load: () => import('@/pages/tools/QuotationMakerPage') },
+  { path: 'proforma-invoice-generator', load: () => import('@/pages/tools/ProformaInvoiceGeneratorPage') },
+  { path: 'purchase-order-generator', load: () => import('@/pages/tools/PurchaseOrderGeneratorPage') },
+  { path: 'receipt-maker', load: () => import('@/pages/tools/ReceiptMakerPage') },
+  { path: 'qr-code-generator', load: () => import('@/pages/tools/QrCodeGeneratorPage') },
+  { path: 'barcode-generator', load: () => import('@/pages/tools/BarcodeGeneratorPage') },
+  { path: 'qr-code-scanner', load: () => import('@/pages/tools/QrCodeScannerPage') },
+  { path: 'barcode-scanner', load: () => import('@/pages/tools/BarcodeScannerPage') },
+  { path: 'logo-maker', load: () => import('@/pages/tools/LogoMakerPage') },
+
+  // Business formats (listed in data/resourceMeta.ts)
+  { path: 'invoice-formats', load: () => import('@/pages/formats/InvoiceFormatsPage') },
+  { path: 'quotation-format', load: () => import('@/pages/formats/QuotationFormatPage') },
+  { path: 'balance-sheet-format', load: () => import('@/pages/formats/BalanceSheetFormatPage') },
+  { path: 'bill-book-format', load: () => import('@/pages/formats/BillBookFormatPage') },
+  { path: 'receipt-format', load: () => import('@/pages/formats/ReceiptFormatPage') },
+  { path: 'credit-note-format', load: () => import('@/pages/formats/CreditNoteFormatPage') },
+  { path: 'debit-note-format', load: () => import('@/pages/formats/DebitNoteFormatPage') },
+  { path: 'sales-report-format', load: () => import('@/pages/formats/SalesReportFormatPage') },
+  { path: 'estimate-format', load: () => import('@/pages/formats/EstimateFormatPage') },
+  { path: 'delivery-challan-format', load: () => import('@/pages/formats/DeliveryChallanFormatPage') },
+  { path: 'work-order-format', load: () => import('@/pages/formats/WorkOrderFormatPage') },
+  { path: 'income-statement-format', load: () => import('@/pages/formats/IncomeStatementFormatPage') },
+
   // Other pages
   { path: 'pricing', load: () => import('@/pages/PricingPage') },
   { path: 'book-a-demo', load: () => import('@/pages/BookDemoPage') },
