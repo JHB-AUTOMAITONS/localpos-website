@@ -105,15 +105,15 @@ export function LogoMaker() {
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-1">
           <label className="inline-flex min-h-10 cursor-pointer items-center gap-2 text-[0.92rem] text-ink-2">
-            <input type="checkbox" className="size-5 accent-brand-600" checked={o.bold} onChange={(e) => set('bold', e.target.checked)} />
+            <input type="checkbox" className="size-6 accent-brand-600" checked={o.bold} onChange={(e) => set('bold', e.target.checked)} />
             Bold
           </label>
           <label className="inline-flex min-h-10 cursor-pointer items-center gap-2 text-[0.92rem] text-ink-2">
-            <input type="checkbox" className="size-5 accent-brand-600" checked={o.uppercase} onChange={(e) => set('uppercase', e.target.checked)} />
+            <input type="checkbox" className="size-6 accent-brand-600" checked={o.uppercase} onChange={(e) => set('uppercase', e.target.checked)} />
             UPPERCASE
           </label>
           <label className="inline-flex min-h-10 cursor-pointer items-center gap-2 text-[0.92rem] text-ink-2">
-            <input type="checkbox" className="size-5 accent-brand-600" checked={o.transparent} onChange={(e) => set('transparent', e.target.checked)} />
+            <input type="checkbox" className="size-6 accent-brand-600" checked={o.transparent} onChange={(e) => set('transparent', e.target.checked)} />
             Transparent background
           </label>
         </div>

@@ -163,15 +163,19 @@ function BlockBody({ block, id }: { block: Block; id: string }) {
         <>
           <BlockHeading id={id} title={block.title} lead={block.lead} />
           {/* tabIndex: a table wider than a phone screen scrolls sideways, and a scrollable region must be reachable by keyboard. */}
-          <div className="mt-6 overflow-x-auto rounded-[20px] border border-line bg-white shadow-card" role="region" aria-labelledby={id} tabIndex={0}>
+          <div className="mt-6 overflow-x-auto rounded-[20px] border border-line bg-white shadow-card" role="region" aria-label={`${block.title}: table`} tabIndex={0}>
             <table className="w-full min-w-[32rem] border-collapse text-left text-[0.98rem]">
               <thead>
                 <tr className="bg-paper-2 text-ink">
-                  {block.head.map((h) => (
-                    <th key={h} scope="col" className="px-4 py-3 font-semibold sm:px-5">
-                      {h}
-                    </th>
-                  ))}
+                  {block.head.map((h, i) =>
+                    h ? (
+                      <th key={i} scope="col" className="px-4 py-3 font-semibold sm:px-5">
+                        {h}
+                      </th>
+                    ) : (
+                      <td key={i} />
+                    ),
+                  )}
                 </tr>
               </thead>
               <tbody>

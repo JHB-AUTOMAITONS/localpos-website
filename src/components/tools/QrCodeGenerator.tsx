@@ -81,7 +81,7 @@ export function QrCodeGenerator() {
             </ToolSelect>
             {v.security !== 'nopass' && <ToolInput label="Password" autoComplete="off" wrapperClassName="sm:col-span-2" {...field('password')} />}
             <label className="inline-flex min-h-10 cursor-pointer items-center gap-2 text-[0.92rem] text-ink-2 sm:col-span-2">
-              <input type="checkbox" className="size-5 accent-brand-600" checked={v.hidden} onChange={(e) => setV((s) => ({ ...s, hidden: e.target.checked }))} />
+              <input type="checkbox" className="size-6 accent-brand-600" checked={v.hidden} onChange={(e) => setV((s) => ({ ...s, hidden: e.target.checked }))} />
               This is a hidden network
             </label>
           </div>

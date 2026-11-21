@@ -130,7 +130,7 @@ export function DocumentBuilder({ kind }: { kind: DocKind }) {
               Add item
             </CTAButton>
             <label className="inline-flex min-h-10 cursor-pointer items-center gap-2 text-[0.92rem] text-ink-2">
-              <input type="checkbox" className="size-5 accent-brand-600" checked={state.roundOff} onChange={(e) => setState((s) => ({ ...s, roundOff: e.target.checked }))} />
+              <input type="checkbox" className="size-6 accent-brand-600" checked={state.roundOff} onChange={(e) => setState((s) => ({ ...s, roundOff: e.target.checked }))} />
               Round the total to the nearest rupee
             </label>
           </div>

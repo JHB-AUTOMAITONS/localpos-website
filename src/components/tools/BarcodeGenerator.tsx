@@ -102,7 +102,7 @@ export function BarcodeGenerator() {
           </ToolSelect>
         </div>
         <label className="inline-flex min-h-10 cursor-pointer items-center gap-2 text-[0.92rem] text-ink-2">
-          <input type="checkbox" className="size-5 accent-brand-600" checked={showText} onChange={(e) => setShowText(e.target.checked)} />
+          <input type="checkbox" className="size-6 accent-brand-600" checked={showText} onChange={(e) => setShowText(e.target.checked)} />
           Print the value under the bars
         </label>
       </div>

@@ -53,7 +53,7 @@ export function DocSheet({ doc, className, printArea = true }: { doc: TemplateDo
             const align = (c: number) => ALIGN[b.align?.[c] ?? 'l']
             return (
               // tabIndex: a wide table scrolls sideways on a phone, and a scrollable region must be reachable by keyboard.
-              <div key={i} className="doc-scroll mb-4 overflow-x-auto" role="region" aria-label={`${doc.name}: table`} tabIndex={0}>
+              <div key={i} className="doc-scroll mb-4 overflow-x-auto" role="region" aria-label={`${doc.name}: table ${i + 1}`} tabIndex={0}>
                 <table className={cn('w-full border-collapse', n > 4 ? 'min-w-[31rem]' : n > 2 && 'min-w-[24rem]')}>
                   <thead>
                     <tr>
