@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { FooterDirectory, FooterTrustStrip } from '@/components/layout/FooterDirectory'
 import { Logo } from '@/components/Logo'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { Container } from '@/components/ui/Container'
@@ -38,97 +39,110 @@ function FooterLink({ to, children, external }: { to: string; children: React.Re
 
 export function Footer() {
   return (
-    <footer className="relative mt-0 bg-paper-2 pb-10 pt-14 sm:pt-16" aria-label="Site footer">
-      <Container>
-        <div className="flex flex-col gap-8 pb-12 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-md">
-            <Link to="/" aria-label="LocalPOS home" className="inline-block rounded-lg">
-              <Logo />
-            </Link>
-            <p className="mt-4 text-[1.0625rem] leading-relaxed text-ink-2">
-              Create bills in seconds. Track stock, payments and sales from one simple platform, built for Indian businesses.
+    <footer className="relative mt-0" aria-label="Site footer">
+      <div className="bg-paper-2 pb-12 pt-14 sm:pt-16">
+        <Container>
+          <div className="flex flex-col gap-8 pb-12 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-md">
+              <Link to="/" aria-label="LocalPOS home" className="inline-block rounded-lg">
+                <Logo />
+              </Link>
+              <p className="mt-4 text-[1.0625rem] leading-relaxed text-ink-2">
+                Create bills in seconds. Track stock, payments and sales from one simple platform, built for Indian businesses.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <CTAButton to="/book-a-demo/" arrow>
+                Book a Free Demo
+              </CTAButton>
+              <CTAButton to="/contact-us/" variant="secondary">
+                Talk to us
+              </CTAButton>
+            </div>
+          </div>
+
+          <TearLine notch="bg-paper-2" />
+
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-12 md:grid-cols-3 lg:grid-cols-7">
+            <FooterColumn title="Product">
+              <FooterLink to="/pricing/">Pricing</FooterLink>
+              <FooterLink to="/book-a-demo/">Book a Demo</FooterLink>
+              <FooterLink to={SITE.loginUrl} external>
+                Login
+              </FooterLink>
+            </FooterColumn>
+
+            <FooterColumn title="Features">
+              {FEATURE_META.map((f) => (
+                <FooterLink key={f.slug} to={f.path}>
+                  {f.navLabel}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+
+            <FooterColumn title="Solutions">
+              {SOLUTION_META.map((s) => (
+                <FooterLink key={s.slug} to={s.path}>
+                  {s.navLabel}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+
+            <FooterColumn title="Countries">
+              {COUNTRY_META.map((c) => (
+                <FooterLink key={c.slug} to={c.path}>
+                  {c.name}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+
+            <FooterColumn title="Resources">
+              <FooterLink to="/blog/">Blog</FooterLink>
+              {BLOG_META.slice(0, 3).map((p) => (
+                <FooterLink key={p.slug} to={`/blog/${p.slug}/`}>
+                  <span className="line-clamp-2">{p.title}</span>
+                </FooterLink>
+              ))}
+            </FooterColumn>
+
+            <FooterColumn title="Company">
+              <FooterLink to="/about-us/">About Us</FooterLink>
+              <FooterLink to="/contact-us/">Contact Us</FooterLink>
+              {SITE.social.map((s) => (
+                <FooterLink key={s.href} to={s.href} external>
+                  {s.label}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+
+            <FooterColumn title="Legal">
+              <FooterLink to="/privacy-policy/">Privacy Policy</FooterLink>
+              <FooterLink to="/delete-account/">Delete your account</FooterLink>
+              <FooterLink to="/terms-and-conditions/">Terms &amp; Conditions</FooterLink>
+              <FooterLink to="/refund-policy/">Refund Policy</FooterLink>
+            </FooterColumn>
+          </div>
+        </Container>
+      </div>
+
+      <div className="bg-brand-950 pb-8 pt-12">
+        <Container>
+          <FooterDirectory />
+          <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-[0.9rem] text-white/70 sm:flex-row sm:items-center sm:justify-between">
+            <p className="shrink-0">
+              © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {SITE.name}. All rights reserved.
             </p>
+            <p>Made for shops, restaurants, jewellers, supermarkets and medical stores across India.</p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <CTAButton to="/book-a-demo/" arrow>
-              Book a Free Demo
-            </CTAButton>
-            <CTAButton to="/contact-us/" variant="secondary">
-              Talk to us
-            </CTAButton>
-          </div>
-        </div>
+        </Container>
+      </div>
 
-        <TearLine notch="bg-paper-2" />
-
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-12 md:grid-cols-3 lg:grid-cols-7">
-          <FooterColumn title="Product">
-            <FooterLink to="/pricing/">Pricing</FooterLink>
-            <FooterLink to="/book-a-demo/">Book a Demo</FooterLink>
-            <FooterLink to={SITE.loginUrl} external>
-              Login
-            </FooterLink>
-          </FooterColumn>
-
-          <FooterColumn title="Features">
-            {FEATURE_META.map((f) => (
-              <FooterLink key={f.slug} to={f.path}>
-                {f.navLabel}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title="Solutions">
-            {SOLUTION_META.map((s) => (
-              <FooterLink key={s.slug} to={s.path}>
-                {s.navLabel}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title="Countries">
-            {COUNTRY_META.map((c) => (
-              <FooterLink key={c.slug} to={c.path}>
-                {c.name}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title="Resources">
-            <FooterLink to="/blog/">Blog</FooterLink>
-            {BLOG_META.slice(0, 3).map((p) => (
-              <FooterLink key={p.slug} to={`/blog/${p.slug}/`}>
-                <span className="line-clamp-2">{p.title}</span>
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title="Company">
-            <FooterLink to="/about-us/">About Us</FooterLink>
-            <FooterLink to="/contact-us/">Contact Us</FooterLink>
-            {SITE.social.map((s) => (
-              <FooterLink key={s.href} to={s.href} external>
-                {s.label}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title="Legal">
-            <FooterLink to="/privacy-policy/">Privacy Policy</FooterLink>
-            <FooterLink to="/delete-account/">Delete your account</FooterLink>
-            <FooterLink to="/terms-and-conditions/">Terms &amp; Conditions</FooterLink>
-            <FooterLink to="/refund-policy/">Refund Policy</FooterLink>
-          </FooterColumn>
-        </div>
-
-        {/* max-lg:pb-16 leaves room under the last line for the floating WhatsApp button, which would otherwise sit on top of it at the end of the page. */}
-        <div className="mt-14 flex flex-col gap-2 border-t border-line-strong pt-6 text-[0.9rem] text-ink-3 max-lg:pb-16 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {SITE.name}. All rights reserved.
-          </p>
-          <p>Made for shops, restaurants, jewellers, supermarkets and medical stores across India.</p>
-        </div>
-      </Container>
+      {/* max-lg:pb-20 leaves room under the trust strip for the floating WhatsApp button, which would otherwise sit on top of it at the end of the page. */}
+      <div className="border-t border-line bg-white py-5 max-lg:pb-20">
+        <Container>
+          <FooterTrustStrip />
+        </Container>
+      </div>
     </footer>
   )
 }

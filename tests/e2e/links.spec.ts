@@ -110,4 +110,32 @@ test.describe('important calls to action go where they say', () => {
       await expect(page.locator('footer').getByRole('link', { name: label, exact: true })).toHaveCount(1)
     }
   })
+
+  test('footer lists the LocalPOS tools and business formats, and closes with the trust strip', async ({ page }) => {
+    await open(page, '/')
+    const footer = page.locator('footer')
+    const tools = footer.getByRole('navigation', { name: 'LocalPOS Tools' })
+    const formats = footer.getByRole('navigation', { name: 'LocalPOS Business Formats' })
+    await expect(tools.getByRole('listitem')).toHaveCount(11)
+    await expect(formats.getByRole('listitem')).toHaveCount(12)
+    await expect(tools.getByRole('listitem').first()).toHaveText('GST Calculator')
+    await expect(formats.getByRole('listitem').last()).toHaveText('Income Statement')
+    // An item is a link only when its page exists; every other item is plain text.
+    for (const href of await footer.locator('nav a[href]').evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
+      expect(KNOWN.has(href), `footer directory link ${href}`).toBe(true)
+    }
+
+    const trust = footer.getByRole('list', { name: 'Why businesses trust LocalPOS' })
+    await expect(trust.getByRole('listitem')).toHaveText(['Made in India', 'SecureSSL Encryption', 'Trusted by MSMEs'])
+    await expect(footer).not.toContainText(/GST Registration|Udyam/i)
+
+    // At the end of the page the floating WhatsApp button must not sit on top of a trust item.
+    await page.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' as ScrollBehavior }))
+    const b = (await page.getByRole('link', { name: /WhatsApp/i }).boundingBox())!
+    for (const item of await trust.getByRole('listitem').all()) {
+      const r = (await item.boundingBox())!
+      const overlap = r.x < b.x + b.width && r.x + r.width > b.x && r.y < b.y + b.height && r.y + r.height > b.y
+      expect(overlap, `trust item ${JSON.stringify(r)} vs button ${JSON.stringify(b)}`).toBe(false)
+    }
+  })
 })
