@@ -6,6 +6,240 @@ import { BLOG_META } from './blogMeta'
  * Titles, SEO fields, dates and cards live in blogMeta.ts. Add a post by adding an entry in both files.
  */
 const CONTENT: Record<string, BlogContent> = {
+  'inventory-keeping-software': {
+    faqTitle: 'Frequently Asked Questions',
+    blocks: [
+      { type: 'p', text: 'Inventory keeping means recording what stock you hold, how much of each item is on the shelf and when it moves in or out. Inventory keeping software does this on a computer or phone instead of in a stock register, so the owner, storekeeper or manager can see accurate quantities without counting the shelves. For an Indian shop or godown, it is the difference between ordering on time and finding an empty rack on a busy Saturday.' },
+      { type: 'p', text: 'Manual stock keeping works while the item list is short. As products, suppliers and staff grow, entries get skipped, counts are repeated every month, and the register stops matching the shelf. That is why more businesses are moving to digital inventory management. This guide explains how the software works, its benefits and features, who needs it and how to choose it.' },
+      { type: 'h2', text: 'What Is Inventory Keeping Software?' },
+      {
+        type: 'callout',
+        title: 'Short definition',
+        text: '**Inventory keeping software** is a digital system that records a business’s products and stock quantities and updates them as goods are received, sold, returned or adjusted. It keeps one organised set of inventory records that staff can search, check and report on at any time.'
+      },
+      { type: 'p', text: 'You will also see it called inventory management software, stock keeping software or stock management software. In everyday use the names describe the same kind of product: software that tells you what you have and how it has moved. Related terms include inventory tracking software, stock tracking software and inventory control software, which stress monitoring quantities and keeping stock within limits.' },
+      { type: 'p', text: 'Each product is stored once, with its name, category, unit, price and opening quantity. Every later event, such as a purchase, a sale or a damaged pack written off, changes the quantity and is saved with a date. The current stock level is therefore calculated from a trail of entries, not typed in by hand. This is the core of any stock management system or inventory management system, and it is what makes inventory record management reliable.' },
+      { type: 'p', text: 'In manual inventory keeping, quantities live in registers or spreadsheets, totals are worked out by hand, and a mistake in one book is rarely caught by another. In software-based keeping, the arithmetic is done by the system and the history stays in one place. It still depends on people entering transactions, so the software helps accuracy but cannot guarantee it.' },
+      { type: 'h2', text: 'Why Businesses Need Inventory Keeping Software' },
+      { type: 'p', text: 'Businesses need it because manual stock control breaks down in predictable ways as volume grows. These are the common problems and how software addresses each one:' },
+      {
+        type: 'ul',
+        items: [
+          '**Manual stock counting.** Routine questions are answered from the screen, so full counts can be planned instead of repeated.',
+          '**Inventory record errors.** A quantity is entered once, at the transaction, and is not copied between books.',
+          '**Difficulty tracking stock movement.** Each inward and outward entry is stored against the item with a date.',
+          '**Overstocking.** Seeing what is on hand, and how slowly it sells, discourages repeat orders of slow items.',
+          '**Stock shortages.** Minimum levels and low-stock lists, where available, prompt a reorder before the shelf is empty.',
+          '**Many products.** Categories and search keep hundreds or thousands of items findable.',
+          '**Time-consuming updates.** Stock changes when the transaction is saved, not at the end of the week.',
+          '**Poor stock visibility.** Current quantities are on one screen, not in one person’s memory.',
+          '**Hard-to-maintain records.** History is kept automatically and does not depend on one notebook.',
+          '**Repeated manual work.** Totals, lists and reports come from entries you already make.'
+        ]
+      },
+      { type: 'h2', text: 'How Does Inventory Keeping Software Work?' },
+      { type: 'p', text: 'In short, every stock movement is recorded once and the software keeps a running quantity for each item. A typical workflow has eight steps:' },
+      {
+        type: 'ol',
+        items: [
+          '**Add products.** Create each item with a name, category and unit, one by one or in bulk.',
+          '**Record details and opening stock.** Enter prices, tax details where needed and the counted quantity on the day you start.',
+          '**Track incoming stock.** When goods arrive from a supplier, a purchase entry adds to the quantity.',
+          '**Track outgoing stock.** Sales, returns to suppliers and written-off items reduce the quantity.',
+          '**Update records.** Depending on the software, a bill reduces stock automatically or a separate stock entry is made. Counts and corrections go in as adjustments.',
+          '**Monitor available stock.** Check quantities by item or category, and see which items are low.',
+          '**Review reports.** Look at current stock, stock value and sales to see what is moving.',
+          '**Plan replenishment.** Use low-stock items and recent sales to decide what to order and how much.'
+        ]
+      },
+      { type: 'p', text: '**Example:** a stationery shop in Jaipur receives 20 cartons of notebooks. The purchase is entered and stock rises by 20 cartons. During the week, each bill reduces the notebook quantity. On Friday the owner opens the low-stock list, sees notebooks at the minimum level and calls the supplier, without counting the shelf.' },
+      { type: 'p', text: 'The exact workflow varies by product. Some systems reduce stock from every bill, others need a separate entry. Barcode scanning, purchase orders and branch-wise stock exist in some products and not others, so test each step in a demo.' },
+      { type: 'h2', text: 'Benefits of Inventory Keeping Software for Businesses' },
+      { type: 'p', text: 'These are the benefits a well-designed system can offer. What you get depends on the product and on how consistently your team records transactions.' },
+      { type: 'h3', text: 'Better Inventory Accuracy' },
+      { type: 'p', text: 'Structured digital entry reduces copying mistakes, missed lines and arithmetic slips. No software can guarantee accurate stock, so periodic counts and [stock reconciliation](/blog/stock-reconciliation-retail-shop/) are still needed to catch damage, theft and unrecorded movement.' },
+      { type: 'h3', text: 'Easy Stock Tracking' },
+      { type: 'p', text: 'An inventory tracking system lets you see the quantity of any product and look back at its stock movement. When a number looks wrong, the dated entries show what changed it.' },
+      { type: 'h3', text: 'Reduced Manual Work' },
+      { type: 'p', text: 'Staff stop rewriting registers and totalling columns. Time goes to serving customers and receiving goods instead.' },
+      { type: 'h3', text: 'Better Stock Visibility' },
+      { type: 'p', text: 'Counter staff can check stock availability before promising an item. Owners can review stock monitoring lists without visiting the godown.' },
+      { type: 'h3', text: 'Improved Stock Replenishment' },
+      { type: 'p', text: 'Buying improves when current stock and recent sales are visible together. You reorder what is moving, in quantities that match demand, and stop topping up items that have not sold for months.' },
+      { type: 'h3', text: 'Organized Inventory Records' },
+      { type: 'p', text: 'Product details, categories, units and movement history sit in one place. A new employee can find an item without asking the person who kept the register.' },
+      { type: 'h3', text: 'Better Business Decision-Making' },
+      { type: 'p', text: 'Stock lists and reports show which items earn the most, which are stuck and how much money sits on the shelf. These facts support decisions on buying, pricing and clearing slow stock.' },
+      { type: 'h3', text: 'Support for Growing Businesses' },
+      { type: 'p', text: 'A longer item list, more daily sales and more staff strain a register quickly. Software is built to hold more products and users, though limits vary by plan, so confirm them before you buy.' },
+      { type: 'h2', text: 'Essential Features to Look for in Inventory Software' },
+      { type: 'p', text: 'Look for these features when you compare products. Not every system has all of them, and some are only needed by certain businesses.' },
+      { type: 'h3', text: 'Product Management' },
+      { type: 'p', text: 'Product records should hold names, categories, units, prices and, where relevant, codes and variants such as size and colour. Bulk entry saves hours when you first load a long catalogue.' },
+      { type: 'h3', text: 'Stock Tracking' },
+      { type: 'p', text: 'The software should show the quantity on hand for every item and handle your units, such as pieces, kilograms, litres and cartons.' },
+      { type: 'h3', text: 'Stock In and Stock Out Management' },
+      { type: 'p', text: 'Goods received should add to stock and goods sold or issued should reduce it. Check whether this happens automatically from billing and purchase entries or needs separate steps.' },
+      { type: 'h3', text: 'Inventory Adjustment' },
+      { type: 'p', text: 'Physical counts, damaged goods and expired items rarely match the system exactly. Adjustments let you correct the quantity and record a reason, so the history stays honest.' },
+      { type: 'h3', text: 'Low Stock Monitoring' },
+      { type: 'p', text: 'Where available, you set a minimum quantity per item and the software lists items that reach it. This is a prompt to review and reorder, not an automatic purchase.' },
+      { type: 'h3', text: 'Inventory Reports' },
+      { type: 'p', text: 'Useful reports cover current stock, stock value and slow-moving items. Ask whether reports can be filtered by category or date.' },
+      { type: 'h3', text: 'Barcode-Based Inventory Management' },
+      { type: 'p', text: 'If supported, barcodes make product identification faster and reduce typing errors at the counter and during receiving. See how a [barcode system works in a retail shop](/blog/how-a-barcode-system-works-in-a-retail-shop/).' },
+      { type: 'h3', text: 'Multi-Location Inventory Management' },
+      { type: 'p', text: 'Businesses with more than one shop or godown need stock per location plus a combined view. Where supported, [multi-store management](/features/multi-store-management-software/) keeps one item list with separate quantities and transfers between locations.' },
+      { type: 'h3', text: 'Integration with Billing and Sales' },
+      { type: 'p', text: 'When billing and inventory share one system, each sale updates stock without a second entry. LocalPOS combines [POS billing](/features/pos-billing-software/) with [inventory management](/features/inventory-management-software/) for this reason.' },
+      { type: 'h2', text: 'Inventory Software vs Manual Inventory Management' },
+      { type: 'p', text: 'The main difference is where records live and how they are updated. This table compares typical cases; individual products and businesses differ.' },
+      {
+        type: 'table',
+        caption: 'Manual inventory management compared with inventory keeping software',
+        head: [ 'Manual inventory management', 'Inventory keeping software' ],
+        rows: [
+          [ 'Stock records maintained manually', 'Digital inventory records' ],
+          [ 'Time-consuming stock updates', 'Streamlined stock update workflows' ],
+          [ 'Greater dependency on manual calculations', 'Software-assisted inventory calculations where supported' ],
+          [ 'Difficult to track stock movement', 'Digital stock movement tracking where supported' ],
+          [ 'Stock records may be scattered', 'Organised inventory records' ],
+          [ 'Manual stock reporting', 'Software-based inventory reports where available' ],
+          [ 'Difficult to manage growing product volumes', 'Designed to support evolving business requirements' ]
+        ]
+      },
+      { type: 'p', text: 'Software has costs too: a subscription, some training and the discipline of entering every transaction. A register needs none of that, but it becomes slower and less reliable as the business grows.' },
+      { type: 'h2', text: 'Who Should Use Inventory Management Software?' },
+      { type: 'h3', text: 'Retail Shops' },
+      { type: 'p', text: 'Garment, footwear, electronics and general stores need item-level quantities, often by size or colour. Inventory management software for retail shows what is selling and what to reorder. See how [billing and stock work together in a retail shop](/solutions/retail-billing-software/).' },
+      { type: 'h3', text: 'Grocery Stores and Supermarkets' },
+      { type: 'p', text: 'A kirana store or supermarket handles a large catalogue with fast daily movement in loose and packed units. Categories, barcodes and low-stock lists keep replenishment regular. LocalPOS has a page on [supermarket billing software](/solutions/supermarket-billing-software/).' },
+      { type: 'h3', text: 'Wholesale Businesses' },
+      { type: 'p', text: 'Wholesalers buy in bulk and sell in cartons or cases. Structured stock tracking shows what can be promised to a buyer and which lines tie up cash.' },
+      { type: 'h3', text: 'Distributors' },
+      { type: 'p', text: 'Distributors move goods in and out daily from a godown. Recording every receipt and dispatch gives a reliable view of product availability before an order is accepted.' },
+      { type: 'h3', text: 'Small Businesses' },
+      { type: 'p', text: 'If the spreadsheet has several versions, or only one person understands the stock register, the business has outgrown the method. Inventory software for small businesses gives owner and staff one shared record.' },
+      { type: 'h3', text: 'Multi-Branch Businesses' },
+      { type: 'p', text: 'With two or more outlets, the owner needs branch-wise stock and a combined view. Our guide on how to [manage stock across multiple shop branches](/blog/how-to-manage-stock-across-multiple-shop-branches/) explains the routine.' },
+      { type: 'h2', text: 'How to Choose the Best Inventory Keeping Software for Your Business' },
+      { type: 'p', text: 'Choose the software that fits how your business actually operates, not the one with the longest feature list. Use this checklist:' },
+      {
+        type: 'ol',
+        items: [
+          '**Ease of use.** Let the person who will enter stock every day try it.',
+          '**Product management.** Categories, units, variants and bulk entry.',
+          '**Stock tracking and movement.** Receipts, sales, returns and adjustments, each with a date.',
+          '**Inventory reports.** Current stock, stock value and slow movers.',
+          '**Low-stock monitoring.** Minimum levels and a reorder list.',
+          '**Barcode support.** Needed if you sell many packed items.',
+          '**Billing integration.** Does a sale reduce stock automatically?',
+          '**Multi-location support.** Only if you have branches or a separate godown.',
+          '**Scalability.** Limits on items, users and stores in each plan.',
+          '**Data security and backups.** Ask how users sign in and how data is backed up and restored, and get the answers in writing.',
+          '**Customer support.** Hours, languages and how help is provided.',
+          '**Pricing.** Total cost, including per-user, per-store and setup charges.',
+          '**Business-specific needs.** For example, batches and expiry for a pharmacy.'
+        ]
+      },
+      { type: 'p', text: 'Shortlist two or three products and test each with your own items in a demo. A feature that works on sample data may not fit your units or your way of selling.' },
+      { type: 'h2', text: 'Common Inventory Keeping Mistakes Businesses Should Avoid' },
+      {
+        type: 'table',
+        caption: 'Common inventory keeping mistakes and practical fixes',
+        head: [ 'Mistake', 'Practical fix' ],
+        rows: [
+          [ 'Maintaining outdated inventory records', 'Enter purchases and sales on the day they happen, not in a weekly batch' ],
+          [ 'Not tracking stock movement', 'Record every receipt, sale, return and adjustment against the item' ],
+          [ 'Ignoring stock shortages', 'Set minimum quantities for fast sellers and act on the low-stock list' ],
+          [ 'Overstocking products', 'Check recent sales before reordering, and follow a plan for [reducing dead stock](/blog/how-to-reduce-dead-stock-in-a-retail-shop/)' ],
+          [ 'Poor inventory organization', 'Use clear item names, categories and consistent units' ],
+          [ 'Relying entirely on spreadsheets', 'Move to a system where billing and purchases update stock directly' ],
+          [ 'Not performing regular stock checks', 'Count a few categories every week instead of everything once a year' ],
+          [ 'Not reviewing inventory reports', 'Read stock and sales reports monthly and note one action from each' ],
+          [ 'Choosing software without understanding business requirements', 'Write down your must-haves first and test them in a demo' ]
+        ]
+      },
+      { type: 'h2', text: 'How Digital Stock Keeping Simplifies Daily Business Operations' },
+      { type: 'p', text: 'It turns stock from something you estimate into something you can look up. These everyday situations show how:' },
+      {
+        type: 'ul',
+        items: [
+          '**Recording newly purchased stock.** A grocery owner enters Monday’s delivery of rice and oil in minutes, and quantities rise at once.',
+          '**Tracking available stock.** A counter assistant checks whether a size is in stock before calling the godown.',
+          '**Monitoring stock shortages.** The low-stock list on Thursday tells a hardware shop which fast sellers to order before the weekend.',
+          '**Managing product information.** A price or unit change is made once, not in three books.',
+          '**Reviewing stock movement.** When tea packets show a gap, the owner reads the dated entries to find the reason.',
+          '**Organizing inventory records.** Items sit in categories, so a stock check can be done one category at a time.',
+          '**Improving stock workflows.** Receiving, billing and adjusting follow one routine that any trained employee can repeat.'
+        ]
+      },
+      { type: 'h2', text: 'Inventory Software for Small Businesses' },
+      { type: 'p', text: 'Small businesses usually feel the strain when the item count crosses a few hundred, or when a second person starts handling stock. A notebook then cannot keep pace with daily sales, and entries get missed because nobody has time.' },
+      { type: 'p', text: 'You can move from registers and spreadsheets without disruption:' },
+      {
+        type: 'ol',
+        items: [
+          '**Clean the item list.** Remove duplicates and fix names, units and prices.',
+          '**Count the stock.** Enter the physical count as opening stock.',
+          '**Start daily entries.** Record every purchase and sale from day one.',
+          '**Run both methods briefly.** Keep the register for a week or two, then stop.'
+        ]
+      },
+      { type: 'p', text: 'Our plan for [moving from a stock register to software](/blog/moving-from-a-stock-register-to-software/) covers this in detail. Before choosing, consider your internet reliability, who will make entries, the monthly cost and how much training the team needs. A single shop usually needs simple stock tracking, low-stock alerts and billing integration. Multi-location features and advanced reports can wait until you need them. For a related read on online systems, see our guide to [cloud stock management software](/blog/cloud-stock-management-software/).' },
+      { type: 'h2', text: 'Conclusion' },
+      { type: 'p', text: 'Stock is where much of a trading business’s money sits, so keeping accurate inventory records protects both sales and cash. Manual registers and spreadsheets turn slow and error-prone as products and staff increase. Inventory keeping software moves those records into one system, which improves stock visibility, reduces repeated work and supports better purchasing.' },
+      { type: 'p', text: 'When you compare options, look at product management, stock movement, adjustments, low-stock monitoring, reports and billing integration, and test them with your own items before you decide.' },
+      { type: 'p', text: 'LocalPOS is billing software with built-in inventory management. Stock updates on every sale and purchase, low-stock alerts show what to reorder, items can have variants and units, and adjustments are recorded with reasons. It also covers [purchase management](/features/purchase-management-software/), [barcode billing](/features/barcode-billing-software/), [sales reports](/features/sales-reporting-software/) and stock transfers between stores. Plans are on the [pricing page](/pricing/).' },
+      {
+        type: 'callout',
+        title: 'See it with your own items',
+        text: 'Want to see how LocalPOS handles your products, suppliers and stock? [Book a LocalPOS demo](/book-a-demo/) and try it with your own item list.'
+      }
+    ],
+    faqs: [
+      {
+        q: 'What is inventory keeping software?',
+        a: 'Inventory keeping software is a digital system for recording a business’s products and stock quantities. It updates quantities as goods are received, sold, returned or adjusted, keeps a dated history of each movement and shows current stock and reports, replacing paper registers and spreadsheets.'
+      },
+      {
+        q: 'Why do businesses need inventory keeping software?',
+        a: 'Manual stock records are slow to update and easy to get wrong as products and staff increase. Software keeps one organised record, shows what is available, flags low stock and reduces repeated work, so owners can reorder in time and avoid money locked in slow items.'
+      },
+      {
+        q: 'How does inventory keeping software work?',
+        a: 'Products are added with an opening quantity. Each purchase raises stock, and each sale, return or adjustment changes it. The software stores every movement, shows current quantities, lists low-stock items where supported and produces reports that guide reordering. Exact steps vary by product.'
+      },
+      {
+        q: 'Is inventory keeping software suitable for small businesses?',
+        a: 'Yes. A small shop can replace registers and spreadsheets without servers or IT staff. Choose a product with simple screens, the features you need today and pricing that suits your size, and check that you can enter every sale and purchase consistently.'
+      },
+      {
+        q: 'What is the difference between inventory keeping software and inventory management software?',
+        a: 'There is little practical difference. Inventory keeping stresses recording and maintaining stock records, while inventory management software usually adds purchasing, reporting and planning features. Many products combine both, so compare actual features rather than the name.'
+      },
+      {
+        q: 'Can inventory keeping software track stock in and stock out?',
+        a: 'Yes. Stock in is goods received from suppliers and stock out is goods sold, returned or written off. Each movement is saved against the item with a date. Whether a bill reduces stock automatically depends on the product, so check this in a demo.'
+      },
+      {
+        q: 'How does inventory keeping software help prevent stock shortages?',
+        a: 'It shows current quantities and, where the feature exists, lists items that have fallen to a minimum level you set. This gives you time to reorder before the shelf is empty. It reduces the risk of shortages but cannot remove it, since supplier delays and sudden demand still happen.'
+      },
+      {
+        q: 'What features should I look for in inventory keeping software?',
+        a: 'Look for product management, stock tracking by unit, stock in and out records, adjustments with reasons, low-stock alerts, reports and billing integration. Add barcode support if you sell many packed items and multi-location support if you have branches or a godown.'
+      },
+      {
+        q: 'Can inventory keeping software help manage multiple products?',
+        a: 'Yes. Categories, search, units and bulk entry keep a long product list organised, whether you stock fifty items or several thousand. Check the item and user limits of each plan, and ask how variants such as size and colour are handled.'
+      },
+      {
+        q: 'How do I choose the best inventory keeping software for my business?',
+        a: 'List your must-haves, such as units, alerts, billing integration and branches. Shortlist two or three products, test each with your own items, and compare ease of use, support, backup practices and total cost. Choose the one your team can use every day.'
+      }
+    ]
+  },
   'cloud-stock-management-software': {
     faqTitle: 'Frequently Asked Questions',
     blocks: [

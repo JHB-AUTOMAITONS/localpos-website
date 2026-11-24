@@ -6,6 +6,42 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'inventory-keeping-software',
+    keyword: 'inventory keeping software',
+    secondary: [
+      'inventory management software',
+      'stock keeping software',
+      'stock management software',
+      'inventory tracking software',
+      'stock tracking software',
+      'inventory control software',
+      'inventory software for small businesses',
+      'stock management system',
+      'inventory management system',
+      'inventory record management',
+      'inventory tracking system',
+      'inventory management software for retail',
+      'digital inventory management'
+    ],
+    title: 'Inventory Keeping Software: A Complete Guide for Businesses',
+    seoTitle: 'Inventory Keeping Software: A Complete Guide for Businesses',
+    seoDescription: 'Inventory keeping software helps Indian businesses track stock and keep accurate records. Learn how it works, key features and how to choose the right one.',
+    category: 'Inventory',
+    date: '2026-11-24',
+    readingMinutes: 12,
+    excerpt: 'What inventory keeping software is, how it records stock in and out step by step, the benefits and features that matter, the mistakes to avoid and how to choose it for your business.',
+    tint: 'brand',
+    image: {
+      src: '/blog/inventory-keeping-software.webp',
+      alt: 'Inventory keeping software for tracking and managing business stock',
+      title: 'Inventory Keeping Software: A Complete Guide for Businesses',
+      caption: 'Inventory keeping software keeps product and stock records in one place, so quantities can be checked at any time.',
+      width: 1600,
+      height: 900
+    },
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'barcode-billing-software', 'multi-store-management-software', 'sales-reporting-software' ]
+  },
+  {
     slug: 'cloud-stock-management-software',
     keyword: 'cloud stock management software',
     secondary: [
