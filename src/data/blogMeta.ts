@@ -6,6 +6,42 @@ import type { BlogCategory, BlogPostMeta } from './types'
  */
 export const BLOG_META: BlogPostMeta[] = [
   {
+    slug: 'inventory-management-system',
+    keyword: 'inventory management system',
+    secondary: [
+      'inventory management software',
+      'inventory control system',
+      'stock management system',
+      'stock management software',
+      'inventory tracking system',
+      'stock tracking system',
+      'inventory management system for small businesses',
+      'inventory management system for retail',
+      'inventory management solution',
+      'inventory monitoring system',
+      'inventory control software',
+      'digital inventory management system',
+      'inventory management tools'
+    ],
+    title: 'Inventory Management System: A Complete Guide for Businesses',
+    seoTitle: 'Inventory Management System: A Complete Guide for Businesses',
+    seoDescription: 'An inventory management system helps Indian businesses track stock, avoid shortages and cut manual work. Learn how it works, key features and how to choose.',
+    category: 'Inventory',
+    date: '2026-11-25',
+    readingMinutes: 13,
+    excerpt: 'What an inventory management system is, how it works step by step, the benefits and features that matter, the types, the mistakes to avoid and how to choose the right one for your business.',
+    tint: 'brand',
+    image: {
+      src: '/blog/inventory-management-system.webp',
+      alt: 'Inventory management system for tracking and managing business stock',
+      title: 'Inventory Management System: A Complete Guide for Businesses',
+      caption: 'An inventory management system keeps product and stock records in one place, so quantities can be checked at any time.',
+      width: 1600,
+      height: 900
+    },
+    relatedFeatures: [ 'inventory-management-software', 'purchase-management-software', 'barcode-billing-software', 'multi-store-management-software', 'sales-reporting-software' ]
+  },
+  {
     slug: 'inventory-keeping-software',
     keyword: 'inventory keeping software',
     secondary: [
