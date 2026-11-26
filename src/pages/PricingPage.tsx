@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Icon } from '@/components/Icon'
 import { PricingCard, type Period } from '@/components/PricingCard'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { Container } from '@/components/ui/Container'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Reveal } from '@/components/ui/Reveal'
 import { Section } from '@/components/ui/Section'
-import { COMPARISON, PLANS } from '@/data/pricing'
+import { MONTHS_FREE, MONTHLY_PRICE, PLAN, YEARLY_AT_MONTHLY_RATE, YEARLY_PRICE, YEARLY_SAVINGS } from '@/data/pricing'
+import { rupees } from '@/lib/format'
 import { Seo } from '@/lib/head'
 import { cn } from '@/lib/cn'
 import type { FaqItem } from '@/lib/seo'
@@ -15,8 +15,9 @@ import { FAQSection } from '@/sections/FAQSection'
 
 const FAQS: FaqItem[] = [
   { q: 'Can I see LocalPOS before I choose a plan?', a: 'Yes. Book a free demo and we will show you LocalPOS working with your kind of business, so you can see what each part does before deciding.' },
-  { q: 'How do I get current pricing?', a: 'Pricing is being finalised. Book a demo or contact us and we will share current plan details with you.' },
-  { q: 'Which plan is right for a single shop?', a: 'A single counter usually starts with the plan built around billing, GST and stock. If you plan to add barcode billing, purchase tracking or more branches, ask about the next plan up during your demo.' },
+  { q: 'How much does LocalPOS cost?', a: `LocalPOS is ${rupees(MONTHLY_PRICE)} per month billed monthly, or ${rupees(YEARLY_PRICE)} per year billed yearly. Both include every feature.` },
+  { q: 'How much do I save with yearly billing?', a: `Twelve monthly payments come to ${rupees(YEARLY_AT_MONTHLY_RATE)}. The yearly plan is ${rupees(YEARLY_PRICE)}, so you save ${rupees(YEARLY_SAVINGS)} a year, which is approximately ${MONTHS_FREE} months free.` },
+  { q: 'Is the yearly plan different from the monthly plan?', a: 'No. Both plans include the same features. The only difference is how often you are billed and the saving on yearly billing.' },
 ]
 
 const crumbs = [
@@ -24,31 +25,22 @@ const crumbs = [
   { name: 'Pricing', path: '/pricing/' },
 ]
 
-/** A tick, a dash or a short word, with a text alternative for screen readers. */
-function PlanMark({ value }: { value: boolean | string }) {
-  if (typeof value === 'string') return <span className="text-[0.92rem] font-semibold text-ink-2">{value}</span>
-  return value ? (
-    <>
-      <Icon name="check" size={18} strokeWidth={3} className="mx-auto text-brand-600" />
-      <span className="sr-only">Included</span>
-    </>
-  ) : (
-    <>
-      <span aria-hidden="true" className="mx-auto block h-0.5 w-3 rounded bg-line-strong" />
-      <span className="sr-only">Not included</span>
-    </>
-  )
-}
+const BILLING_ROWS = [
+  { label: 'Price', monthly: `${rupees(MONTHLY_PRICE)} / month`, yearly: `${rupees(YEARLY_PRICE)} / year` },
+  { label: 'Cost over 12 months', monthly: rupees(YEARLY_AT_MONTHLY_RATE), yearly: rupees(YEARLY_PRICE) },
+  { label: 'You save', monthly: '—', yearly: `${rupees(YEARLY_SAVINGS)} a year` },
+  { label: 'Free months', monthly: '—', yearly: `Approximately ${MONTHS_FREE}` },
+  { label: 'All features included', monthly: 'Yes', yearly: 'Yes' },
+]
 
 export default function PricingPage() {
-  const hasPrices = PLANS.some((p) => p.price.monthly !== null || p.price.yearly !== null)
-  const [period, setPeriod] = useState<Period>('monthly')
+  const [period, setPeriod] = useState<Period>('yearly')
 
   return (
     <>
       <Seo
         title="Pricing | LocalPOS"
-        description="Compare LocalPOS plans for a single shop, a growing business or several branches, and book a free demo to see which fits."
+        description={`LocalPOS costs ${rupees(MONTHLY_PRICE)} per month or ${rupees(YEARLY_PRICE)} per year. Save ${rupees(YEARLY_SAVINGS)} with yearly billing, and book a free demo to see it working.`}
         path="/pricing/"
         breadcrumbs={crumbs}
         faqs={FAQS}
@@ -64,36 +56,29 @@ export default function PricingPage() {
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Pricing</Eyebrow>
             <h1 id="page-heading" className="display-2 mt-5">
-              Simple plans that grow with your business
+              Simple pricing for your whole business
             </h1>
-            <p className="lead mx-auto mt-5 max-w-2xl">Start with the basics at one counter, and add more as you open more shelves, more staff and more shops. Every plan includes a free demo first.</p>
+            <p className="lead mx-auto mt-5 max-w-2xl">One plan with every feature. Pay monthly, or go yearly and get approximately 2 months free. Book a free demo first.</p>
 
-            {hasPrices && (
-              <div role="radiogroup" aria-label="Billing period" className="mx-auto mt-8 flex w-fit rounded-xl bg-white p-1 shadow-card ring-1 ring-line">
-                {(['monthly', 'yearly'] as const).map((p) => (
-                  <button
-                    key={p}
-                    type="button"
-                    role="radio"
-                    aria-checked={period === p}
-                    onClick={() => setPeriod(p)}
-                    className={cn('rounded-lg px-5 py-2 text-[0.95rem] font-semibold capitalize transition', period === p ? 'bg-brand-600 text-white' : 'text-ink-2 hover:text-ink')}
-                  >
-                    {p}
-                  </button>
-                ))}
-              </div>
-            )}
+            <div role="radiogroup" aria-label="Billing period" className="mx-auto mt-8 flex w-fit rounded-xl bg-white p-1 shadow-card ring-1 ring-line">
+              {(['monthly', 'yearly'] as const).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  role="radio"
+                  aria-checked={period === p}
+                  onClick={() => setPeriod(p)}
+                  className={cn('flex items-center gap-2 rounded-lg px-4 py-2 text-[0.95rem] font-semibold capitalize transition sm:px-5', period === p ? 'bg-brand-600 text-white' : 'text-ink-2 hover:text-ink')}
+                >
+                  {p}
+                  {p === 'yearly' && (
+                    <span className={cn('rounded-full px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wide', period === p ? 'bg-white/20 text-white' : 'bg-gold-50 text-gold-800')}>Save {rupees(YEARLY_SAVINGS)}</span>
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {!hasPrices && (
-            <p className="mx-auto mt-8 flex max-w-2xl items-start gap-3 rounded-2xl border border-dashed border-gold-300 bg-gold-50 px-5 py-4 text-left text-[0.95rem] text-gold-800">
-              <Icon name="alert" size={20} className="mt-0.5 shrink-0" />
-              <span>
-                <strong className="font-semibold">Pricing is being finalised.</strong> The plans below show how packages are structured. Prices and plan contents are placeholders until they are confirmed.
-              </span>
-            </p>
-          )}
         </Container>
       </section>
 
@@ -101,67 +86,37 @@ export default function PricingPage() {
         <h2 id="plans-heading" className="sr-only">
           Plans
         </h2>
-        <ul className="mx-auto grid max-w-xl items-stretch gap-6 lg:max-w-6xl lg:grid-cols-3 lg:gap-6">
-          {PLANS.map((p, i) => (
-            <li key={p.id}>
-              <Reveal delay={i * 80} className="h-full">
-                <PricingCard plan={p} period={period} />
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+        <div className="mx-auto max-w-3xl">
+          <Reveal className="h-full">
+            <PricingCard plan={PLAN} period={period} />
+          </Reveal>
+        </div>
       </Section>
 
       <Section tone="soft" labelledBy="compare-heading">
         <div className="mx-auto max-w-4xl text-center">
           <h2 id="compare-heading" className="h2-xl">
-            Compare plans side by side
+            Compare monthly and yearly billing
           </h2>
-          <p className="lead mt-4">What each plan includes at a glance. Contents are placeholders until final packaging is confirmed.</p>
+          <p className="lead mt-4">Every feature is included either way. Yearly billing costs less.</p>
         </div>
-        <Reveal className="mx-auto mt-10 max-w-4xl">
-          {/* Phones: one card per feature, so no sideways scrolling is needed to compare plans. */}
-          <ul className="divide-y divide-line overflow-hidden rounded-[22px] border border-line bg-white shadow-card sm:hidden" aria-label="Features included in each plan">
-            {COMPARISON.map((row) => (
-              <li key={row.feature} className="p-4">
-                <div className="font-medium text-ink">{row.feature}</div>
-                <ul className="mt-2.5 grid grid-cols-3 gap-2">
-                  {PLANS.map((p, i) => (
-                    <li key={p.id} className={cn('rounded-lg px-1.5 py-2 text-center', p.recommended ? 'bg-brand-50' : 'bg-paper')}>
-                      <span className={cn('block text-[0.8rem] font-semibold', p.recommended ? 'text-brand-700' : 'text-ink-2')}>{p.name}</span>
-                      <span className="mt-1 block">
-                        <PlanMark value={row.values[i]} />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-
-          {/* Tablet and up: the full comparison table. */}
-          <div role="region" aria-label="Plan comparison table, scrollable" tabIndex={0} className="relative hidden overflow-x-auto rounded-[22px] border border-line bg-white shadow-card sm:block">
-            <table className="w-full min-w-[560px] text-left">
-              <caption className="sr-only">Features included in each LocalPOS plan</caption>
+        <Reveal className="mx-auto mt-10 max-w-3xl">
+          <div role="region" aria-label="Billing comparison table, scrollable" tabIndex={0} className="overflow-x-auto rounded-[22px] border border-line bg-white shadow-card">
+            <table className="w-full min-w-[440px] text-left">
+              <caption className="sr-only">LocalPOS monthly and yearly billing compared</caption>
               <thead>
                 <tr className="border-b border-line bg-paper-2">
-                  <th scope="col" className="px-5 py-4 text-[0.8rem] font-bold uppercase tracking-wide text-ink-3">Feature</th>
-                  {PLANS.map((p) => (
-                    <th key={p.id} scope="col" className={cn('px-4 py-4 text-center font-display text-[1.05rem] font-bold', p.recommended ? 'text-brand-700' : 'text-ink')}>
-                      {p.name}
-                    </th>
-                  ))}
+                  <th scope="col" className="px-5 py-4 text-[0.8rem] font-bold uppercase tracking-wide text-ink-3">Billing</th>
+                  <th scope="col" className="px-4 py-4 text-center font-display text-[1.05rem] font-bold text-ink">Monthly</th>
+                  <th scope="col" className="bg-brand-50/60 px-4 py-4 text-center font-display text-[1.05rem] font-bold text-brand-700">Yearly</th>
                 </tr>
               </thead>
               <tbody>
-                {COMPARISON.map((row) => (
-                  <tr key={row.feature} className="border-b border-line last:border-b-0">
-                    <th scope="row" className="px-5 py-3.5 text-[0.97rem] font-medium text-ink">{row.feature}</th>
-                    {row.values.map((v, i) => (
-                      <td key={i} className={cn('px-4 py-3.5 text-center', PLANS[i].recommended && 'bg-brand-50/60')}>
-                        <PlanMark value={v} />
-                      </td>
-                    ))}
+                {BILLING_ROWS.map((row) => (
+                  <tr key={row.label} className="border-b border-line last:border-b-0">
+                    <th scope="row" className="px-5 py-3.5 text-[0.97rem] font-medium text-ink">{row.label}</th>
+                    <td className="px-4 py-3.5 text-center text-[0.97rem] font-semibold text-ink-2">{row.monthly}</td>
+                    <td className="bg-brand-50/60 px-4 py-3.5 text-center text-[0.97rem] font-semibold text-brand-700">{row.yearly}</td>
                   </tr>
                 ))}
               </tbody>
