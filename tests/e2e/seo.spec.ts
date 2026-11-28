@@ -72,7 +72,7 @@ test.describe('structured data', () => {
 })
 
 test('Open Graph image and favicon assets exist', async ({ request }) => {
-  for (const asset of ['/favicon.svg', '/apple-touch-icon.png', '/logo-512.png', '/site.webmanifest']) {
+  for (const asset of ['/favicon.ico', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png', '/logo-512.png', '/site.webmanifest']) {
     const r = await request.get(asset)
     expect(r.status(), asset).toBe(200)
   }

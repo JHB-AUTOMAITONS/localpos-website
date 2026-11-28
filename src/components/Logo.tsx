@@ -1,28 +1,18 @@
+import horizontalLogo from '@/assets/brand/logo-horizontal.webp'
+import logoMark from '@/assets/brand/logo-mark.webp'
 import { cn } from '@/lib/cn'
 
-/** The LocalPOS mark: a thermal receipt with a highlighted total line. */
+/**
+ * The LocalPOS logo. Both images are generated from brand/localpos-logo.png by scripts/make-brand-assets.mjs
+ * (run it again after replacing that file). width/height give the browser the shape up front, so nothing shifts while they load.
+ */
+
+/** The symbol alone, `size` pixels wide. Decorative: used inside the product mock-ups. */
 export function LogoMark({ className, size = 36 }: { className?: string; size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" className={className} aria-hidden="true" focusable="false">
-      <rect width="32" height="32" rx="9" fill="#0a7f5f" />
-      <path
-        d="M10 6.5h12A1.5 1.5 0 0 1 23.5 8v15.9l-2.5 1.6-2.5-1.6-2.5 1.6-2.5-1.6-2.5 1.6-2.5-1.6V8A1.5 1.5 0 0 1 10 6.5z"
-        fill="#fff"
-      />
-      <rect x="11.5" y="10.2" width="9" height="1.8" rx=".9" fill="#0a7f5f" opacity=".28" />
-      <rect x="11.5" y="13.6" width="6" height="1.8" rx=".9" fill="#0a7f5f" opacity=".28" />
-      <rect x="11.5" y="17.4" width="9" height="2.6" rx="1.3" fill="#f6b232" />
-    </svg>
-  )
+  return <img src={logoMark} alt="" width={size} height={Math.round((size * 96) / 105)} className={cn('block', className)} />
 }
 
-export function Logo({ className, markSize = 36 }: { className?: string; markSize?: number }) {
-  return (
-    <span className={cn('inline-flex items-center gap-2.5', className)}>
-      <LogoMark size={markSize} />
-      <span className="font-display text-[1.4rem] font-bold leading-none tracking-[-0.035em] text-ink">
-        Local<span className="text-brand-600">POS</span>
-      </span>
-    </span>
-  )
+/** Symbol and wordmark side by side, for the header and footer. */
+export function Logo({ className }: { className?: string }) {
+  return <img src={horizontalLogo} alt="LocalPOS" width={533} height={120} className={cn('block h-[34px] w-auto max-w-none lg:h-10', className)} />
 }

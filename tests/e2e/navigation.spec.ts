@@ -178,6 +178,6 @@ test.describe('mobile drawer behaviour', () => {
     await clickNavLink(page, 'Pricing')
     await expect(page).toHaveURL(/\/pricing\/$/)
     await expect(page.getByRole('navigation', { name: 'Mobile' })).toHaveCount(0)
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('plans')
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/pricing/i)
   })
 })
